@@ -26,6 +26,6 @@ tags:
 
 Схема подключения:
 [Ссылка на файл](file://open?vault=mbWiki&file=content%2F%D0%90%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82%D0%BD%D1%8B%D0%B5%20%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8%2FbuttonLed_hw%2FbuttonLed_hw.svg)
-![[content/Аппаратные модули/_buttonLed_hw/buttonLed_hw.svg]] 
+![[content/Аппаратные модули/_assets/buttonLed_hw.svg]] 
 
  
