@@ -1,0 +1,142 @@
+{
+  "model": {
+    "columns": [
+      {
+        "id": "2db23e32-69fa-4601-92e0-d6cd0e75f157",
+        "sortDir": "default",
+        "isVisible": true,
+        "width": "140px",
+        "type": "text",
+        "numberPrefix": "",
+        "numberSuffix": "",
+        "numberSeparator": "",
+        "content": "New Column",
+        "numberFormat": "number",
+        "currencyType": "USD",
+        "dateFormat": "mmddyyyy",
+        "dateFormatSeparator": "-",
+        "hour12": true,
+        "includeTime": false,
+        "shouldWrapOverflow": true,
+        "tags": [],
+        "calculationType": "none",
+        "aspectRatio": "unset",
+        "horizontalPadding": "unset",
+        "verticalPadding": "unset",
+        "frontmatterKey": null
+      },
+      {
+        "id": "68dde28b-732f-45b3-8ccd-6ff42a9838e3",
+        "sortDir": "default",
+        "isVisible": true,
+        "width": "140px",
+        "type": "text",
+        "numberPrefix": "",
+        "numberSuffix": "",
+        "numberSeparator": "",
+        "content": "New Column",
+        "numberFormat": "number",
+        "currencyType": "USD",
+        "dateFormat": "mmddyyyy",
+        "dateFormatSeparator": "-",
+        "hour12": true,
+        "includeTime": false,
+        "shouldWrapOverflow": true,
+        "tags": [],
+        "calculationType": "none",
+        "aspectRatio": "unset",
+        "horizontalPadding": "unset",
+        "verticalPadding": "unset",
+        "frontmatterKey": null
+      },
+      {
+        "id": "e97666e7-1381-45d5-8802-faffe6df145c",
+        "sortDir": "default",
+        "isVisible": true,
+        "width": "140px",
+        "type": "text",
+        "numberPrefix": "",
+        "numberSuffix": "",
+        "numberSeparator": "",
+        "content": "New Column",
+        "numberFormat": "number",
+        "currencyType": "USD",
+        "dateFormat": "mmddyyyy",
+        "dateFormatSeparator": "-",
+        "hour12": true,
+        "includeTime": false,
+        "shouldWrapOverflow": true,
+        "tags": [],
+        "calculationType": "none",
+        "aspectRatio": "unset",
+        "horizontalPadding": "unset",
+        "verticalPadding": "unset",
+        "frontmatterKey": null
+      }
+    ],
+    "rows": [
+      {
+        "id": "44345700-9746-41b2-947f-adc6b1ed8d19",
+        "index": 0,
+        "sourceId": null,
+        "creationDateTime": "2024-03-26T19:32:16.191Z",
+        "lastEditedDateTime": "2024-03-26T19:32:58.063Z",
+        "cells": [
+          {
+            "id": "83fcc63b-a5ed-43e4-b3da-59023cc86edd",
+            "columnId": "2db23e32-69fa-4601-92e0-d6cd0e75f157",
+            "content": "sdfsdf",
+            "hasValidFrontmatter": null
+          },
+          {
+            "id": "1f69cdc2-28c4-4168-a067-7f2025df3f94",
+            "columnId": "68dde28b-732f-45b3-8ccd-6ff42a9838e3",
+            "content": "ertt",
+            "hasValidFrontmatter": null
+          },
+          {
+            "id": "f3b5b4f5-df59-4a05-b1f0-d35e01204c6d",
+            "columnId": "e97666e7-1381-45d5-8802-faffe6df145c",
+            "content": "",
+            "hasValidFrontmatter": null
+          }
+        ]
+      },
+      {
+        "id": "5d6fd22f-8547-462b-a6c2-3f27964f62be",
+        "index": 1,
+        "sourceId": null,
+        "creationDateTime": "2024-03-26T19:32:42.856Z",
+        "lastEditedDateTime": "2024-03-26T19:32:59.888Z",
+        "cells": [
+          {
+            "id": "57f2955c-9f53-4790-b4f6-ddeb78c128a5",
+            "columnId": "2db23e32-69fa-4601-92e0-d6cd0e75f157",
+            "content": "",
+            "hasValidFrontmatter": null
+          },
+          {
+            "id": "f585e382-eb16-4a58-b828-73a4a65268cc",
+            "columnId": "68dde28b-732f-45b3-8ccd-6ff42a9838e3",
+            "content": "sdfsdf",
+            "hasValidFrontmatter": null
+          },
+          {
+            "id": "ba751678-0d28-46aa-be30-ccc259dfe31c",
+            "columnId": "e97666e7-1381-45d5-8802-faffe6df145c",
+            "content": "ret",
+            "hasValidFrontmatter": null
+          }
+        ]
+      }
+    ],
+    "filters": [],
+    "sources": [],
+    "settings": {
+      "numFrozenColumns": 1,
+      "showCalculationRow": true
+    },
+    "externalRowOrder": []
+  },
+  "pluginVersion": "8.15.12"
+}
