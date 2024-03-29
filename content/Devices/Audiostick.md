@@ -19,7 +19,7 @@ tags:
 
 
 ## Схема подключения
-![[audioStick.svg]]
+![[Devices/_assets/audioStick.svg]]
 
 
 ## Типовой конфиг
