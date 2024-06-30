@@ -35,10 +35,9 @@ options = absolute, float_output, encoder_topic:/volume
 
 
 
-%%Пример использование [[cross_link]]:
+Пример использования [[cross_link]]
 ```ini
 ;
 cross_link = encoder_0:->led_0:1;
 ```
 
-%%

@@ -56,4 +56,4 @@ options = max_speed:5000, acceleration:5000, sensor_num:1, sensor_slot:1
 
 
 ## Пример подключения
-![[_assets/stepper.svg]]
+![[Программные модули/_assets/stepper.svg]]
