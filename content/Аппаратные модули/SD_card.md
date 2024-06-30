@@ -2,6 +2,7 @@
 title: Модуль карты памяти
 draft: false
 tags:
+  - "#storage"
 ---
 *Артикул: 201-004*
 

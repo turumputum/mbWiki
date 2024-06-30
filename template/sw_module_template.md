@@ -15,8 +15,8 @@ mode = button_led
 
 ## Топики
 Стандартный топик события:
-- *"device_name/encoder_{slot_num}"* - {slot_num} номер слота
-	- пример: "module_box/encoder_0"
+- *"deviceName/encoder_{slot_num}"* - {slot_num} номер слота
+	- пример: "moduleBox/encoder_0"
 Стандартный топик действия:
 
 ## Опции

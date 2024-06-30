@@ -11,7 +11,7 @@ tags:
 Устройство предназначено для проигрывания аудио контента, при снятии наушника с базы.
 
 ## Состав устройства
-- [SLOT_0] - [[Аппаратные модули/audio_player_mono_hw|Модуль аудио моно]]
+- [SLOT_0] - [[../Аппаратные модули/sound_mono_hw|Модуль аудио моно]]
 [[Программные модули/audio_player_sw|Режим audio_player]]
 - [SLOT_1] - [[Аппаратные модули/SD_card]]
 - [SLOT_2] - [[Аппаратные модули/buttonLed_hw|Программные модули/Модуль кнопка с подсветкой]]
@@ -27,7 +27,7 @@ tags:
 ;config file moduleBox. Ver:3.20 
 
 [SYSTEM] 
-device_name = audiostick 
+deviceName = audiostick 
 
 [LAN] 
 LAN_enable = 0 ;0-disable, 1-enable 
