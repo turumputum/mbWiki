@@ -24,8 +24,6 @@ tags:
 
 ## Типовой конфиг
 ```ini
-;config file moduleBox. Ver:3.20 
-
 [SYSTEM] 
 deviceName = audiostick 
 
@@ -50,20 +48,5 @@ cross_link = empty
 mode = button_led
 options = empty 
 cross_link = button_2:1->player_0/play:0, button_2:0->player_0/stop 
-
-[SLOT_3] 
-mode = empty 
-options = empty 
-cross_link = empty 
-
-[SLOT_4] 
-mode = empty 
-options = empty 
-cross_link = empty 
-
-[SLOT_5] 
-mode = empty 
-options = empty 
-cross_link = empty 
 
 ```
