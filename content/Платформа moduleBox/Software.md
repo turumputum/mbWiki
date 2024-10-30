@@ -59,16 +59,7 @@ tags:
 ;модуль в режиме кнопка с подсветкой
 mode = button_led
 ;инвертируем кнопку
-options = button_inverse 
-```
-Или указывать значение виде числа или строки
-```ini
-[SLOT_0]
-;модуль в режиме кнопка с подсветкой
-mode = button_led
-;инвертируем кнопку
-options = button_inverse 
-
+options = buttonInverse 
 ```
 
 ## Команды и события
@@ -90,7 +81,7 @@ deviceName/player_0/play_end:2
 Пример:
 ```ini
 ; установка пользовательских топиков для кнопки и подсветки
-options = button_topic:zone_7/pLayKey, led_topic:zone_7/playIndicator
+options = buttonTopic:zone_7/playKey, ledTopic:zone_7/playIndicator
 ```
 
 
@@ -116,7 +107,7 @@ cross_link = button_3:1->player_0/shift:3
 ;модуль в режиме кнопка с подсветкой
 mode = button_led
 ;настраиваем пользовательский топик
-options = button_topic:zone_7/keyOne 
+options = buttonTopic:zone_7/keyOne 
 ;реагируем на нажатие кнопки включением\выключение светодиода
 cross_link = zone_7/keyOne:1->led_0:1, zone_7/keyOne:0->led_0:0
 ```
