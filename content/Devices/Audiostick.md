@@ -35,7 +35,7 @@ netMask = 255.255.255.0
 gateWay = 192.168.88.1 
 
 [SLOT_0] 
-mode = audio_player 
+mode = audioPlayer 
 options = empty
 cross_link = empty 
 

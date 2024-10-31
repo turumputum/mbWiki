@@ -1,5 +1,5 @@
 ---
-title: Кнопка с подсветкой
+title: Модуль интерфейса UART
 draft: false
 tags:
   - hw
