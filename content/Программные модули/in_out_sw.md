@@ -45,7 +45,7 @@ options = outDelay:1000, outImpulse:500
 ```
 Выходной сигнал будет сформирован виде импульса продолжительностью 500мс с задержкой в 1сек.
 
-Пример использование cross_link:
+Пример использования [[content/Платформа moduleBox/Software#Внутренние связи(crossLink)|cross_link]]:
 ```ini
 cross_link = in_0:1->out_0:1; turn on out_0 when in_0 is up
 ```

@@ -15,7 +15,7 @@ tags:
 
 ## Совместимость
 - [[Программные модули/buttonLed_sw|button_led]]
-- [[content/Программные модули/in_out_sw|inOut]]
+- [[Программные модули/in_out_sw|in_out]]
 
 
 ## Питание
