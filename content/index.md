@@ -34,6 +34,6 @@ title: Добро пожаловать
 - [[Программные модули/whitelist_sw|Белый список]]
 
 ## Типовые устройства
-- [[Devices/Audiostick|Аудиоэтикетка]]
-- [[Devices/retroTelephone|Ретро телефон]]
+- [[content/Устройства/Audiostick|Аудиоэтикетка]]
+- [[content/Устройства/retroTelephone|Ретро телефон]]
 
