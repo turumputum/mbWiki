@@ -5,9 +5,9 @@ tags:
   - audio
   - device
 ---
-![[Устройства/_assets/audioStick+.jpg]]
+![[Устройства/_assets/audioStickPlus.jpg]]
 >[!info]- be
->![[content/Устройства/_assets/lejaflorezt.gif]]
+>![[Устройства/_assets/lejaflorezt.gif]]
 
 ## Описание
 Устройство предназначено для проигрывания аудио контента, при снятии наушника с базы. C помощью кнопок может быть настроено переключение контента, например для смены языка.
@@ -21,7 +21,7 @@ tags:
 
 
 ## Схема подключения
-![[content/Устройства/_assets/audioStick+_light.svg]]
+![[Устройства/_assets/audioStickPlus_light.svg]]
 
 
 ## Типовой конфиг
