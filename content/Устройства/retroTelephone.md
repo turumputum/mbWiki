@@ -33,13 +33,6 @@ tags:
 [SYSTEM] 
 deviceName = retroTelephone 
 
-[LAN] 
-LAN_enable = 0 ;0-disable, 1-enable 
-DHCP = 0 ;0-disable, 1-enable 
-ipAdress = 192.168.88.33 
-netMask = 255.255.255.0 
-gateWay = 192.168.88.1 
-
 [SLOT_0] 
 mode = audioPlayer 
 options = empty 

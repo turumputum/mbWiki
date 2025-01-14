@@ -68,10 +68,11 @@ mode = button_smartLed
 ## Примеры
 
 ```ini
-[SLOT_n]
+[SLOT_0]
 mode = button_smartLed
 options = ledMode:flash, minBright:0, maxBright:127, RGBcolor:255 0 0 
-cross_link = button_0:1->smartLed_0:1 ;включить светодиод при нажатии кнопки
+cross_link = button_0:1->smartLed_0:1 
+;включить светодиод при нажатии кнопки
 ```
 при активации подсветка будет плавно моргать красным цветом в половину яркости. Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]
 
