@@ -23,7 +23,7 @@ tags:
 - (SLOT_1) - [[Платформа moduleBox/Software|SDcard]]
 - (SLOT_2) - [[Программные модули/buttonLed_sw|Модуль кнопка с подсветкой]]
 - (SLOT_3) - [[Программные модули/dialer_sw|Дисковый номеронабиратель]]
-- (SLOT_4) - [[Программные модули/whitelist_sw|Белый список]]
+- (SLOT_4) - [[content/Программные модули/Виртуальные модули/whitelist_sw|Белый список]]
 ## Схема подключения
 ![[content/Устройства/_assets/retroPhone.svg]]
 
@@ -65,7 +65,7 @@ cross_link = empty
 ```
 В данной конфигурации используются [[Платформа moduleBox/Software#Специальные символы|специальные символы]]
 
-Пример списка [[Программные модули/whitelist_sw#Формат списка|whitelist.txt]]:
+Пример списка [[content/Программные модули/Виртуальные модули/whitelist_sw#Формат списка|whitelist.txt]]:
 ```ini
 1->player_0/shift:0
 2->player_0/shift:1

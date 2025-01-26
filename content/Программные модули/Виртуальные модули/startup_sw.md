@@ -1,5 +1,5 @@
 ---
-title: Номеронабиратель
+title: Действия при загрузке
 draft: false
 tags:
   - "#trigger"
