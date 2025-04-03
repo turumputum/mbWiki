@@ -60,7 +60,8 @@ mode = pwmRGB
 ```ini
 [SLOT_n]
 mode = pwmRGB
-options = ledMode:rainbow, increment:1, defaultState:1 ;режим радуги, скорость анимации минимальная, модуль включен по умолчанию 
+options = ledMode:rainbow, increment:1, defaultState:1 
+;режим радуги, скорость анимации минимальная, модуль включен по умолчанию 
 cross_link = 
 ```
 при включении подсветка будет плавно переливатmся по палитре HSV. 

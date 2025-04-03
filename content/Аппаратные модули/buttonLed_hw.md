@@ -5,6 +5,8 @@ tags:
   - hw
   - button
   - led
+  - input
+  - output
 ---
 *артикул: 201-006*
 

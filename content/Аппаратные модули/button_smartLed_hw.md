@@ -5,6 +5,8 @@ tags:
   - hw
   - button
   - smartLed
+  - input
+  - output
 ---
 *артикул: 201-025*
 

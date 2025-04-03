@@ -1,5 +1,5 @@
 ---
-title: Действия при загрузке
+title: Маховик
 draft: false
 tags:
   - "#trigger"
@@ -42,7 +42,7 @@ options=maxVal:100, threshold:50, decrement:0.2, period:100
 ## Команды
 - **/setCount** Установка значения счетчика. Возможны абсолютные значения int и относительный +int и -int. Пример:
 	- "*moduleBox/flywheel_3/setCount:25"* установить значение 25.
-	- Пример:"*moduleBox/flywheel_3/setCount:+5"* увеличить текущее значение на 5.
+	- "*moduleBox/flywheel_3/setCount:+5"* увеличить текущее значение на 5.
 
 ## События
 - Рапортует "1" при превышении порогового значения и наоборот. Пример:
