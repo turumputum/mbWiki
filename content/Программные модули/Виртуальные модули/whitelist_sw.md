@@ -49,3 +49,4 @@ options=filename:my-list.txt
 cross_link = whitelist_6/noMatches->player_0/play:1
 ```
 
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]

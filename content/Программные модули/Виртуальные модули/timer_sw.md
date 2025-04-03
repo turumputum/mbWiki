@@ -45,7 +45,7 @@ options=time:5000
 	- "*moduleBox/timer_1/timerEnd:1*"
 
 
-Пример использование [[cross_link]]:
+## Пример 
 ```ini
 ;при нажатии на кнопку включается подсветка и таймер который выключит подсветку через 1сек
 [SLOT_0] 
@@ -58,3 +58,4 @@ mode = timer
 options = empty 
 cross_link = timer_1/timerEnd:1->led_0:0 
 ```
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]

@@ -50,8 +50,9 @@ options=maxVal:100, threshold:50, decrement:0.2, period:100
 - **/count** Рапортует при изменении целой части значения счетчика. Пример:
 	- "*moduleBox/flywheel_1/count:15"
 
-Пример использование [[cross_link]]:
+## Пример:
 ```ini
 ;при превышении порогового значения, запустить проигрывание трека с индексом 0, и наоборот остановить проигрывание.
 cross_link = flywheel_2:1->player_0/play:0, flywheel_2:0->player_0/stop 
 ```
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]
