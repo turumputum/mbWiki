@@ -30,7 +30,7 @@ tags:
 ## Типовой конфиг
 ```ini
 [SYSTEM] 
-deviceName = retroTelephone 
+deviceName = spinner 
 
 [LAN] 
 LAN_enable = 1;0-disable, 1-enable 
