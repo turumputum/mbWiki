@@ -31,7 +31,7 @@ deviceName = audiostick
 
 [SLOT_0] 
 mode = audioPlayer 
-options = volume:0.75
+options = volume:75
 cross_link = player_0/endOfTrack:#->player_0/play:# 
 
 [SLOT_1] 
