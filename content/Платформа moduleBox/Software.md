@@ -113,7 +113,8 @@ mqttBrokerAdress = 192.168.88.1
 [SLOT_1] 
 mode = button_led
 options = buttonInverse
-cross_link = button_1:@->led_1:@
+;включить светодиод при нажатии на кнопку
+cross_link = button_1:1->led_1:1
 ```
 
 
@@ -141,7 +142,7 @@ deviceName/button_0:1
 ;команда, проиграть трек с индексом 2
 deviceName/player_0/play:2
 ;событие, плеер закончил проигрывание трека 2
-deviceName/player_0/play_end:2
+deviceName/player_0/endOfTrack:2
 ```
 Все программные модули имеют возможность настроить нестандартный (пользовательский) топик, в графе *"options"* советующего модуля. Для событий и действий топики внутри одного модуля, могут различаться, это можно уточнить в документации на модуль, однако внутренние связи работаю только со стандартными топиками(
 Пример:
@@ -152,9 +153,17 @@ options = buttonTopic:zone_7/playKey, ledTopic:zone_7/playIndicator
 
 ## Системные команды
 Все устройства, вне зависимости от конфигурации выполняют следующие команды:
-- **/getState** Рапортует о текущем состоянии устройства. Объём свободной памяти, адрес в сети и статусы внутренних служб. 
-	- Пример: "*moduleBox/getState"
-- /**restart** Перезапускает устройство, например для применения изменений в настройках.
+- **system/getFreeRAM** Рапортует о текущее количество свободной памяти RAM. 
+	- Пример: "*moduleBox/system/getFreeRAM"
+- **system/getNETstatus** Рапортует текущий статус сетевых служб.
+	- Пример: "*moduleBox/system/getNETstatus"
+- **system/getTaskList** Рапортует список запущенных процессов
+	- Пример: "*moduleBox/system/getTaskList"
+- **system/getVersion** Рапортует текущую версию прошивки.
+	- Пример: "*moduleBox/system/getVersion"
+- **system/restart** Перезагружает контроллер.
+	- Пример: "*moduleBox/system/restart"
+	
 
 
 ## Внутренние связи(crossLink)
