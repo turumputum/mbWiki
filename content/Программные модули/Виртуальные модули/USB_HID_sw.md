@@ -39,11 +39,11 @@ mode = HID
 [SLOT_2] 
 mode = button_led 
 options = empty 
-cross_link = button_2:1->HID_3/kick:19, button_2:0->HID_3/kick:21 
+crosslink = button_2:1->HID_3/kick:19, button_2:0->HID_3/kick:21 
 ;при замыкании контактов во втором слоте, будет с имитировано короткое нажатие клавиши "p", при размыкании контактов будет с имитировано нажатие клавиши "r"
 [SLOT_3] 
 mode = HID 
 options = empty 
-cross_link = empty
+crosslink = empty
 ```
-Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(crosslink)|crossLink]]

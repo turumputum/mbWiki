@@ -32,8 +32,8 @@ options = absolute, float_output, encoder_topic:/volume
 В топик "/volume" будет публиковаться текущее положение энкодера виде числа от 0,0 до 1,0 с плавающей точкой.
 
 
-Пример использование [[cross_link]]:
+Пример использование [[crosslink]]:
 ```
-cross_link = button_0:1->led_0:1; turn on led_0 when button_0 is pressed
+crosslink = button_0:1->led_0:1; turn on led_0 when button_0 is pressed
 ```
 

@@ -44,8 +44,8 @@ mode = tenzoButton
 mode = tenzoButton
 options = boolean
 ;модуль тензо кнопки настроен как дискретный выход
-cross_link = tenzoButton_3:1->player_0/play:2 
+crosslink = tenzoButton_3:1->player_0/play:2 
 ;при активации кнопки будет проигран трек с индексом два
 ```
-Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(crosslink)|crossLink]]
 

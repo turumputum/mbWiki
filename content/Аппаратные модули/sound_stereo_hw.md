@@ -16,7 +16,7 @@ tags:
 
 Номинальная мощность: 25мВт.
 ## Совместимость
-[[Программные модули/audio_player_sw|audioPlayer]]
+[[content/Программные модули/mp3Player_sw|audioPlayer]]
 
 ## Схема подключения
 

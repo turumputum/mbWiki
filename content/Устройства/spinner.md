@@ -21,7 +21,7 @@ tags:
 
 ## Программный состав устройства
 - (SLOT_0) - [[Программные модули/encoderAS5600_sw|Энкодер AS5600]]
-- (SLOT_1) - [[Программные модули/buttonSmartLed_sw|Кнопка с управляемой подсветкой]]
+- (SLOT_1) - [[content/Программные модули/button_smartLed_sw|Кнопка с управляемой подсветкой]]
 
 ## Схема подключения
 ![[Устройства/_assets/spinner.svg]]
@@ -49,13 +49,13 @@ mqttBrokerAdress = 192.168.0.1
 mode = encoderAS5600 
 options = numOfPos:9, absolute
 ;модуль настроен на 9 фиксированных положений и работает в абсолютном режиме
-cross_link = encoder_0:@->ledRing_1/setPos:@
+crosslink = encoder_0:@->ledRing_1/setPos:@
 ;значение текущего положения передается в модуль ledRing
 
 [SLOT_1] 
 mode = button_ledRing
 options = numOfPos:9, increment:40
 ;модуль настроен на 9 фиксированных положений, сорость приращения анимации настроена на 40 едениц
-cross_link = button_1:@->ledRing_1:@
+crosslink = button_1:@->ledRing_1:@
 ;значение кнопки передается в модуль ledRing
 ```

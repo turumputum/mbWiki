@@ -14,14 +14,14 @@ tags:
 ## Аппаратный состав устройства
 - (SLOT_0) - [[Аппаратные модули/sound_mono_hw|Модуль аудио моно]]
 - (SLOT_1) - [[Аппаратные модули/SD_card|SD_card]]
-- (SLOT_2) - [[Аппаратные модули/buttonLed_hw|Модуль кнопка с подсветкой]]
+- (SLOT_2) - [[content/Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
 - (SLOT_3) - [[Аппаратные модули/in_2ch_hw|Модуль два цифровых входа]]
 
 
 ## Программный состав устройства
-- (SLOT_0) - [[Программные модули/audio_player_sw|Аудио проигрыватель]]
+- (SLOT_0) - [[content/Программные модули/mp3Player_sw|Аудио проигрыватель]]
 - (SLOT_1) - [[Платформа moduleBox/Software|SDcard]]
-- (SLOT_2) - [[Программные модули/buttonLed_sw|Модуль кнопка с подсветкой]]
+- (SLOT_2) - [[content/Программные модули/button_led_sw|Модуль кнопка с подсветкой]]
 - (SLOT_3) - [[Программные модули/dialer_sw|Дисковый номеронабиратель]]
 - (SLOT_4) - [[Программные модули/Виртуальные модули/whitelist_sw|Белый список]]
 ## Схема подключения
@@ -34,34 +34,34 @@ tags:
 deviceName = retroTelephone 
 
 [SLOT_0] 
-mode = audioPlayer 
+mode = mp3Player 
 options = empty 
-cross_link =  player_0/endOfTrack:#->player_0/play:# 
+crosslink =  player_0/endOfTrack:#->player_0/play:# 
 ;по окончанию проигрывания, заново проиграть текущий трек
 
 [SLOT_1] 
 mode = SDcard 
 options = empty 
-cross_link = empty 
+crosslink = empty 
 
 [SLOT_2] 
 mode = button_led 
 options = empty
-cross_link = button_2:1->player_0/play:#, button_2:0->player_0/stop:#
+crosslink = button_2:1->player_0/play:#, button_2:0->player_0/stop:#
 ;При снятии трубки начать прогрывание, при устновки трубки в телефон остановить проигрывание
 
 [SLOT_3] 
 mode = dialer 
 options = numberMaxLenght:1 
 ;максимальная длина номера один символ
-cross_link = dialer_3:@->whitelist_4:@
+crosslink = dialer_3:@->whitelist_4:@
 ;передать набранный номер для проверки с белым списком
 
 [SLOT_4] 
 mode = whitelist
 options = empty
 ;по умолчанию список хранится в корневом каталоге под именем whitelist.txt
-cross_link = empty 
+crosslink = empty 
 ```
 В данной конфигурации используются [[Платформа moduleBox/Software#Специальные символы|специальные символы]]
 

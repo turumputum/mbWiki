@@ -38,7 +38,7 @@ mode = encoderAS5600
 mode = encoderAS5600
 options = absolute, floatOutput, topic:/volume
 ;абсолютный режим работы энкодера, значения о текущей позиции будут рапортоватся ввиде числа с плавающей запятой, топик для событий будет иметь вид "/volume"
-cross_link = empty
+crosslink = empty
 ```
 
 

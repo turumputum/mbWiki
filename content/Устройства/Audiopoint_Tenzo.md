@@ -14,7 +14,7 @@ tags:
 
 ## Состав устройства
 - [SLOT_0] - [[Аппаратные модули/sound_amp_hw|Модуль аудио с усилителем]]
-[[Программные модули/audio_player_sw|Режим audioPlayer]]
+[[content/Программные модули/mp3Player_sw|Режим audioPlayer]]
 - [SLOT_1] - [[Аппаратные модули/SD_card|Модуль карты памяти]]
 - [SLOT_2] - [[Аппаратные модули/tenzoButton_hw|Модуль тензо кнопка]]
 [[content/Программные модули/tenzoButton_sw|Режим тензо кнопка]]
@@ -39,37 +39,37 @@ deviceName = audiopointTenzo
 mode = audioPlayer 
 options = attenuation
 ;настроено плавное затухание громкости по команде стоп
-cross_link = player_0/endOfTrack:0->out_4/ch_0:1, player_0/endOfTrack:0->out_4/ch_1:1 
+crosslink = player_0/endOfTrack:0->out_4/ch_0:1, player_0/endOfTrack:0->out_4/ch_1:1 
 ;по окончанию проигрывания трека, нулевой и первый каналы выходного модуля в четвертом слоте устанавливаются в активное состояние
 
 [SLOT_1] 
 mode = SDcard 
 options = empty 
-cross_link = empty 
+crosslink = empty 
 
 [SLOT_2] 
 mode = tenzoButton 
 options = boolean
 ;дискретный режим работы модуля
-cross_link = tenzoButton_2:1->player_0/play:1, tenzoButton_2:1->out_4/ch_0:1, tenzoButton_2:1->out_4/ch_1:0 
+crosslink = tenzoButton_2:1->player_0/play:1, tenzoButton_2:1->out_4/ch_0:1, tenzoButton_2:1->out_4/ch_1:0 
 ;при наажатии на тензо кнопку подключенную к слоту два, запускается трек с индексом один, включается нулевой канал, и выключается первый канал в слоте четыре
 
 [SLOT_3] 
 mode = tenzoButton 
 options = boolean 
-cross_link = tenzoButton_3:1->player_0/play:2, tenzoButton_3:1->out_4/ch_0:0, tenzoButton_3:1->out_4/ch_1:1
+crosslink = tenzoButton_3:1->player_0/play:2, tenzoButton_3:1->out_4/ch_0:0, tenzoButton_3:1->out_4/ch_1:1
 ;при наажатии на тензо кнопку подключенную к слоту три, запускается трек с индексом два, выключается нулевой канал, и включается первый канал в слоте четыре
 
 [SLOT_4] 
 mode = out_3ch 
 options = empty 
-cross_link = empty 
+crosslink = empty 
 
 [SLOT_5] 
 mode = hlk2410 
 options = threshold:140, filterK:0.05
 ;модуль радара настроен как дискретный выход, с порогом срабатывания в 140см, и высокой степенью сглаживания сигнала
-cross_link = radar_5:1->out_4/ch_0:1, radar_5:1->out_4/ch_1:1, radar_5:1->player_0/play:0, radar_5:1->timer_6/stop, radar_5:0->timer_6/start:3000
+crosslink = radar_5:1->out_4/ch_0:1, radar_5:1->out_4/ch_1:1, radar_5:1->player_0/play:0, radar_5:1->timer_6/stop, radar_5:0->timer_6/start:3000
 ;при активации датчика нулевой и первый каналы выходного модуля в четвертом слоте устанавливаются в активное состояние, запускается проигрывание трека с индексом ноль и останавливается виртуальный таймер в шестом слоте.
 ;при деактивации датчика запускается таймер в шестом слоте
 
@@ -77,7 +77,7 @@ cross_link = radar_5:1->out_4/ch_0:1, radar_5:1->out_4/ch_1:1, radar_5:1->player
 ;виртуальный слот
 mode = timer 
 options = empty 
-cross_link = timer_6/timerEnd->player_0/stop, timer_6/timerEnd->out_4/ch_0:0, timer_6/timerEnd->out_4/ch_1:0
+crosslink = timer_6/timerEnd->player_0/stop, timer_6/timerEnd->out_4/ch_0:0, timer_6/timerEnd->out_4/ch_1:0
 ;при достижении целевого значения таймера, проигрыватель, а также нулевой и первый каналы четвертого слота будут деактивированы  
 ```
 

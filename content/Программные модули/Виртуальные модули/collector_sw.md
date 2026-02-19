@@ -12,6 +12,7 @@ tags:
 mode = collector
 ```
 Виртуальный слот, не взаимодействует с аппаратной частью.
+Виртуальный модуль, использует слоты 6-9.
 
 ## Принцип работы
 Модуль собирает в виде строки входящие символы. Рапортует при достижении заданной длины строки или по таймауту.
@@ -23,47 +24,33 @@ mode = collector
 	- пример: "moduleBox/collector_6"
 
 ## Опции
-- **stringMaxLenght** - *(int)*, Максимальная длина строки. По умолчанию *7*.
-- **waitingTime** - *(int)*, Время ожидания следующего символа. Единица измерения $мСек$. По умолчанию 3000 $мСек$ (3 секунды).
-- **topic** - *строка*, нестандартный топик событий и действий.\
-
-Пример
- ```ini
-options= stringMaxLenght:5, waitingTime:1000
-```
+Доступные опции:
+- **stringMaxLenght** - *число(int)*, максимальная длина строки. От 1 до 256. По умолчанию 7.
+- **waitingTime** - *число(int)*, время ожидания следующего символа в $мСек$. От 1 до 60000. По умолчанию 3000.
+- **topic** - *строка*, нестандартный топик событий и действий.
 
 ## Команды
-- **/clear** - *(int)*, Очистка содержимого строки.
-	- Пример: "*moduleBox/collector_3/clear*"
-- **/add** - *(int)*, Добавление символов в строку.
-	- Пример: "*moduleBox/collector_3/add:2*"
+- **/add** — добавление символов в строку. В качестве значения передаётся строка.
+	- Пример: "*moduleBox/collector_6/add:2*"
+- **/clear** — очистка содержимого строки. Не принимает параметров.
+	- Пример: "*moduleBox/collector_6/clear*"
 
 ## Cобытия
-При достижении заданной длины строки или времени ожидания, будет отрапортована собранная строка:
-- *"moduleBox/collector_3:21233"* 
+- При достижении заданной длины строки или времени ожидания, будет отрапортована собранная строка. Пример:
+	"*moduleBox/collector_6:21233*"
 
 ## Пример
 ```ini
 [SLOT_0] 
-mode = in_3ch 
+mode = in_2ch 
 options = inDebounceGap:50 
-cross_link = in_0/ch_0:1->collector_3/add:r, in_0/ch_1:1->collector_3/add:C,in_0/ch_2:1->collector_3/add:D   
+crosslink = in_0/ch_0:1->collector_6/add:A, in_0/ch_1:1->collector_6/add:B
 
-[SLOT_1] 
-mode = in_3ch  
-options = inDebounceGap:50 
-cross_link = in_1/ch_1:1->collector_3/add:u, in_1/ch_0:1->collector_3/add:l, in_1/ch_2:1->collector_3/add:B  
-
-[SLOT_2] 
-mode = in_3ch  
-options = inDebounceGap:50 
-cross_link = in_2/ch_0:1->collector_3/add:d, in_2/ch_1:1->collector_3/add:A
-
-[SLOT_3] 
+[SLOT_6] 
 mode = collector 
 options = stringMaxLenght:5 
-;Собранная строка передается в модуль "witelist" для валидации
-cross_link = collector_3:@->whitelist_6:@
+;Собранная строка передается в модуль "whitelist" для валидации
+crosslink = collector_6:@->whitelist_7:@
 ```
 
-Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(cross_link)|crossLink]]
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(crosslink)|crossLink]]

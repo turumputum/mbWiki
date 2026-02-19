@@ -18,7 +18,7 @@ tags:
 Кнопка считается нажатой при замыкании контакта *Bt* и *gnd*.
 
 ## Совместимость
-- [[Программные модули/buttonSmartLed_sw|buttonSmartLed_sw]]
+- [[content/Программные модули/button_smartLed_sw|button_smartLed_sw]]
 
 ## Питание
 Напряжение выхода V+ ровно [[Платформа-moduleBox/Hardware#Шина питания Vbus |Vbus]], переключается на 5V можно перемычкой на модуле. Рабочий ток при питании от  [[Платформа-moduleBox/Hardware#Шина питания Vbus |Vbus]] не более 6А.
