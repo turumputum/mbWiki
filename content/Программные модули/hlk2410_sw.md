@@ -42,7 +42,7 @@ mode = hlk2410
 - При включённой опции **floatOutput** рапортует значение в формате float (0.0–1.0). Пример:
 	"*moduleBox/distanceSens_0:0.45*"
 - В дискретном режиме (threshold > 0) рапортует состояние порогового датчика, возможные значения 0-1. Пример:
-	"*moduleBox/distanceSens_0:1*"
+	"*moduleBox/distanceSens_0/threshold:1*"
 
 ## Индикация
 Светодиодный индикатор на плате меняет яркость пропорционально расстоянию до объекта.
@@ -54,7 +54,7 @@ mode = hlk2410
 mode = hlk2410
 options = threshold:140, filterK:0.05
 ;модуль радара настроен как дискретный выход, с порогом срабатывания в 140см, и высокой степенью сглаживания сигнала
-crosslink = distanceSens_3:1->player_0/play:0
+crosslink = distanceSens_3/threshold:1->player_0/play:0
 ;при активации датчика будет проигран трек с индексом ноль
 ```
 Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(crosslink)|crossLink]]

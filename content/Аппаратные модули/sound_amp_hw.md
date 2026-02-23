@@ -17,7 +17,7 @@ tags:
 Мощность RMS: 20Вт на канал
 
 ## Совместимость
-[[content/Программные модули/mp3Player_sw|audioPlayer]]
+[[content/Программные модули/Звуковые модули/mp3Player_sw|audioPlayer]]
 
 ## Питание
 Модуль питается от шины [[Платформа-moduleBox/Hardware#Шина питания Vbus |Vbus]]. Диапазон напряжений 9-18В.

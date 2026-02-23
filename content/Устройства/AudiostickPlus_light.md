@@ -11,16 +11,16 @@ tags:
 
 ## Состав устройства
 - [SLOT_0] - [[Аппаратные модули/sound_mono_hw|Модуль аудио моно]]
-[[content/Программные модули/mp3Player_sw|Режим audioPlayer]]
+[[content/Программные модули/Звуковые модули/mp3Player_sw|Режим audioPlayer]]
 - [SLOT_1] - [[Аппаратные модули/SD_card|Модуль карты памяти]]
 - [SLOT_2] - [[Аппаратные модули/button_smartLed_hw|Модуль кнопка с управляемой подсветкой]]
-[[content/Программные модули/button_led_sw|Режим кнопка с управляемой подсветкой]]
-- [SLOT_3] - [[content/Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
-[[content/Программные модули/button_led_sw|Режим кнопка с подсветкой]]
-- [SLOT_4] - [[content/Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
-[[content/Программные модули/button_led_sw|Режим кнопка с подсветкой]]
-- [SLOT_5] - [[content/Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
-[[content/Программные модули/button_led_sw|Режим кнопка с подсветкой]]
+[[Программные модули/button_led_sw|Режим кнопка с управляемой подсветкой]]
+- [SLOT_3] - [[Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
+[[Программные модули/button_led_sw|Режим кнопка с подсветкой]]
+- [SLOT_4] - [[Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
+[[Программные модули/button_led_sw|Режим кнопка с подсветкой]]
+- [SLOT_5] - [[Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
+[[Программные модули/button_led_sw|Режим кнопка с подсветкой]]
 
 
 ## Схема подключения
@@ -33,7 +33,7 @@ tags:
 deviceName = audiostickPlus 
 
 [SLOT_0] 
-mode = audioPlayer
+mode = mp3Player
 options = volume:90
 crosslink = empty 
 
@@ -67,7 +67,7 @@ crosslink = button_5:1->led_5:1, button_5:1->led_3:0, button_5:1->led_4:0, butto
 [SLOT_6] 
 mode = startup 
 options = empty 
-crosslink = startup->led_3:1, sturtup->player_0/shift:0 
+crosslink = startup_6/started->led_3:1, sturtup_6/started->player_0/shift:0 
 
 ```
 В данном устройстве сетевые интерфейсы не используются, поэтому в конфигурационном файле пропущены группы: [LAN],[UDP],[OSC],[MQTT] подробнее [[Платформа moduleBox/Software#Структура конфигурационного файла|тут]].

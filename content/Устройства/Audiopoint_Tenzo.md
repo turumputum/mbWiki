@@ -14,10 +14,10 @@ tags:
 
 ## Состав устройства
 - [SLOT_0] - [[Аппаратные модули/sound_amp_hw|Модуль аудио с усилителем]]
-[[content/Программные модули/mp3Player_sw|Режим audioPlayer]]
+[[content/Программные модули/Звуковые модули/mp3Player_sw|Режим mp3Player]]
 - [SLOT_1] - [[Аппаратные модули/SD_card|Модуль карты памяти]]
 - [SLOT_2] - [[Аппаратные модули/tenzoButton_hw|Модуль тензо кнопка]]
-[[content/Программные модули/tenzoButton_sw|Режим тензо кнопка]]
+[[Программные модули/tenzoButton_sw|Режим тензо кнопка]]
 - [SLOT_3] - [[Аппаратные модули/tenzoButton_hw|Модуль тензо кнопка]]
 [[Программные модули/tenzoButton_sw|Режим тензо кнопка]]
 - [SLOT_4] - [[Аппаратные модули/out_2ch_hw|Модуль два цифровых выхода]]
@@ -36,7 +36,7 @@ tags:
 deviceName = audiopointTenzo 
 
 [SLOT_0] 
-mode = audioPlayer 
+mode = mp3Player 
 options = attenuation
 ;настроено плавное затухание громкости по команде стоп
 crosslink = player_0/endOfTrack:0->out_4/ch_0:1, player_0/endOfTrack:0->out_4/ch_1:1 
@@ -67,9 +67,9 @@ crosslink = empty
 
 [SLOT_5] 
 mode = hlk2410 
-options = threshold:140, filterK:0.05
+options = threshold:140, filterK:0.05, cooldownTime:5000, maxVal:200
 ;модуль радара настроен как дискретный выход, с порогом срабатывания в 140см, и высокой степенью сглаживания сигнала
-crosslink = radar_5:1->out_4/ch_0:1, radar_5:1->out_4/ch_1:1, radar_5:1->player_0/play:0, radar_5:1->timer_6/stop, radar_5:0->timer_6/start:3000
+crosslink = distanceSens_5/threshold:1->out_4/ch_0:1, distanceSens_5/threshold:1->out_4/ch_1:1, distanceSens_5/threshold:1->player_0/play:0, distanceSens_5/threshold:1->timer_6/stop, distanceSens_3/threshold:0->timer_6/start:3000
 ;при активации датчика нулевой и первый каналы выходного модуля в четвертом слоте устанавливаются в активное состояние, запускается проигрывание трека с индексом ноль и останавливается виртуальный таймер в шестом слоте.
 ;при деактивации датчика запускается таймер в шестом слоте
 

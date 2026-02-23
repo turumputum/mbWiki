@@ -14,10 +14,10 @@ tags:
 
 ## Состав устройства
 - [SLOT_0] - [[Аппаратные модули/sound_mono_hw|Модуль аудио моно]]
-[[content/Программные модули/mp3Player_sw|Режим audioPlayer]]
+[[content/Программные модули/Звуковые модули/mp3Player_sw|Режим mp3Player]]
 - [SLOT_1] - [[Аппаратные модули/SD_card|Модуль карты памяти]]
-- [SLOT_2] - [[content/Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
-[[content/Программные модули/button_led_sw|Режим кнопка с подсветкой]]
+- [SLOT_2] - [[Аппаратные модули/button_led_hw|Модуль кнопка с подсветкой]]
+[[Программные модули/button_led_sw|Режим кнопка с подсветкой]]
 
 
 ## Схема подключения
@@ -30,7 +30,7 @@ tags:
 deviceName = audiostick 
 
 [SLOT_0] 
-mode = audioPlayer 
+mode = mp3Player 
 options = volume:75
 crosslink = player_0/endOfTrack:#->player_0/play:# 
 
