@@ -53,11 +53,11 @@ describe("typeguards", () => {
   })
 
   test("isFilePath", () => {
-    assert(path.isFilePath("content/index.md"))
-    assert(path.isFilePath("content/test.png"))
+    assert(path.isFilePath("index.md"))
+    assert(path.isFilePath("test.png"))
     assert(!path.isFilePath("../test.pdf"))
-    assert(!path.isFilePath("content/test"))
-    assert(!path.isFilePath("./content/test"))
+    assert(!path.isFilePath("test"))
+    assert(!path.isFilePath("./test"))
   })
 })
 
@@ -97,11 +97,11 @@ describe("transforms", () => {
   test("slugifyFilePath", () => {
     asserts(
       [
-        ["content/index.md", "content/index"],
-        ["content/index.html", "content/index"],
-        ["content/_index.md", "content/index"],
-        ["/content/index.md", "content/index"],
-        ["content/cool.png", "content/cool.png"],
+        ["index.md", "index"],
+        ["index.html", "index"],
+        ["_index.md", "index"],
+        ["/index.md", "index"],
+        ["cool.png", "cool.png"],
         ["index.md", "index"],
         ["test.mp4", "test.mp4"],
         ["note with spaces.md", "note-with-spaces"],
@@ -128,15 +128,15 @@ describe("transforms", () => {
         ["./index.md", "./"],
         ["./index.css", "./index.css"],
         ["content", "./content"],
-        ["content/test.md", "./content/test"],
-        ["content/test.pdf", "./content/test.pdf"],
-        ["./content/test.md", "./content/test"],
-        ["../content/test.md", "../content/test"],
+        ["test.md", "./test"],
+        ["test.pdf", "./test.pdf"],
+        ["./test.md", "./test"],
+        ["../test.md", "../test"],
         ["tags/", "./tags/"],
         ["/tags/", "./tags/"],
-        ["content/with spaces", "./content/with-spaces"],
-        ["content/with spaces/index", "./content/with-spaces/"],
-        ["content/with spaces#and Anchor!", "./content/with-spaces#and-anchor"],
+        ["with spaces", "./with-spaces"],
+        ["with spaces/index", "./with-spaces/"],
+        ["with spaces#and Anchor!", "./with-spaces#and-anchor"],
       ],
       path.transformInternalLink,
       (_x: string): _x is string => true,

@@ -1,5 +1,5 @@
 ---
-title: Тензо кнопка
+title: tenzoButton
 draft: false
 tags:
   - "#sw"

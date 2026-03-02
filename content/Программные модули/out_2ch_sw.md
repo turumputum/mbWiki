@@ -1,5 +1,5 @@
 ---
-title: Выход на два канала
+title: out_2ch
 draft: false
 tags:
   - "#out"

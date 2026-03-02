@@ -1,5 +1,5 @@
 ---
-title: Датчик присутвия hlk2410
+title: hlk2410
 draft: false
 tags:
   - "#sw"

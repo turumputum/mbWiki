@@ -1,5 +1,5 @@
 ---
-title: USB HID утройство.
+title: USB_HID
 draft: false
 tags:
   - "#action"

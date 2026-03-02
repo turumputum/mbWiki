@@ -1,5 +1,5 @@
 ---
-title: Модуль карты памяти
+title: SD_card
 draft: false
 tags:
   - "#storage"

@@ -1,5 +1,5 @@
 ---
-title: Вход/выход
+title: in_out
 draft: false
 tags:
   - "#in"
@@ -13,7 +13,7 @@ mode = in_out
 Программный модуль реализует цифровой вход и выход. 
  
 ## Совместимость:
-- [[content/Аппаратные модули/in_out_hw|in_out]]
+- [[Аппаратные модули/in_out_hw|in_out]]
 
 
 ## Принцип работы
@@ -60,4 +60,4 @@ mode = in_out
 options = inDebounceGap:100, outDefaultState:1
 crosslink = in_0:1->out_0:1 ;turn on out_0 when in_0 is up
 ```
-Подробнее об использовании [[content/Платформа moduleBox/Software#Внутренние связи(crossLink)|crosslink]]
+Подробнее об использовании [[Платформа moduleBox/Software#Внутренние связи(crossLink)|crosslink]]

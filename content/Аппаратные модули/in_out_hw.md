@@ -1,5 +1,5 @@
 ---
-title: Вход/выход
+title: in_out
 draft: false
 tags:
   - hw
@@ -15,7 +15,7 @@ tags:
 
 ## Программные модули
 - [[Программные модули/in_out_sw|in_out]]
-- [[content/Программные модули/button_led_sw|button_led]]
+- [[Программные модули/button_led_sw|button_led]]
 
 
 Напряжение выхода в неактивном состоянии 0 вольт.

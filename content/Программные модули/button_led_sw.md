@@ -1,5 +1,5 @@
 ---
-title: Кнопка с подсветкой
+title: button_led
 draft: false
 tags:
 ---
@@ -9,7 +9,7 @@ mode = button_led
 ```
 Программный модуль для кнопок с подсветкой. 
 ## Совместимость:
-- [[content/Аппаратные модули/button_led_hw|button_led_hw]]
+- [[Аппаратные модули/button_led_hw|button_led_hw]]
 
 
 ## Принцип работы

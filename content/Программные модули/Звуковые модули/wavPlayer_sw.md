@@ -1,5 +1,5 @@
 ---
-title: WAV проигрыватель
+title: wavPlayer
 draft: false
 tags:
   - "#sw"
@@ -19,9 +19,9 @@ mode = wavPlayer
 | Количество каналов    | 2        |
 
 ## Совместимость
-- [[Аппаратные модули/sound_mono_hw|sound_mono_hw]]
-- [[Аппаратные модули/sound_stereo_hw|sound_stereo_hw]]
-- [[Аппаратные модули/sound_amp_hw|sound_amp_hw]]
+- [[Аппаратные модули/soundMono_hw|soundMono_hw]]
+- [[Аппаратные модули/soundStereo_hw|soundStereo_hw]]
+- [[Аппаратные модули/soundAmp_hw|soundAmp_hw]]
 
 ## Принцип работы
 При запуске контроллер сканирует файловую систему на предмет доступных аудиофайлов формата .wav, и сортирует их в алфавитном порядке. Проигрывает файлы по команде, рапортует по завершению проигрывания.

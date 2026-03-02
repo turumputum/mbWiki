@@ -1,5 +1,5 @@
 ---
-title: Аудио модуль стерео
+title: soundStereo
 draft: false
 tags:
   - hw
@@ -16,7 +16,7 @@ tags:
 
 Номинальная мощность: 25мВт.
 ## Совместимость
-[[content/Программные модули/Звуковые модули/mp3Player_sw|audioPlayer]]
+[[Программные модули/Звуковые модули/mp3Player_sw|audioPlayer]]
 
 ## Схема подключения
 

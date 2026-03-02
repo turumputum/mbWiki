@@ -1,5 +1,5 @@
 ---
-title: Модуль 3n_mosfet
+title: 3n_mosfet
 draft: false
 tags:
   - hw

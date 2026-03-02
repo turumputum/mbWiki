@@ -1,5 +1,5 @@
 ---
-title: Модуль интерфейса UART
+title: UART
 draft: false
 tags:
   - hw

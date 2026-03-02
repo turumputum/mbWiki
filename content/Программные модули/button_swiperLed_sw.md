@@ -1,5 +1,5 @@
 ---
-title: Кнопка с подсветкой для свайпера
+title: button_swiperLed
 draft: false
 tags:
   - swiper

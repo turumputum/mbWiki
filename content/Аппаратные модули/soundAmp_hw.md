@@ -1,5 +1,5 @@
 ---
-title: Аудио модуль с усилителем
+title: soundAmp
 draft: false
 tags:
   - hw
@@ -17,7 +17,7 @@ tags:
 Мощность RMS: 20Вт на канал
 
 ## Совместимость
-[[content/Программные модули/Звуковые модули/mp3Player_sw|audioPlayer]]
+[[Программные модули/Звуковые модули/mp3Player_sw|audioPlayer]]
 
 ## Питание
 Модуль питается от шины [[Платформа-moduleBox/Hardware#Шина питания Vbus |Vbus]]. Диапазон напряжений 9-18В.

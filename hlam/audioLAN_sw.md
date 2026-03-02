@@ -1,5 +1,5 @@
 ---
-title: Сетевой аудио приёмник
+title: audioLAN
 draft: false
 tags:
   - "#sw"
@@ -21,9 +21,9 @@ mode = audioLAN
 | Каналы       | 2 (стерео)    |
 
 ## Совместимость
-- [[Аппаратные модули/sound_mono_hw|sound_mono_hw]]
-- [[Аппаратные модули/sound_stereo_hw|sound_stereo_hw]]
-- [[Аппаратные модули/sound_amp_hw|sound_amp_hw]]
+- [[Аппаратные модули/soundMono_hw|soundMono_hw]]
+- [[Аппаратные модули/soundStereo_hw|soundStereo_hw]]
+- [[Аппаратные модули/soundAmp_hw|soundAmp_hw]]
 
 ## Принцип работы
 Модуль подключается к multicast-группе по адресу `239.0.{group}.{channel}` на заданном порту и воспроизводит входящий аудио поток. При запуске ожидает инициализации сетевого интерфейса. Рапортует текущее состояние, канал и громкость.

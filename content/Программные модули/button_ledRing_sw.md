@@ -1,5 +1,5 @@
 ---
-title: Кнопка и подсветка ledRing
+title: button_ledRing
 draft: false
 tags:
   - spinner

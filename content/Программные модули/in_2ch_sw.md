@@ -1,5 +1,5 @@
 ---
-title: Вход два канала
+title: in_2ch
 draft: false
 tags:
   - "#in"

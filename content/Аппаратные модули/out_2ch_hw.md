@@ -1,5 +1,5 @@
 ---
-title: Модуль out_2ch
+title: out_2ch
 draft: false
 tags:
   - hw

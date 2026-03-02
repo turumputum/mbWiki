@@ -1,5 +1,5 @@
 ---
-title: ШИМ светодиоды
+title: pwmLeds
 draft: false
 tags:
   - sw

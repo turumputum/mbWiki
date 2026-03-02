@@ -1,5 +1,5 @@
 ---
-title: Кнопка с управляемой подсветкой
+title: button_smartLed
 draft: false
 tags:
 ---
