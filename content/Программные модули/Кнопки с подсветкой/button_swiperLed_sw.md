@@ -19,8 +19,8 @@ mode = button_swiperLed
 Рапортует об изменении состояния кнопки: нажатие, отпускание, а при включённых опциях — длинное и двойное нажатие. Подсветкой управляет по командам и внутренним связям.
 
 По команде `swipe` лента отыгрывает анимацию проведения в заданном направлении:
-`up`, `down`, `left` или `right`. Эффект удобно связывать с
-[[Программные модули/swiper_sw|жестовым датчиком swiper]].
+`up`, `down`, `left` или `right` — например, по жесту датчика или по нажатию
+кнопки.
 
 ![[Программные модули/_assets/button_swiperLed.gif]]
 
@@ -86,11 +86,8 @@ crosslink = button_2/event/press:1->led_2/action/swipe:down, button_2/event/pres
 [SLOT_3]
 mode = button_swiperLed
 options = numOfLed:16, RGBcolor:0 128 255
-
-[SLOT_4]
-mode = swiper
-;жест руки над датчиком отыгрывается подсветкой
-crosslink = swiper_4/event/swipe:@->led_3/action/swipe:@
+;нажатие своей кнопки - эффект вверх, отпускание - вниз
+crosslink = button_3/event/press:1->led_3/action/swipe:up, button_3/event/press:0->led_3/action/swipe:down
 ```
 
 Подробнее — [[Платформа moduleBox/CrossLink|внутренние связи (crossLink)]].

@@ -120,14 +120,14 @@ mode = stepper
 - **minVal** — *число(int)*, минимальное положение в шагах — программное ограничение хода. Диапазон -2147483648–2147483647. По умолчанию ограничение снято.
 
 ## События
-| Топик | Payload | Описание |
-|---|---|---|
-| `stepper_<slot>/event/pos` | целое, $шаг$ | Текущее положение в шагах |
-| `stepper_<slot>/event/speed` | целое, $шаг/сек$ | Текущая скорость в шаг-сек |
-| `stepper_<slot>/event/state` | строка | Состояние мотора: `run`, `stop`, `maxVal`, `minVal`, `upLimit` или `downLimit` |
-| `stepper_<slot>/event/homingState` | строка | Состояние базирования: `disable`, `waitingCommand`, `homing`, `done` или `homingTimeout` |
-| `stepper_<slot>/event/warning` | строка | Предупреждение — текст причины: команда проигнорирована или модуль не запустился |
-| `stepper_<slot>/event/enable` | `0` / `1` | Состояние модуля - активен 1 или спит 0 |
+| Топик                              | Payload          | Описание                                                                                 |
+| ---------------------------------- | ---------------- | ---------------------------------------------------------------------------------------- |
+| `stepper_<slot>/event/pos`         | целое, $шаг$     | Текущее положение в шагах                                                                |
+| `stepper_<slot>/event/speed`       | целое, $шаг/сек$ | Текущая скорость в шаг-сек                                                               |
+| `stepper_<slot>/event/state`       | строка           | Состояние мотора: `run`, `stop`, `maxVal`, `minVal`, `upLimit` или `downLimit`           |
+| `stepper_<slot>/event/homingState` | строка           | Состояние базирования: `disable`, `waitingCommand`, `homing`, `done` или `homingTimeout` |
+| `stepper_<slot>/event/warning`     | строка           | Предупреждение — текст причины: команда проигнорирована или модуль не запустился         |
+| `stepper_<slot>/event/enable`      | `0` / `1`        | Состояние модуля - активен 1 или спит 0                                                  |
 
 Пример: топик `moduleBox/stepper_0/event/pos`, payload `1200`.
 

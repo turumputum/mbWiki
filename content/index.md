@@ -70,7 +70,6 @@ moduleBox — программно-аппаратный комплекс с мо
 - [[Программные модули/analog_sw|analog]]
 - [[Программные модули/tenzoButton_sw|tenzoButton]]
 - [[Программные модули/rplidarS1_sw|rplidarS1]]
-- [[Программные модули/swiper_sw|swiper]]
 - [[Программные модули/encoderAS5600_sw|encoderAS5600]]
 - [[Программные модули/encoderInc_sw|encoderInc]]
 - [[Программные модули/dialer_sw|dialer]]

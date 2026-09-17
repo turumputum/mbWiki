@@ -48,7 +48,7 @@ options=waitingTime:1000, numberMaxLenght:5
 ## Cобытия
 - Отчет по завершению набора номера.
 
-Пример использование [[crosslink]]:
+Пример использование [[Платформа moduleBox/CrossLink|crosslink]]:
 ```ini
 ;при наборе номера "03", проиграть трек номер 1
 crosslink = dialer_2:03->player_0/play:1
