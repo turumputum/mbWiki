@@ -1,0 +1,33 @@
+# Схема подключения модуля analog: потенциометр на аналоговый вход.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# +V по умолчанию 5 В (перемычкой V+ — Vbus). Второй gnd адресуется как gnd.2.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: analog
+      slot: s_0
+      pins: ["+V", In, gnd, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: pot
+    name: "Потенциометр\n10 кОм"
+    pins: ["1", wiper, "3"]
+
+harnesses:
+  - id: 1
+    label: "потенциометр"
+    wires:
+      - {a: "module:analog:+V",  b: "device:pot:1",     color: red}
+      - {a: "module:analog:In",  b: "device:pot:wiper", color: yellow}
+      - {a: "module:analog:gnd", b: "device:pot:3",     color: black}

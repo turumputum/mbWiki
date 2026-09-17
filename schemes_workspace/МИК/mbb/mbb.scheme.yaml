@@ -1,0 +1,149 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "<путь к этому файлу>" --pdf
+# Весь конвейер для папки контроллера (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "<папка с этим файлом>"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "<папка>/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: mbb — схема подключения
+controller:
+  name: mbb
+  serial: ''
+  board: плата v4
+  connectors:
+  - name: Ethernet
+    label: 10.10.3.212/24
+    extra: [MQTT · брокер 10.10.3.202]
+  - USB
+  notes: [монтажная плита]
+  modules:
+  - id: s0
+    name: button_smartLed
+    slot: s_0
+    pins: [V+, sLed, Bt, gnd]
+  - id: s1
+    name: button_smartLed
+    slot: s_1
+    pins: [V+, sLed, Bt, gnd]
+  - id: s2
+    name: button_smartLed
+    slot: s_2
+    pins: [V+, sLed, Bt, gnd]
+  - id: s3
+    name: button_smartLed
+    slot: s_3
+    pins: [V+, sLed, Bt, gnd]
+  - id: s4
+    name: in_2ch
+    slot: s_4
+    pins: [V+, ch_1, ch_0, gnd]
+    mode: encoderInc
+  - id: s5
+    name: in_2ch
+    slot: s_5
+    pins: [V+, ch_1, ch_0, gnd]
+    mode: encoderInc
+    pin_badges:
+      ch_0: [OC]
+      ch_1: [OC]
+  power_module:
+    name: Power
+    pins: [+, '-']
+  psu:
+    name: Блок питания 5V 100W
+    pins: ['+5', gnd]
+devices:
+- id: s0_bsl
+  name: "Кнопка с подсветкой\n300-004"
+  pins: [+V, DIN, Bt, gnd]
+- id: s1_bsl
+  name: "Кнопка с подсветкой\n300-004"
+  pins: [+V, DIN, Bt, gnd]
+- id: s2_bsl
+  name: "Кнопка с подсветкой\n300-004"
+  pins: [+V, DIN, Bt, gnd]
+- id: s3_bsl
+  name: "Кнопка с подсветкой\n300-004"
+  pins: [+V, DIN, Bt, gnd]
+- id: s4_hall_1
+  name: "Датчик Холла\n41F"
+  pins: [+V, out, 0V]
+  notes: [энкодер свитка]
+- id: s4_hall_2
+  name: "Датчик Холла\n41F"
+  pins: [+V, out, 0V]
+  notes: [энкодер свитка]
+- id: s5_sens_1
+  name: "Оптический датчик\nBS5-T2M"
+  pins: [+V, sig, 0V]
+  notes: [энкодер штурвала]
+- id: s5_sens_2
+  name: "Оптический датчик\nBS5-T2M"
+  pins: [+V, sig, 0V]
+  notes: [энкодер штурвала]
+harnesses:
+- id: 1
+  label: питание контроллера
+  wires:
+  - {a: 'psu:+5', b: 'power:+', color: red}
+  - {a: 'psu:gnd', b: 'power:-', color: black}
+- id: 2
+  label: кнопка с подсветкой (s_0)
+  wires:
+  - {a: 'module:s0:V+', b: 'device:s0_bsl:+V', color: red}
+  - {a: 'module:s0:sLed', b: 'device:s0_bsl:DIN', color: green}
+  - {a: 'module:s0:Bt', b: 'device:s0_bsl:Bt', color: yellow}
+  - {a: 'module:s0:gnd', b: 'device:s0_bsl:gnd', color: black}
+- id: 3
+  label: кнопка с подсветкой (s_1)
+  wires:
+  - {a: 'module:s1:V+', b: 'device:s1_bsl:+V', color: red}
+  - {a: 'module:s1:sLed', b: 'device:s1_bsl:DIN', color: green}
+  - {a: 'module:s1:Bt', b: 'device:s1_bsl:Bt', color: yellow}
+  - {a: 'module:s1:gnd', b: 'device:s1_bsl:gnd', color: black}
+- id: 4
+  label: кнопка с подсветкой (s_2)
+  wires:
+  - {a: 'module:s2:V+', b: 'device:s2_bsl:+V', color: red}
+  - {a: 'module:s2:sLed', b: 'device:s2_bsl:DIN', color: green}
+  - {a: 'module:s2:Bt', b: 'device:s2_bsl:Bt', color: yellow}
+  - {a: 'module:s2:gnd', b: 'device:s2_bsl:gnd', color: black}
+- id: 5
+  label: кнопка с подсветкой (s_3)
+  wires:
+  - {a: 'module:s3:V+', b: 'device:s3_bsl:+V', color: red}
+  - {a: 'module:s3:sLed', b: 'device:s3_bsl:DIN', color: green}
+  - {a: 'module:s3:Bt', b: 'device:s3_bsl:Bt', color: yellow}
+  - {a: 'module:s3:gnd', b: 'device:s3_bsl:gnd', color: black}
+- id: 6
+  label: датчик Холла (s_4)
+  wires:
+  - {a: 'module:s4:V+', b: 'device:s4_hall_1:+V', color: red}
+  - {a: 'module:s4:ch_0', b: 'device:s4_hall_1:out', color: yellow}
+  - {a: 'module:s4:gnd', b: 'device:s4_hall_1:0V', color: black}
+- id: 7
+  label: датчик Холла (s_4)
+  wires:
+  - {a: 'module:s4:V+', b: 'device:s4_hall_2:+V', color: red}
+  - {a: 'module:s4:ch_1', b: 'device:s4_hall_2:out', color: yellow}
+  - {a: 'module:s4:gnd', b: 'device:s4_hall_2:0V', color: black}
+- id: 8
+  label: оптический датчик (s_5)
+  wires:
+  - {a: 'module:s5:V+', b: 'device:s5_sens_1:+V', color: brown}
+  - {a: 'module:s5:ch_0', b: 'device:s5_sens_1:sig', color: black}
+  - {a: 'module:s5:gnd', b: 'device:s5_sens_1:0V', color: blue}
+- id: 9
+  label: оптический датчик (s_5)
+  wires:
+  - {a: 'module:s5:V+', b: 'device:s5_sens_2:+V', color: brown}
+  - {a: 'module:s5:ch_1', b: 'device:s5_sens_2:sig', color: black}
+  - {a: 'module:s5:gnd', b: 'device:s5_sens_2:0V', color: blue}

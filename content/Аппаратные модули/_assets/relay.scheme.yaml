@@ -1,0 +1,42 @@
+# Схема подключения модуля relay: нагрузка 220 В через нормально разомкнутый контакт.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Контакт реле — переключающий: NO / COM / COM / NC (два COM соединены на плате).
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: relay
+      slot: s_0
+      pins: ["NO", COM, COM, "NC"]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: mains
+    name: "Сеть 220 В"
+    pins: [L, N]
+  - id: load
+    name: "Нагрузка 220 В\nлампа"
+    pins: [L, N]
+
+harnesses:
+  - id: 1
+    label: "фаза на реле"
+    wires:
+      - {a: "device:mains:L", b: "module:relay:COM", color: brown}
+  - id: 2
+    label: "реле → нагрузка"
+    wires:
+      - {a: "module:relay:NO", b: "device:load:L", color: brown}
+  - id: 3
+    label: "нейтраль"
+    wires:
+      - {a: "device:mains:N", b: "device:load:N", color: blue}

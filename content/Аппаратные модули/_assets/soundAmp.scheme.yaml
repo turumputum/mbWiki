@@ -1,0 +1,48 @@
+# Схема подключения модуля soundAmp: две пассивные колонки, контроллер от 12 В.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Усилитель питается от Vbus (9–24 В); мощность зависит от напряжения шины.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: soundAmp
+      slot: s_0
+      pins: ["R+", "R-", "L+", "L-"]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: spr
+    name: "Пассивная колонка\nправая, 4–8 Ом"
+    pins: ["+", "-"]
+  - id: spl
+    name: "Пассивная колонка\nлевая, 4–8 Ом"
+    pins: ["+", "-"]
+
+harnesses:
+  - id: 1
+    label: "правый канал"
+    wires:
+      - {a: "module:soundAmp:R+", b: "device:spr:+", color: red}
+      - {a: "module:soundAmp:R-", b: "device:spr:-", color: blue}
+  - id: 2
+    label: "левый канал"
+    wires:
+      - {a: "module:soundAmp:L+", b: "device:spl:+", color: red}
+      - {a: "module:soundAmp:L-", b: "device:spl:-", color: blue}
+  - id: 3
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

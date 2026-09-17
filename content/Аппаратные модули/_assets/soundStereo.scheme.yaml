@@ -1,0 +1,33 @@
+# Схема подключения модуля soundStereo: активная акустика по кабелю jack 3,5 мм.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Разъём модуля — джек 3,5 мм (L, R, общий); показан как три контакта.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: soundStereo
+      slot: s_0
+      pins: [L, R, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: acs
+    name: "Активная акустическая система\nпитание от сети 220 В"
+    pins: [L, R, gnd]
+
+harnesses:
+  - id: 1
+    label: "кабель jack 3,5 мм"
+    wires:
+      - {a: "module:soundStereo:L",   b: "device:acs:L",   color: white}
+      - {a: "module:soundStereo:R",   b: "device:acs:R",   color: red}
+      - {a: "module:soundStereo:gnd", b: "device:acs:gnd", color: black}

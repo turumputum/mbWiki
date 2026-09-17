@@ -1,0 +1,51 @@
+# Схема подключения модуля in_out: оптический датчик на вход, соленоид на выход.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Выход push-pull: нагрузка между out (+) и gnd (−). Перемычка S1 на входе
+# нужна только датчикам без подтяжки и сухим контактам: OC — NPN, OE — PNP.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: in_out
+      slot: s_0
+      pins: [Vbus, out, in, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: sens
+    name: "Оптический датчик\nG18-3A30NA"
+    badges: [NPN]
+    pins: ["+V", sig, "0V"]
+  - id: sol
+    name: "Соленоид\n12 В"
+    pins: ["+", "-"]
+
+harnesses:
+  - id: 1
+    label: "датчик — вход"
+    wires:
+      - {a: "module:in_out:Vbus", b: "device:sens:+V",  color: brown}
+      - {a: "module:in_out:in",   b: "device:sens:sig", color: black}
+      - {a: "module:in_out:gnd",  b: "device:sens:0V",  color: blue}
+  - id: 2
+    label: "соленоид — выход"
+    wires:
+      - {a: "module:in_out:out", b: "device:sol:+", color: red}
+      - {a: "module:in_out:gnd", b: "device:sol:-", color: black}
+  - id: 3
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

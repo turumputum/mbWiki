@@ -1,0 +1,42 @@
+# Схема подключения модуля button_led: кнопка с подсветкой 300-001.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Подсветка между led+ и gnd (led+ выдаёт Vbus), контакт кнопки между bt и gnd.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: button_led
+      slot: s_0
+      pins: ["led+", gnd, gnd, bt]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: btn
+    name: "Кнопка с подсветкой\n300-001"
+    pins: ["led+", "led-", "bt", "bt"]
+
+harnesses:
+  - id: 1
+    label: "кнопка с подсветкой"
+    wires:
+      - {a: "module:button_led:led+",  b: "device:btn:led+", color: red}
+      - {a: "module:button_led:gnd",   b: "device:btn:led-", color: black}
+      - {a: "module:button_led:bt",    b: "device:btn:bt",   color: blue}
+      - {a: "module:button_led:gnd.2", b: "device:btn:bt.2", color: black}
+  - id: 2
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

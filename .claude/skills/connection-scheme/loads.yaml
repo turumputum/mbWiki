@@ -1,0 +1,571 @@
+# База нагрузок для генерации схем подключения из config.ini
+# (читает tools/scheme_gen/from_config.py).
+#
+# Три раздела:
+#   hw_modules — аппаратные модули: пины сверху вниз и какие из них каналы.
+#   modes      — программный mode из config.ini -> аппаратный модуль
+#                + нагрузки по умолчанию (если в комментарии слота тип не указан).
+#   loads      — типы нагрузок: какие блоки рисуем слева и как они подключены.
+#
+# Правила пинов модулей: каналы нумеруются с нуля; верхняя ножка — питание
+# (Vbus / V+), нижняя — gnd (если есть). Где есть и вход, и выход: ближе к gnd
+# вход, ближе к питанию выход.
+#
+# out_kind у выходных модулей: pushpull — канал выдаёт «+», двухпроводная
+# нагрузка включается между ch (+) и gnd (−); opendrain — канал коммутирует
+# на землю, нагрузка между питанием (+) и ch (−). В шаблоне жгута вместо
+# `wires` можно задать `wires_pushpull` и `wires_opendrain` — выбирается по
+# модулю, в который попала нагрузка (`wires` — запасной вариант).
+#
+# Шаблоны проводов (wires) в loads:
+#   module:{power}   питание модуля (Vbus / V+ / +Vin)
+#   module:{gnd}     земля модуля
+#   module:{ch}      канал, выделенный нагрузке (= {ch0}); {ch1} — второй канал,
+#                    если нагрузка занимает несколько (channels: 2)
+#   module:<пин>     конкретный пин модуля (например module:NO у реле)
+#   dev:<key>:<пин>  пин блока, объявленного в devices этой нагрузки
+#   {contact}        для реле: NO по умолчанию, NC при флаге NC
+#
+# В именах блоков доступны подстановки: {label} — свободный текст из
+# комментария слота, {volt} — напряжение из него (например «48V»), если нашлось.
+#
+# Модификатор DCDC (флаг в комментарии, например `;servo 5V DCDC`): на модуль
+# ставится «насадка» — понижающий DC-DC, нарисованный как часть контроллера
+# слева от модуля (attachment). Его пины: +<напряжение из подписи>, gnd и
+# сквозные сигнальные каналы нагрузки; жгут к нагрузке идёт от насадки
+# (адреса attach:<модуль>:<пин>). Входное напряжение в подписи — Vbus из [SYSTEM].
+
+hw_modules:
+  out_2ch:
+    pins: [Vbus, ch_1, ch_0, gnd]
+    power: Vbus
+    gnd: gnd
+    channels: {out: [ch_0, ch_1]}
+    out_kind: pushpull                 # канал выдаёт +: нагрузка между ch и gnd
+  fastOut_2ch:                         # 201-037: быстрые выходы (step/dir, серво)
+    pins: [Vbus, ch_1, ch_0, gnd]      # СВЕРИТЬ порядок пинов с железом
+    power: Vbus
+    gnd: gnd
+    channels: {out: [ch_0, ch_1]}
+    out_kind: pushpull
+  in_2ch:
+    pins: ["V+", ch_1, ch_0, gnd]
+    power: "V+"
+    gnd: gnd
+    channels: {in: [ch_0, ch_1]}
+  in_3ch:
+    pins: [ch_2, ch_1, ch_0, gnd]
+    gnd: gnd
+    channels: {in: [ch_0, ch_1, ch_2]}
+  in_out:                              # 201-040, пины сверены по схеме
+    pins: [Vbus, out, in, gnd]
+    power: Vbus
+    gnd: gnd
+    channels: {out: [out], in: [in]}
+    out_kind: pushpull                 # DRV8874: выход выдаёт Vbus, нагрузка между out и gnd
+  relay:
+    pins: ["NO", COM, COM, "NC"]          # второй COM адресуется как COM.2
+    channels: {relay: ["NO"]}
+  3n_mosfet:
+    pins: ["V+", ch_2, ch_1, ch_0]
+    power: "V+"
+    channels: {out: [ch_0, ch_1, ch_2]}
+    out_kind: opendrain                # канал коммутирует на gnd: нагрузка между V+ и ch
+  button_led:                          # 201-006, пины сверены по плате
+    pins: ["led+", gnd, gnd, bt]       # второй gnd адресуется как gnd.2
+    gnd: gnd
+    channels: {out: ["led+"], in: [bt]}
+    out_kind: pushpull                 # led+ выдаёт Vbus: подсветка между led+ и gnd
+  analog:                              # аналоговый вход, пины сверены по схеме: +V = 5 В (перемычкой Vbus)
+    pins: ["+V", In, gnd, gnd]         # второй gnd адресуется как gnd.2
+    power: "+V"
+    gnd: gnd
+    channels: {analog: [In]}
+  tenzoButton:                         # 201-015, пины сверены по схеме: V+ = 5 В с LM317
+    pins: ["V+", "In+", "In-", gnd]
+    power: "V+"
+    gnd: gnd
+    channels: {tenzo: ["In+"]}
+  soundMono:                           # 201-005: динамик на spk+/spk-, два gnd свободны
+    pins: ["spk+", "spk-", gnd, gnd]
+    gnd: gnd
+    channels: {audio: ["spk+"]}
+  soundStereo:                         # 201-016: джек 3,5 мм, линейный/наушниковый выход
+    pins: [L, R, gnd]
+    gnd: gnd
+    channels: {audio: [L]}
+  soundAmp:                            # 201-017: усилитель 2 x 20 Вт, пассивные колонки
+    pins: ["R+", "R-", "L+", "L-"]
+    channels: {audio: ["R+"]}
+  uart:                                # 201-021, пины сверены по плате; +V = 5 В (перемычкой Vbus)
+    pins: ["+V", Tx, Rx, gnd]
+    power: "+V"
+    gnd: gnd
+    channels: {uart: [Tx]}             # одно устройство на модуль
+  i2c:                                 # 201-022, пины сверены по схеме
+    pins: ["V+", sda, scl, gnd]
+    power: "V+"
+    gnd: gnd
+    channels: {i2c: [sda]}             # одно устройство на модуль
+  button_smartLed:                     # 201-025, пины сверены по схеме на wiki
+    pins: ["V+", sLed, Bt, gnd]
+    power: "V+"
+    gnd: gnd
+    channels: {out: [sLed], in: [Bt]}
+
+# mode -> аппаратный модуль и нагрузки по умолчанию.
+# Режимов, которых здесь нет, на схеме не будет (виртуальные модули:
+# listOfActions, startup, timer, ... — пропускаются молча; неизвестные
+# физические — с предупреждением).
+modes:
+  stepper:         {hw: fastOut_2ch,     default: [stepper]}
+  out_2ch:         {hw: out_2ch,         default: [solenoid]}
+  out_3ch:         {hw: 3n_mosfet,       default: [ledStrip]}
+  pwmLeds:         {hw: 3n_mosfet,       default: [ledStrip]}
+  PPMservo:        {hw: fastOut_2ch,     default: [servo]}
+  in_2ch:          {hw: in_2ch,          default: [inductiveSensor]}
+  in_3ch:          {hw: in_3ch,          default: [button]}
+  in_out:          {hw: in_out,          default: [opticSensor, solenoid]}
+  tachometer:      {hw: in_out,          default: [opticSensor]}
+  encoderInc:      {hw: in_2ch,          default: [encoder]}
+  relay:           {hw: relay,           default: [relayLoad]}
+  button_led:      {hw: button_led,      default: [ledButton]}
+  button_smartLed: {hw: button_smartLed, default: [buttonSmartLed]}
+  button_ledRing:   {hw: button_smartLed, default: [buttonSmartLed]}
+  button_ledBar:    {hw: button_smartLed, default: [buttonSmartLed]}
+  button_runFire:   {hw: button_smartLed, default: [buttonSmartLed]}
+  button_swiperLed: {hw: button_smartLed, default: [buttonSmartLed]}
+  # Звуковые режимы работают с любым из трёх звуковых модулей; по умолчанию —
+  # soundMono. Для стерео/усилителя поправить модуль в YAML руками.
+  mp3Player:        {hw: soundMono,       default: [speaker]}
+  wavPlayer:        {hw: soundMono,       default: [speaker]}
+  opusLAN:          {hw: soundMono,       default: [speaker]}
+  audioLAN:         {hw: soundMono,       default: [speaker]}
+  analog:           {hw: analog,          default: [potentiometer]}
+  tenzoButton:      {hw: tenzoButton,     default: [loadCell]}
+  hlk2410:          {hw: uart,            default: [uartDevice]}
+  benewakeTOF:      {hw: uart,            default: [uartDevice]}
+  TOFxxxF:          {hw: uart,            default: [uartDevice]}
+  sr04m:            {hw: uart,            default: [uartDevice]}
+  rplidarS1:        {hw: uart,            default: [uartDevice]}
+  dwin:             {hw: uart,            default: [uartDevice]}
+  dialer:           {hw: in_2ch,          default: [rotaryDial]}
+  encoderAS5600:    {hw: i2c,             default: [as5600]}
+  swiper:           {hw: i2c,             default: [apds9960]}
+
+# Виртуальные режимы — без железа, на схеме не показываются (без предупреждений).
+virtual_modes: [listOfActions, startup, timer, counter, random, scaler, collector,
+                conductor, masquerade, watchdog, whitelist, artNetCrosslink, restart,
+                flywheel, getVersion, getFreeRAM, getFreeDisk, getNETstatus,
+                getTaskList, uartLogger, testsd, SD_card, empty]
+
+# Флаги, распознаваемые в комментарии слота (регистр не важен).
+#   badge_on: channel — пометка у пина канала, занятого нагрузкой (перемычка
+#             стоит на конкретном канале модуля: у `opticSensor OCjumper
+#             opticSensor` — только на ch_0, у `opticSensor_x2 OCjumper` — на обоих);
+#             module — бейдж на теле модуля; device — на блоке нагрузки.
+flags:
+  OCjumper: {badge: "OC", badge_on: channel}
+  OEjumper: {badge: "OE", badge_on: channel}   # in_2ch: перемычка в положении OE (датчик PNP)
+  NPN:      {badge: NPN,  badge_on: device}
+  PNP:      {badge: PNP,  badge_on: device}
+  "NC":     {badge: "контакт NC", badge_on: device}
+  "NO":     {badge: "контакт NO", badge_on: device}
+  DCDC:     {badge: null, badge_on: device}      # структурный, см. выше
+
+loads:
+  # ---------------------------------------------------------- датчики (in)
+  opticSensor:
+    channel: in
+    devices:
+      - {key: sens, name: "Оптический датчик\n{label}", pins: ["+V", sig, "0V"]}
+    harnesses:
+      - label: "оптический датчик"
+        wires:
+          - {a: "module:{power}", b: "dev:sens:+V",  color: brown}
+          - {a: "module:{ch}",    b: "dev:sens:sig", color: black}
+          - {a: "module:{gnd}",   b: "dev:sens:0V",  color: blue}
+  inductiveSensor:
+    channel: in
+    devices:
+      - {key: sens, name: "Индуктивный датчик\n{label}", pins: ["+V", sig, "0V"]}
+    harnesses:
+      - label: "индуктивный датчик"
+        wires:
+          - {a: "module:{power}", b: "dev:sens:+V",  color: brown}
+          - {a: "module:{ch}",    b: "dev:sens:sig", color: black}
+          - {a: "module:{gnd}",   b: "dev:sens:0V",  color: blue}
+  capacitiveSensor:
+    channel: in
+    devices:
+      - {key: sens, name: "Ёмкостной датчик\n{label}", pins: ["+V", sig, "0V"]}
+    harnesses:
+      - label: "ёмкостной датчик"
+        wires:
+          - {a: "module:{power}", b: "dev:sens:+V",  color: brown}
+          - {a: "module:{ch}",    b: "dev:sens:sig", color: black}
+          - {a: "module:{gnd}",   b: "dev:sens:0V",  color: blue}
+  hallSensor:
+    channel: in
+    devices:
+      - {key: hall, name: "Датчик Холла\n{label}", pins: ["+V", out, "0V"]}
+    harnesses:
+      - label: "датчик Холла"
+        wires:
+          - {a: "module:{power}", b: "dev:hall:+V",  color: red}
+          - {a: "module:{ch}",    b: "dev:hall:out", color: yellow}
+          - {a: "module:{gnd}",   b: "dev:hall:0V",  color: black}
+  button:
+    channel: in
+    devices:
+      - {key: btn, name: "Кнопка\n{label}", pins: ["1", "2"]}
+    harnesses:
+      - label: "кнопка"
+        wires:
+          - {a: "module:{ch}",  b: "dev:btn:1", color: blue}
+          - {a: "module:{gnd}", b: "dev:btn:2", color: black}
+  touchButton:                         # СВЕРИТЬ пины сенсорной кнопки
+    channel: in
+    devices:
+      - {key: tbtn, name: "Сенсорная кнопка\n{label}", pins: ["+V", out, gnd]}
+    harnesses:
+      - label: "сенсорная кнопка"
+        wires:
+          - {a: "module:{power}", b: "dev:tbtn:+V",  color: red}
+          - {a: "module:{ch}",    b: "dev:tbtn:out", color: yellow}
+          - {a: "module:{gnd}",   b: "dev:tbtn:gnd", color: black}
+  encoder:
+    channel: in
+    channels: 2
+    devices:
+      - {key: enc, name: "Инкрементальный энкодер\n{label}", pins: ["+V", A, B, gnd]}
+    harnesses:
+      - label: "энкодер"
+        wires:
+          - {a: "module:{power}", b: "dev:enc:+V",  color: brown}
+          - {a: "module:{ch0}",   b: "dev:enc:A",   color: black}
+          - {a: "module:{ch1}",   b: "dev:enc:B",   color: white}
+          - {a: "module:{gnd}",   b: "dev:enc:gnd", color: blue}
+
+  # ---------------------------------------------------------- нагрузки (out)
+  solenoid:
+    channel: out
+    devices:
+      - {key: sol, name: "Соленоид\n{label}", pins: ["+", "-"]}
+    harnesses:
+      - label: "соленоид"
+        wires_pushpull:                # out_2ch: ch -> «+», gnd -> «−»
+          - {a: "module:{ch}",    b: "dev:sol:+", color: red}
+          - {a: "module:{gnd}",   b: "dev:sol:-", color: black}
+        wires_opendrain:               # 3n_mosfet: V+ -> «+», ch -> «−»
+          - {a: "module:{power}", b: "dev:sol:+", color: red}
+          - {a: "module:{ch}",    b: "dev:sol:-", color: black}
+  motor:
+    channel: out
+    devices:
+      - {key: mot, name: "Двигатель DC\n{label}", pins: ["+", "-"]}
+    harnesses:
+      - label: "двигатель"
+        wires_pushpull:                # out_2ch: ch -> «+», gnd -> «−»
+          - {a: "module:{ch}",    b: "dev:mot:+", color: red}
+          - {a: "module:{gnd}",   b: "dev:mot:-", color: black}
+        wires_opendrain:               # 3n_mosfet: V+ -> «+», ch -> «−»
+          - {a: "module:{power}", b: "dev:mot:+", color: red}
+          - {a: "module:{ch}",    b: "dev:mot:-", color: black}
+  ledStrip:
+    channel: out
+    devices:
+      - {key: led, name: "Светодиодная лента\n{label}", pins: ["+", "-"]}
+    harnesses:
+      - label: "лента"
+        wires_pushpull:                # out_2ch: ch -> «+», gnd -> «−»
+          - {a: "module:{ch}",    b: "dev:led:+", color: red}
+          - {a: "module:{gnd}",   b: "dev:led:-", color: black}
+        wires_opendrain:               # 3n_mosfet: V+ -> «+», ch -> «−»
+          - {a: "module:{power}", b: "dev:led:+", color: red}
+          - {a: "module:{ch}",    b: "dev:led:-", color: black}
+  rgbStrip:
+    channel: out
+    channels: 3
+    devices:
+      - {key: rgb, name: "Лента RGB\n{label}", pins: ["+V", R, G, B]}
+    harnesses:
+      - label: "лента RGB"
+        wires:
+          - {a: "module:{power}", b: "dev:rgb:+V", color: black}
+          - {a: "module:{ch0}",   b: "dev:rgb:R",  color: red}
+          - {a: "module:{ch1}",   b: "dev:rgb:G",  color: green}
+          - {a: "module:{ch2}",   b: "dev:rgb:B",  color: blue}
+  servo:
+    channel: out
+    devices:
+      - {key: srv, name: "Рулевая машинка\n{label}", pins: ["+", gnd, sig]}
+    harnesses:
+      - label: "рулевая машинка"
+        wires:
+          - {a: "module:{power}", b: "dev:srv:+",   color: red}
+          - {a: "module:{gnd}",   b: "dev:srv:gnd", color: brown}
+          - {a: "module:{ch}",    b: "dev:srv:sig", color: orange}
+  buttonLed:                           # подсветка кнопки на button_led / in_out
+    channel: out
+    devices:
+      - {key: bled, name: "Подсветка кнопки\n{label}", pins: ["+", "-"]}
+    harnesses:
+      - label: "подсветка"
+        wires_pushpull:                # out_2ch: ch -> «+», gnd -> «−»
+          - {a: "module:{ch}",    b: "dev:bled:+", color: red}
+          - {a: "module:{gnd}",   b: "dev:bled:-", color: black}
+        wires_opendrain:               # 3n_mosfet: V+ -> «+», ch -> «−»
+          - {a: "module:{power}", b: "dev:bled:+", color: red}
+          - {a: "module:{ch}",    b: "dev:bled:-", color: black}
+  # Кнопка с подсветкой (300-001) на модуле button_led — занимает весь модуль:
+  # светодиод между led+ и gnd, контакт кнопки между bt и вторым gnd.
+  ledButton:
+    channel: out
+    devices:
+      - {key: lbtn, name: "Кнопка с подсветкой
+{label}", pins: ["led+", "led-", "bt", "bt"]}
+    harnesses:
+      - label: "кнопка с подсветкой"
+        wires:
+          - {a: "module:led+",  b: "dev:lbtn:led+", color: red}
+          - {a: "module:gnd",   b: "dev:lbtn:led-", color: black}
+          - {a: "module:bt",    b: "dev:lbtn:bt",   color: blue}
+          - {a: "module:gnd.2", b: "dev:lbtn:bt.2", color: black}
+  # Кнопка с адресной подсветкой (300-004) — занимает весь модуль
+  # button_smartLed: контакт кнопки на Bt, лента WS2812 на sLed, питание общее.
+  buttonSmartLed:
+    channel: out
+    devices:
+      - {key: bsl, name: "Кнопка с подсветкой\n{label}", pins: ["+V", DIN, Bt, gnd]}
+    harnesses:
+      - label: "кнопка с подсветкой"
+        wires:
+          - {a: "module:{power}", b: "dev:bsl:+V",  color: red}
+          - {a: "module:{ch}",    b: "dev:bsl:DIN", color: green}
+          - {a: "module:Bt",      b: "dev:bsl:Bt",  color: yellow}
+          - {a: "module:{gnd}",   b: "dev:bsl:gnd", color: black}
+
+  # Дисковый номеронабиратель на in_2ch: ena -> ch_1, pulse -> ch_0 (сухие контакты, перемычки OC).
+  rotaryDial:
+    channel: in
+    channels: 2
+    devices:
+      - {key: dial, name: "Дисковый номеронабиратель
+{label}", pins: [ena, pulse, gnd]}
+    harnesses:
+      - label: "номеронабиратель"
+        wires:
+          - {a: "module:{ch1}", b: "dev:dial:ena",   color: green}
+          - {a: "module:{ch0}", b: "dev:dial:pulse", color: yellow}
+          - {a: "module:{gnd}", b: "dev:dial:gnd",   color: black}
+
+  # Аналоговые источники на модуле analog: потенциометр или датчик 0–5/10 В.
+  potentiometer:
+    channel: analog
+    devices:
+      - {key: pot, name: "Потенциометр
+{label}", pins: ["1", wiper, "3"]}
+    harnesses:
+      - label: "потенциометр"
+        wires:
+          - {a: "module:{power}", b: "dev:pot:1",     color: red}
+          - {a: "module:In",      b: "dev:pot:wiper", color: yellow}
+          - {a: "module:{gnd}",   b: "dev:pot:3",     color: black}
+  analogSensor:
+    channel: analog
+    devices:
+      - {key: asn, name: "Аналоговый датчик
+{label}", pins: ["+V", out, "0V"]}
+    harnesses:
+      - label: "аналоговый датчик"
+        wires:
+          - {a: "module:{power}", b: "dev:asn:+V",  color: brown}
+          - {a: "module:In",      b: "dev:asn:out", color: black}
+          - {a: "module:{gnd}",   b: "dev:asn:0V",  color: blue}
+
+  # Тензодатчик (мост) на модуле tenzoButton: стандартные цвета кабеля
+  # red E+, black E-, green S+, white S-.
+  loadCell:
+    channel: tenzo
+    devices:
+      - {key: lc, name: "Тензодатчик
+{label}", pins: ["E+", "S+", "S-", "E-"]}
+    harnesses:
+      - label: "тензодатчик"
+        wires:
+          - {a: "module:{power}", b: "dev:lc:E+", color: red}
+          - {a: "module:In+",     b: "dev:lc:S+", color: green}
+          - {a: "module:In-",     b: "dev:lc:S-", color: white}
+          - {a: "module:{gnd}",   b: "dev:lc:E-", color: black}
+
+  # Звук: динамик на soundMono, активная акустика на soundStereo, пара
+  # пассивных колонок на soundAmp.
+  speaker:
+    channel: audio
+    devices:
+      - {key: spk, name: "Динамик
+{label}", pins: ["+", "-"]}
+    harnesses:
+      - label: "динамик"
+        wires:
+          - {a: "module:spk+", b: "dev:spk:+", color: red}
+          - {a: "module:spk-", b: "dev:spk:-", color: blue}
+  activeSpeakers:
+    channel: audio
+    devices:
+      - {key: acs, name: "Активная акустическая система
+{label}", pins: [L, R, gnd]}
+    harnesses:
+      - label: "кабель jack 3,5 мм"
+        wires:
+          - {a: "module:L",   b: "dev:acs:L",   color: white}
+          - {a: "module:R",   b: "dev:acs:R",   color: red}
+          - {a: "module:gnd", b: "dev:acs:gnd", color: black}
+  passiveStereo:
+    channel: audio
+    devices:
+      - {key: spr, name: "Пассивная колонка
+правая {label}", pins: ["+", "-"]}
+      - {key: spl, name: "Пассивная колонка
+левая {label}", pins: ["+", "-"]}
+    harnesses:
+      - label: "правый канал"
+        wires:
+          - {a: "module:R+", b: "dev:spr:+", color: red}
+          - {a: "module:R-", b: "dev:spr:-", color: blue}
+      - label: "левый канал"
+        wires:
+          - {a: "module:L+", b: "dev:spl:+", color: red}
+          - {a: "module:L-", b: "dev:spl:-", color: blue}
+
+  # Устройство UART на модуле uart: Tx и Rx перекрещиваются.
+  uartDevice:
+    channel: uart
+    devices:
+      - {key: ud, name: "Устройство UART
+{label}", pins: ["V+", Tx, Rx, gnd]}
+    harnesses:
+      - label: "UART"
+        wires:
+          - {a: "module:{power}", b: "dev:ud:V+",  color: red}
+          - {a: "module:Tx",      b: "dev:ud:Rx",  color: yellow}
+          - {a: "module:Rx",      b: "dev:ud:Tx",  color: green}
+          - {a: "module:{gnd}",   b: "dev:ud:gnd", color: black}
+  # Устройства I2C на модуле i2c: питание V+, две линии шины, gnd.
+  as5600:
+    channel: i2c
+    devices:
+      - {key: enc, name: "Магнитный энкодер
+AS5600 {label}", pins: ["+V", sda, scl, gnd]}
+    harnesses:
+      - label: "энкодер"
+        wires:
+          - {a: "module:{power}", b: "dev:enc:+V",  color: red}
+          - {a: "module:sda",     b: "dev:enc:sda", color: blue}
+          - {a: "module:scl",     b: "dev:enc:scl", color: yellow}
+          - {a: "module:{gnd}",   b: "dev:enc:gnd", color: black}
+  apds9960:
+    channel: i2c
+    devices:
+      - {key: ges, name: "Жестовый датчик
+APDS9960 {label}", pins: ["+V", sda, scl, gnd]}
+    harnesses:
+      - label: "жестовый датчик"
+        wires:
+          - {a: "module:{power}", b: "dev:ges:+V",  color: red}
+          - {a: "module:sda",     b: "dev:ges:sda", color: blue}
+          - {a: "module:scl",     b: "dev:ges:scl", color: yellow}
+          - {a: "module:{gnd}",   b: "dev:ges:gnd", color: black}
+
+  smartLed:                            # СВЕРИТЬ пины адресной ленты
+    channel: out
+    devices:
+      - {key: sled, name: "Адресная лента\n{label}", pins: ["+5V", DIN, gnd]}
+    harnesses:
+      - label: "адресная лента"
+        wires:
+          - {a: "module:{power}", b: "dev:sled:+5V", color: red}
+          - {a: "module:{ch}",    b: "dev:sled:DIN", color: green}
+          - {a: "module:{gnd}",   b: "dev:sled:gnd", color: black}
+
+  # ---------------------------------------------------------- шаговый двигатель
+  # Всегда: свой блок питания -> драйвер -> мотор. DIR на ch_0, STEP на ch_1.
+  # Напряжение {volt} берётся из комментария (например «IHSV57 48V»).
+  stepper:
+    channel: out
+    channels: 2
+    volt_default: "48V"
+    devices:
+      - {key: psu,    name: "Блок питания {volt}",          pins: ["+V", gnd]}
+      - {key: driver, name: "Драйвер шагового\nдвигателя",  pins: ["+V", gnd, "dir+", "dir-", "step+", "step-", A, B, C, D]}
+      - {key: motor,  name: "Шаговый двигатель\n{label}",    pins: [A, B, C, D]}
+    harnesses:
+      - label: "питание драйвера"
+        wires:
+          - {a: "dev:psu:+V",  b: "dev:driver:+V",  color: red}
+          - {a: "dev:psu:gnd", b: "dev:driver:gnd", color: black}
+      - label: "step / dir"
+        wires:
+          - {a: "module:{gnd}", b: "dev:driver:dir-",  color: black}
+          - {a: "module:{gnd}", b: "dev:driver:step-", color: black}
+          - {a: "module:{ch0}", b: "dev:driver:dir+",  color: yellow}
+          - {a: "module:{ch1}", b: "dev:driver:step+", color: green}
+      - label: "обмотки двигателя"
+        wires:
+          - {a: "dev:driver:A", b: "dev:motor:A", color: red}
+          - {a: "dev:driver:B", b: "dev:motor:B", color: yellow}
+          - {a: "dev:driver:C", b: "dev:motor:C", color: green}
+          - {a: "dev:driver:D", b: "dev:motor:D", color: blue}
+
+  # Сервопривод с управлением step/dir (IHSV57 и т.п.): та же схема, что
+  # у stepper, но и драйвер, и мотор подписываются моделью из комментария.
+  servoStepper:
+    channel: out
+    channels: 2
+    volt_default: "48V"
+    devices:
+      - {key: psu,    name: "Блок питания {volt}",             pins: ["+V", gnd]}
+      - {key: driver, name: "Драйвер {label}",                 pins: ["+V", gnd, "dir+", "dir-", "step+", "step-", A, B, C, D]}
+      - {key: motor,  name: "Сервопривод {label}\nуправление step/dir", pins: [A, B, C, D]}
+    harnesses:
+      - label: "питание драйвера"
+        wires:
+          - {a: "dev:psu:+V",  b: "dev:driver:+V",  color: red}
+          - {a: "dev:psu:gnd", b: "dev:driver:gnd", color: black}
+      - label: "step / dir"
+        wires:
+          - {a: "module:{gnd}", b: "dev:driver:dir-",  color: black}
+          - {a: "module:{gnd}", b: "dev:driver:step-", color: black}
+          - {a: "module:{ch0}", b: "dev:driver:dir+",  color: yellow}
+          - {a: "module:{ch1}", b: "dev:driver:step+", color: green}
+      - label: "обмотки двигателя"
+        wires:
+          - {a: "dev:driver:A", b: "dev:motor:A", color: red}
+          - {a: "dev:driver:B", b: "dev:motor:B", color: yellow}
+          - {a: "dev:driver:C", b: "dev:motor:C", color: green}
+          - {a: "dev:driver:D", b: "dev:motor:D", color: blue}
+
+  # ---------------------------------------------------------- ничего не подключено
+  # Модуль стоит в слоте, но нагрузки нет: рисуется только модуль.
+  none:
+    channel: null
+    devices: []
+    harnesses: []
+
+  # ---------------------------------------------------------- реле
+  relayLoad:
+    channel: relay
+    devices:
+      - {key: mains, name: "Сеть 220В",         pins: [L, N]}
+      - {key: load,  name: "Нагрузка 220В\n{label}", pins: [L, N]}
+    harnesses:
+      - label: "фаза на реле"
+        wires:
+          - {a: "dev:mains:L",         b: "module:COM",      color: brown}
+      - label: "реле → нагрузка"
+        wires:
+          - {a: "module:{contact}",    b: "dev:load:L",      color: brown}
+      - label: "нейтраль"
+        wires:
+          - {a: "dev:mains:N", b: "dev:load:N", color: blue}

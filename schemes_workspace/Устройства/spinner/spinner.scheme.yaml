@@ -1,0 +1,62 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "<путь к этому файлу>" --pdf
+# Весь конвейер для папки контроллера (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "<папка с этим файлом>"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "<папка>/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: Спиннер — схема подключения
+controller:
+  name: spinner
+  serial: ''
+  board: плата v4
+  notes: ["питание от USB", "адаптер 000-004"]
+  connectors:
+  - name: Ethernet
+    label: 192.168.0.33/24
+    extra: [MQTT · брокер 192.168.0.1]
+  - USB
+  modules:
+  - id: s0
+    name: i2c
+    slot: s_0
+    pins: [V+, sda, scl, gnd]
+    mode: encoderAS5600
+  - id: s1
+    name: button_smartLed
+    slot: s_1
+    pins: [V+, sLed, Bt, gnd]
+    mode: button_ledRing
+  power_module:
+    name: Power
+    pins: [+, '-']
+devices:
+- id: s0_enc
+  name: "Магнитный энкодер\nAS5600"
+  pins: [+V, sda, scl, gnd]
+- id: s1_bsl
+  name: "Кнопка с кольцом подсветки\n300-004"
+  pins: [+V, DIN, Bt, gnd]
+harnesses:
+- id: 1
+  label: энкодер (s_0)
+  wires:
+  - {a: 'module:s0:V+', b: 'device:s0_enc:+V', color: red}
+  - {a: 'module:s0:sda', b: 'device:s0_enc:sda', color: blue}
+  - {a: 'module:s0:scl', b: 'device:s0_enc:scl', color: yellow}
+  - {a: 'module:s0:gnd', b: 'device:s0_enc:gnd', color: black}
+- id: 2
+  label: кнопка с кольцом (s_1)
+  wires:
+  - {a: 'module:s1:V+', b: 'device:s1_bsl:+V', color: red}
+  - {a: 'module:s1:sLed', b: 'device:s1_bsl:DIN', color: green}
+  - {a: 'module:s1:Bt', b: 'device:s1_bsl:Bt', color: yellow}
+  - {a: 'module:s1:gnd', b: 'device:s1_bsl:gnd', color: black}

@@ -1,0 +1,35 @@
+# Схема подключения дискового номеронабирателя к модулю in_2ch (режим dialer).
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# ena -> ch_1, pulse -> ch_0. Контакты сухие: перемычки S1/S2 в положении OC.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: in_2ch
+      slot: s_0
+      mode: dialer
+      pins: ["V+", ch_1, ch_0, gnd]
+      pin_badges: {ch_0: [OC], ch_1: [OC]}
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: dial
+    name: "Дисковый номеронабиратель\nсухие контакты"
+    pins: [ena, pulse, gnd]
+
+harnesses:
+  - id: 1
+    label: "номеронабиратель"
+    wires:
+      - {a: "module:in_2ch:ch_1", b: "device:dial:ena",   color: green}
+      - {a: "module:in_2ch:ch_0", b: "device:dial:pulse", color: yellow}
+      - {a: "module:in_2ch:gnd",  b: "device:dial:gnd",   color: black}

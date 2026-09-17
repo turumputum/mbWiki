@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1938" viewBox="0 0 1254 1938">
+<rect width="1254" height="1938" fill="#ffffff"/>
+<text x="36.0" y="24.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2328" text-anchor="start">mbw — схема подключения</text>
+<polyline points="848.0,989.0 836.0,989.0 836.0,858.0 848.0,858.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,976.0 880.0,976.0 848.0,989.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="976.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,845.0 880.0,845.0 848.0,858.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="845.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,1002.0 880.0,1002.0 848.0,989.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="1002.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,871.0 880.0,871.0 848.0,858.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="871.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<circle cx="836.0" cy="923.5" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="836.0" y="928.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">1</text>
+<polyline points="384.0,113.0 396.0,113.0 396.0,246.0 384.0,246.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="336.0,100.0 352.0,100.0 384.0,113.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="100.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,233.0 352.0,233.0 384.0,246.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="233.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,126.0 352.0,126.0 384.0,113.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="126.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,259.0 352.0,259.0 384.0,246.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="259.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<circle cx="396.0" cy="179.5" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="396.0" y="184.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">2</text>
+<polyline points="848.0,229.5 596.2,229.5 596.2,324.0 384.0,324.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,249.0 880.0,249.0 848.0,229.5" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="249.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,311.0 352.0,311.0 384.0,324.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="311.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,249.0 880.0,249.0 848.0,229.5" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="249.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,363.0 352.0,363.0 384.0,324.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="363.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,223.0 880.0,223.0 848.0,229.5" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="223.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,285.0 352.0,285.0 384.0,324.0" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="285.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,197.0 880.0,197.0 848.0,229.5" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="197.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,337.0 352.0,337.0 384.0,324.0" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="337.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="596.2" cy="276.8" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="596.2" y="281.2" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">3</text>
+<polyline points="384.0,428.0 430.0,428.0 430.0,613.0 384.0,613.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="336.0,389.0 352.0,389.0 384.0,428.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="389.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,574.0 352.0,574.0 384.0,613.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="574.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,415.0 352.0,415.0 384.0,428.0" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="415.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,600.0 352.0,600.0 384.0,613.0" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="600.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,441.0 352.0,441.0 384.0,428.0" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="441.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,626.0 352.0,626.0 384.0,613.0" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="626.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,467.0 352.0,467.0 384.0,428.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="467.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,652.0 352.0,652.0 384.0,613.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="652.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<circle cx="430.0" cy="520.5" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="430.0" y="525.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">4</text>
+<polyline points="848.0,326.3 624.5,326.3 624.5,790.0 384.0,790.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,283.0 880.0,283.0 848.0,326.3" fill="none" stroke="#8a5a2b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="283.0" r="3.6" fill="#8a5a2b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,764.0 352.0,764.0 384.0,790.0" fill="none" stroke="#8a5a2b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="764.0" r="3.6" fill="#8a5a2b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,335.0 880.0,335.0 848.0,326.3" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="335.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,790.0 352.0,790.0 384.0,790.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="790.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,361.0 880.0,361.0 848.0,326.3" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="361.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,816.0 352.0,816.0 384.0,790.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="816.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<circle cx="624.5" cy="558.2" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="624.5" y="562.7" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">5</text>
+<polyline points="848.0,317.7 652.8,317.7 652.8,954.0 384.0,954.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,283.0 880.0,283.0 848.0,317.7" fill="none" stroke="#8a5a2b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="283.0" r="3.6" fill="#8a5a2b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,928.0 352.0,928.0 384.0,954.0" fill="none" stroke="#8a5a2b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="928.0" r="3.6" fill="#8a5a2b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,309.0 880.0,309.0 848.0,317.7" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="309.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,954.0 352.0,954.0 384.0,954.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="954.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,361.0 880.0,361.0 848.0,317.7" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="361.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,980.0 352.0,980.0 384.0,954.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="980.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<circle cx="652.8" cy="635.8" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="652.8" y="640.3" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">6</text>
+<polyline points="384.0,113.0 464.0,113.0 464.0,1100.0 384.0,1100.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="336.0,100.0 352.0,100.0 384.0,113.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="100.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1087.0 352.0,1087.0 384.0,1100.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1087.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,126.0 352.0,126.0 384.0,113.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="126.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1113.0 352.0,1113.0 384.0,1100.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1113.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<circle cx="464.0" cy="606.5" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="464.0" y="611.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">7</text>
+<polyline points="848.0,453.5 681.2,453.5 681.2,1178.0 384.0,1178.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,473.0 880.0,473.0 848.0,453.5" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="473.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1165.0 352.0,1165.0 384.0,1178.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1165.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,473.0 880.0,473.0 848.0,453.5" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="473.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1217.0 352.0,1217.0 384.0,1178.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1217.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,447.0 880.0,447.0 848.0,453.5" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="447.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1139.0 352.0,1139.0 384.0,1178.0" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1139.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,421.0 880.0,421.0 848.0,453.5" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="421.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1191.0 352.0,1191.0 384.0,1178.0" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1191.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<circle cx="681.2" cy="815.8" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="681.2" y="820.2" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">8</text>
+<polyline points="384.0,1282.0 498.0,1282.0 498.0,1467.0 384.0,1467.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="336.0,1243.0 352.0,1243.0 384.0,1282.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1243.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1428.0 352.0,1428.0 384.0,1467.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1428.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1269.0 352.0,1269.0 384.0,1282.0" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1269.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1454.0 352.0,1454.0 384.0,1467.0" fill="none" stroke="#e6b400" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1454.0" r="3.6" fill="#e6b400" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1295.0 352.0,1295.0 384.0,1282.0" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1295.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1480.0 352.0,1480.0 384.0,1467.0" fill="none" stroke="#2ca02c" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1480.0" r="3.6" fill="#2ca02c" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1321.0 352.0,1321.0 384.0,1282.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1321.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1506.0 352.0,1506.0 384.0,1467.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1506.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<circle cx="498.0" cy="1374.5" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="498.0" y="1379.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">9</text>
+<polyline points="848.0,550.3 709.5,550.3 709.5,1644.0 384.0,1644.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,507.0 880.0,507.0 848.0,550.3" fill="none" stroke="#8a5a2b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="507.0" r="3.6" fill="#8a5a2b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1618.0 352.0,1618.0 384.0,1644.0" fill="none" stroke="#8a5a2b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1618.0" r="3.6" fill="#8a5a2b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,559.0 880.0,559.0 848.0,550.3" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="559.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1644.0 352.0,1644.0 384.0,1644.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1644.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,585.0 880.0,585.0 848.0,550.3" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="585.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1670.0 352.0,1670.0 384.0,1644.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1670.0" r="3.6" fill="#2f6fdb" stroke="#ffffff" stroke-width="1"/>
+<circle cx="709.5" cy="1097.2" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="709.5" y="1101.7" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">10</text>
+<polyline points="848.0,684.0 737.8,684.0 737.8,1794.0 384.0,1794.0" fill="none" stroke="#7b8794" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="896.0,671.0 880.0,671.0 848.0,684.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="671.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1781.0 352.0,1781.0 384.0,1794.0" fill="none" stroke="#e23b3b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1781.0" r="3.6" fill="#e23b3b" stroke="#ffffff" stroke-width="1"/>
+<polyline points="896.0,697.0 880.0,697.0 848.0,684.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="896.0" cy="697.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<polyline points="336.0,1807.0 352.0,1807.0 384.0,1794.0" fill="none" stroke="#3a3a3a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="336.0" cy="1807.0" r="3.6" fill="#3a3a3a" stroke="#ffffff" stroke-width="1"/>
+<circle cx="737.8" cy="1239.0" r="12.5" fill="#ffffff" stroke="#222" stroke-width="1.7"/>
+<text x="737.8" y="1243.5" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">11</text>
+<rect x="896.0" y="36.0" width="300.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="1046.0" y1="36.0" x2="1046.0" y2="87.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="908.0" y="55.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2328" text-anchor="start">mbw</text>
+<text x="908.0" y="72.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">плата v4</text>
+<text x="1121.0" y="54.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="normal" fill="#5b6571" text-anchor="middle">монтажная плита</text>
+<rect x="896.0" y="87.0" width="300.0" height="41.0" rx="0" ry="0" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="908.0" y="93.0" width="20.0" height="14.0" rx="2" ry="2" fill="#dfe4e9" stroke="#5b6571" stroke-width="1"/>
+<text x="938.0" y="104.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Ethernet</text>
+<text x="1184.0" y="104.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="end">10.10.3.211/24</text>
+<text x="1184.0" y="121.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="end">MQTT · брокер 192.168.1.92</text>
+<rect x="896.0" y="128.0" width="300.0" height="26.0" rx="0" ry="0" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="908.0" y="134.0" width="20.0" height="14.0" rx="2" ry="2" fill="#dfe4e9" stroke="#5b6571" stroke-width="1"/>
+<text x="938.0" y="145.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">USB</text>
+<rect x="896.0" y="154.0" width="300.0" height="112.0" rx="0" ry="0" fill="#f6f8fa" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="154.0" x2="980.0" y2="266.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="175.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">3</text>
+<text x="924.0" y="175.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">Vbus</text>
+<line x1="896.0" y1="184.0" x2="980.0" y2="184.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="201.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">2</text>
+<text x="924.0" y="201.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_1</text>
+<line x1="896.0" y1="210.0" x2="980.0" y2="210.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="227.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="227.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_0</text>
+<line x1="896.0" y1="236.0" x2="980.0" y2="236.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="253.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="253.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">gnd</text>
+<text x="1077.0" y="206.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">fastOut_2ch</text>
+<text x="1077.0" y="221.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle">mode: stepper</text>
+<rect x="1174.0" y="154.0" width="22.0" height="112.0" rx="0" ry="0" fill="#e7ebef" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="1189.0" y="210.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle" transform="rotate(-90 1189.0 210.0)">s_0</text>
+<rect x="896.0" y="266.0" width="300.0" height="112.0" rx="0" ry="0" fill="#f6f8fa" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="266.0" x2="980.0" y2="378.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="287.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">3</text>
+<text x="924.0" y="287.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">V+</text>
+<line x1="896.0" y1="296.0" x2="980.0" y2="296.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="313.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">2</text>
+<text x="924.0" y="313.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_1</text>
+<rect x="986.0" y="301.0" width="28.0" height="16.0" rx="8" ry="8" fill="#fff4d6" stroke="#d19a00" stroke-width="1"/>
+<text x="1000.0" y="313.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="bold" fill="#6b4e00" text-anchor="middle">OC</text>
+<line x1="896.0" y1="322.0" x2="980.0" y2="322.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="339.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="339.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_0</text>
+<rect x="986.0" y="327.0" width="28.0" height="16.0" rx="8" ry="8" fill="#fff4d6" stroke="#d19a00" stroke-width="1"/>
+<text x="1000.0" y="339.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="bold" fill="#6b4e00" text-anchor="middle">OC</text>
+<line x1="896.0" y1="348.0" x2="980.0" y2="348.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="365.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="365.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">gnd</text>
+<text x="1077.0" y="326.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">in_2ch</text>
+<rect x="1174.0" y="266.0" width="22.0" height="112.0" rx="0" ry="0" fill="#e7ebef" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="1189.0" y="322.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle" transform="rotate(-90 1189.0 322.0)">s_1</text>
+<rect x="896.0" y="378.0" width="300.0" height="112.0" rx="0" ry="0" fill="#f6f8fa" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="378.0" x2="980.0" y2="490.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="399.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">3</text>
+<text x="924.0" y="399.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">Vbus</text>
+<line x1="896.0" y1="408.0" x2="980.0" y2="408.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="425.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">2</text>
+<text x="924.0" y="425.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_1</text>
+<line x1="896.0" y1="434.0" x2="980.0" y2="434.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="451.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="451.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_0</text>
+<line x1="896.0" y1="460.0" x2="980.0" y2="460.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="477.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="477.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">gnd</text>
+<text x="1077.0" y="430.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">fastOut_2ch</text>
+<text x="1077.0" y="445.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle">mode: stepper</text>
+<rect x="1174.0" y="378.0" width="22.0" height="112.0" rx="0" ry="0" fill="#e7ebef" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="1189.0" y="434.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle" transform="rotate(-90 1189.0 434.0)">s_2</text>
+<rect x="896.0" y="490.0" width="300.0" height="112.0" rx="0" ry="0" fill="#f6f8fa" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="490.0" x2="980.0" y2="602.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="511.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">3</text>
+<text x="924.0" y="511.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">+Vin</text>
+<line x1="896.0" y1="520.0" x2="980.0" y2="520.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="537.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">2</text>
+<text x="924.0" y="537.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">out</text>
+<line x1="896.0" y1="546.0" x2="980.0" y2="546.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="563.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="563.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">in</text>
+<line x1="896.0" y1="572.0" x2="980.0" y2="572.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="589.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="589.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">gnd</text>
+<text x="1077.0" y="550.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">in_out</text>
+<rect x="1174.0" y="490.0" width="22.0" height="112.0" rx="0" ry="0" fill="#e7ebef" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="1189.0" y="546.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle" transform="rotate(-90 1189.0 546.0)">s_3</text>
+<rect x="896.0" y="602.0" width="300.0" height="112.0" rx="0" ry="0" fill="#f6f8fa" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="602.0" x2="980.0" y2="714.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="623.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">3</text>
+<text x="924.0" y="623.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">Vbus</text>
+<line x1="896.0" y1="632.0" x2="980.0" y2="632.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="649.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">2</text>
+<text x="924.0" y="649.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_1</text>
+<line x1="896.0" y1="658.0" x2="980.0" y2="658.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="675.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="675.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">ch_0</text>
+<line x1="896.0" y1="684.0" x2="980.0" y2="684.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="701.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="701.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">gnd</text>
+<text x="1077.0" y="662.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">out_2ch</text>
+<rect x="1174.0" y="602.0" width="22.0" height="112.0" rx="0" ry="0" fill="#e7ebef" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="1189.0" y="658.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle" transform="rotate(-90 1189.0 658.0)">s_4</text>
+<rect x="896.0" y="714.0" width="300.0" height="112.0" rx="0" ry="0" fill="#f6f8fa" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="714.0" x2="980.0" y2="826.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="735.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">3</text>
+<text x="924.0" y="735.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">NO</text>
+<line x1="896.0" y1="744.0" x2="980.0" y2="744.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="761.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">2</text>
+<text x="924.0" y="761.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">COM</text>
+<line x1="896.0" y1="770.0" x2="980.0" y2="770.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="787.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="787.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">COM</text>
+<line x1="896.0" y1="796.0" x2="980.0" y2="796.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="813.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="813.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">NC</text>
+<text x="1077.0" y="774.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">relay</text>
+<rect x="1174.0" y="714.0" width="22.0" height="112.0" rx="0" ry="0" fill="#e7ebef" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="1189.0" y="770.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="middle" transform="rotate(-90 1189.0 770.0)">s_5</text>
+<rect x="896.0" y="826.0" width="300.0" height="64.0" rx="0" ry="0" fill="#f0efe6" stroke="#4a4a4a" stroke-width="1.4"/>
+<line x1="980.0" y1="826.0" x2="980.0" y2="890.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="906.0" y="849.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">1</text>
+<text x="924.0" y="849.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">+</text>
+<line x1="896.0" y1="858.0" x2="980.0" y2="858.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="906.0" y="875.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#5b6571" text-anchor="start">0</text>
+<text x="924.0" y="875.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">-</text>
+<text x="1077.0" y="862.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="middle">Power</text>
+<rect x="896.0" y="912.0" width="300.0" height="111.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="896.0" y="912.0" width="300.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="908.0" y="929.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2328" text-anchor="start">Блок питания 12V 100W</text>
+<line x1="980.0" y1="963.0" x2="980.0" y2="1023.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="908.0" y="980.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">+12</text>
+<line x1="896.0" y1="989.0" x2="980.0" y2="989.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="908.0" y="1006.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="start">gnd</text>
+<rect x="36.0" y="36.0" width="300.0" height="111.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="36.0" width="216.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="36.0" width="84.0" height="51.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="52.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Блок питания 48V</text>
+<text x="46.0" y="65.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">общий для двух драйверов</text>
+<line x1="252.0" y1="87.0" x2="252.0" y2="147.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="104.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+V</text>
+<line x1="252.0" y1="113.0" x2="336.0" y2="113.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="130.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">gnd</text>
+<rect x="36.0" y="169.0" width="300.0" height="319.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="169.0" width="216.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="169.0" width="84.0" height="51.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="185.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Драйвер IHSV57</text>
+<text x="46.0" y="198.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">привод большого колеса</text>
+<line x1="252.0" y1="220.0" x2="252.0" y2="488.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="237.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+V</text>
+<line x1="252.0" y1="246.0" x2="336.0" y2="246.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="263.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">gnd</text>
+<line x1="252.0" y1="272.0" x2="336.0" y2="272.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="289.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">dir+</text>
+<line x1="252.0" y1="298.0" x2="336.0" y2="298.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="315.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">dir-</text>
+<line x1="252.0" y1="324.0" x2="336.0" y2="324.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="341.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">step+</text>
+<line x1="252.0" y1="350.0" x2="336.0" y2="350.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="367.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">step-</text>
+<line x1="252.0" y1="376.0" x2="336.0" y2="376.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="393.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">A</text>
+<line x1="252.0" y1="402.0" x2="336.0" y2="402.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="419.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">B</text>
+<line x1="252.0" y1="428.0" x2="336.0" y2="428.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="445.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">C</text>
+<line x1="252.0" y1="454.0" x2="336.0" y2="454.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="471.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">D</text>
+<rect x="36.0" y="510.0" width="300.0" height="163.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="510.0" width="216.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="510.0" width="84.0" height="51.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="526.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Сервопривод IHSV57</text>
+<text x="46.0" y="539.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">управление step/dir</text>
+<line x1="252.0" y1="561.0" x2="252.0" y2="673.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="578.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">A</text>
+<line x1="252.0" y1="587.0" x2="336.0" y2="587.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="604.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">B</text>
+<line x1="252.0" y1="613.0" x2="336.0" y2="613.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="630.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">C</text>
+<line x1="252.0" y1="639.0" x2="336.0" y2="639.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="656.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">D</text>
+<rect x="36.0" y="695.0" width="300.0" height="142.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="695.0" width="216.0" height="56.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="695.0" width="84.0" height="56.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="711.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Оптический датчик</text>
+<text x="46.0" y="724.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">BS5-T2M</text>
+<text x="46.0" y="737.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">датчик нуля stepper_0</text>
+<line x1="252.0" y1="751.0" x2="252.0" y2="837.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="768.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+V</text>
+<line x1="252.0" y1="777.0" x2="336.0" y2="777.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="794.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">sig</text>
+<line x1="252.0" y1="803.0" x2="336.0" y2="803.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="820.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">0V</text>
+<rect x="36.0" y="859.0" width="300.0" height="142.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="859.0" width="216.0" height="56.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="859.0" width="84.0" height="56.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="875.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Оптический датчик</text>
+<text x="46.0" y="888.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">BS5-T2M</text>
+<text x="46.0" y="901.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">датчик нуля stepper_2</text>
+<line x1="252.0" y1="915.0" x2="252.0" y2="1001.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="932.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+V</text>
+<line x1="252.0" y1="941.0" x2="336.0" y2="941.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="958.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">sig</text>
+<line x1="252.0" y1="967.0" x2="336.0" y2="967.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="984.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">0V</text>
+<rect x="36.0" y="1023.0" width="300.0" height="319.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="1023.0" width="216.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="1023.0" width="84.0" height="51.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="1039.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Драйвер IHSV57</text>
+<text x="46.0" y="1052.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">привод малого колеса</text>
+<line x1="252.0" y1="1074.0" x2="252.0" y2="1342.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="1091.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+V</text>
+<line x1="252.0" y1="1100.0" x2="336.0" y2="1100.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1117.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">gnd</text>
+<line x1="252.0" y1="1126.0" x2="336.0" y2="1126.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1143.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">dir+</text>
+<line x1="252.0" y1="1152.0" x2="336.0" y2="1152.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1169.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">dir-</text>
+<line x1="252.0" y1="1178.0" x2="336.0" y2="1178.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1195.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">step+</text>
+<line x1="252.0" y1="1204.0" x2="336.0" y2="1204.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1221.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">step-</text>
+<line x1="252.0" y1="1230.0" x2="336.0" y2="1230.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1247.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">A</text>
+<line x1="252.0" y1="1256.0" x2="336.0" y2="1256.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1273.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">B</text>
+<line x1="252.0" y1="1282.0" x2="336.0" y2="1282.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1299.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">C</text>
+<line x1="252.0" y1="1308.0" x2="336.0" y2="1308.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1325.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">D</text>
+<rect x="36.0" y="1364.0" width="300.0" height="163.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="1364.0" width="216.0" height="51.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="1364.0" width="84.0" height="51.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="1380.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Сервопривод IHSV57</text>
+<text x="46.0" y="1393.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">управление step/dir</text>
+<line x1="252.0" y1="1415.0" x2="252.0" y2="1527.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="1432.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">A</text>
+<line x1="252.0" y1="1441.0" x2="336.0" y2="1441.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1458.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">B</text>
+<line x1="252.0" y1="1467.0" x2="336.0" y2="1467.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1484.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">C</text>
+<line x1="252.0" y1="1493.0" x2="336.0" y2="1493.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1510.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">D</text>
+<rect x="36.0" y="1549.0" width="300.0" height="142.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="1549.0" width="216.0" height="56.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="1549.0" width="84.0" height="56.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="1565.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Оптический датчик</text>
+<text x="46.0" y="1578.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">G18-3A30NC</text>
+<text x="46.0" y="1591.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">датчик выхода шара из колеса</text>
+<line x1="252.0" y1="1605.0" x2="252.0" y2="1691.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="1622.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+V</text>
+<line x1="252.0" y1="1631.0" x2="336.0" y2="1631.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1648.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">sig</text>
+<line x1="252.0" y1="1657.0" x2="336.0" y2="1657.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1674.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">0V</text>
+<rect x="36.0" y="1713.0" width="300.0" height="115.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="36.0" y="1713.0" width="216.0" height="55.0" rx="6" ry="6" fill="#eef2f6" stroke="#4a4a4a" stroke-width="1.4"/>
+<rect x="252.0" y="1713.0" width="84.0" height="55.0" rx="6" ry="6" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.4"/>
+<text x="46.0" y="1729.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Соленоид</text>
+<text x="46.0" y="1742.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">верхний соленоид</text>
+<text x="46.0" y="1754.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">запускает шар в колесо</text>
+<line x1="252.0" y1="1768.0" x2="252.0" y2="1828.0" stroke="#4a4a4a" stroke-width="1"/>
+<text x="324.0" y="1785.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">+</text>
+<line x1="252.0" y1="1794.0" x2="336.0" y2="1794.0" stroke="#d7dce1" stroke-width="1"/>
+<text x="324.0" y="1811.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="normal" fill="#1f2328" text-anchor="end">-</text>
+<text x="36.0" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="start">Жгуты:</text>
+<circle cx="109.0" cy="1870.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="109.0" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">1</text>
+<text x="124.0" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">питание контроллера</text>
+<circle cx="295.8" cy="1870.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="295.8" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">2</text>
+<text x="310.8" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">питание драйвера (s_0)</text>
+<circle cx="504.2" cy="1870.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="504.2" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">3</text>
+<text x="519.2" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">step / dir (s_0)</text>
+<circle cx="669.4" cy="1870.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="669.4" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">4</text>
+<text x="684.4" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">обмотки двигателя (s_0)</text>
+<circle cx="885.0" cy="1870.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="885.0" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">5</text>
+<text x="900.0" y="1874.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">оптический датчик (s_1)</text>
+<circle cx="109.0" cy="1894.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="109.0" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">6</text>
+<text x="124.0" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">оптический датчик (s_1)</text>
+<circle cx="324.6" cy="1894.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="324.6" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">7</text>
+<text x="339.6" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">питание драйвера (s_2)</text>
+<circle cx="533.0" cy="1894.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="533.0" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">8</text>
+<text x="548.0" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">step / dir (s_2)</text>
+<circle cx="698.2" cy="1894.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="698.2" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">9</text>
+<text x="713.2" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">обмотки двигателя (s_2)</text>
+<circle cx="913.8" cy="1894.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="913.8" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">10</text>
+<text x="928.8" y="1898.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">оптический датчик (s_3)</text>
+<circle cx="109.0" cy="1918.0" r="9" fill="#ffffff" stroke="#222" stroke-width="1.5"/>
+<text x="109.0" y="1922.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="bold" fill="#1f2328" text-anchor="middle">11</text>
+<text x="124.0" y="1922.0" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" fill="#5b6571" text-anchor="start">соленоид (s_4)</text>
+</svg>

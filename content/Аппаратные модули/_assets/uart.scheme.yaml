@@ -1,0 +1,35 @@
+# Схема подключения модуля uart: радарный датчик присутствия HLK-LD2410.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Tx и Rx перекрещиваются: Tx модуля -> Rx устройства и наоборот.
+# +V по умолчанию 5 В (перемычкой — Vbus).
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: uart
+      slot: s_0
+      pins: ["+V", Tx, Rx, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: radar
+    name: "Радарный датчик присутствия\nHLK-LD2410"
+    pins: [VCC, TX, RX, GND]
+
+harnesses:
+  - id: 1
+    label: "UART"
+    wires:
+      - {a: "module:uart:+V",  b: "device:radar:VCC", color: red}
+      - {a: "module:uart:Tx",  b: "device:radar:RX",  color: yellow}
+      - {a: "module:uart:Rx",  b: "device:radar:TX",  color: green}
+      - {a: "module:uart:gnd", b: "device:radar:GND", color: black}

@@ -1,0 +1,115 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "<путь к этому файлу>" --pdf
+# Весь конвейер для папки контроллера (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "<папка с этим файлом>"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "<папка>/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: mbs — схема подключения
+controller:
+  name: mbs
+  serial: ''
+  board: плата v4
+  connectors:
+  - name: Ethernet
+    label: 10.10.3.213/24
+    extra: [MQTT · брокер 10.10.3.202]
+  - USB
+  notes: [монтажная плита]
+  modules:
+  - id: s0
+    name: fastOut_2ch
+    slot: s_0
+    pins: [Vbus, ch_1, ch_0, gnd]
+    mode: stepper
+  - id: s1
+    name: in_out
+    slot: s_1
+    pins: [+Vin, out, in, gnd]
+  - id: s2
+    name: out_2ch
+    slot: s_2
+    pins: [Vbus, ch_1, ch_0, gnd]
+  - id: s3
+    name: in_out
+    slot: s_3
+    pins: [+Vin, out, in, gnd]
+  power_module:
+    name: Power
+    pins: [+, '-']
+  psu:
+    name: Блок питания 12V 100W
+    pins: ['+12', gnd]
+devices:
+- id: s0_psu
+  name: Блок питания 48V
+  pins: [+V, gnd]
+- id: s0_driver
+  name: Драйвер HSS42
+  pins: [+V, gnd, dir+, dir-, step+, step-, A, B, C, D]
+- id: s0_motor
+  name: "Сервопривод HSS42\nуправление step/dir"
+  pins: [A, B, C, D]
+  notes: [привод элеватора]
+- id: s1_sens
+  name: "Индуктивный датчик\nLJ18"
+  pins: [+V, sig, 0V]
+  notes: [датчик элеватора, датчик нуля stepper_0]
+- id: s2_sol
+  name: Соленоид
+  pins: [+, '-']
+  notes: [соленоид змейки]
+- id: s3_sens
+  name: "Оптический датчик\nG18-3A30NC"
+  pins: [+V, sig, 0V]
+  notes: [датчик после змейки]
+harnesses:
+- id: 1
+  label: питание контроллера
+  wires:
+  - {a: 'psu:+12', b: 'power:+', color: red}
+  - {a: 'psu:gnd', b: 'power:-', color: black}
+- id: 2
+  label: питание драйвера (s_0)
+  wires:
+  - {a: 'device:s0_psu:+V', b: 'device:s0_driver:+V', color: red}
+  - {a: 'device:s0_psu:gnd', b: 'device:s0_driver:gnd', color: black}
+- id: 3
+  label: step / dir (s_0)
+  wires:
+  - {a: 'module:s0:gnd', b: 'device:s0_driver:dir-', color: black}
+  - {a: 'module:s0:gnd', b: 'device:s0_driver:step-', color: black}
+  - {a: 'module:s0:ch_0', b: 'device:s0_driver:dir+', color: yellow}
+  - {a: 'module:s0:ch_1', b: 'device:s0_driver:step+', color: green}
+- id: 4
+  label: обмотки двигателя (s_0)
+  wires:
+  - {a: 'device:s0_driver:A', b: 'device:s0_motor:A', color: red}
+  - {a: 'device:s0_driver:B', b: 'device:s0_motor:B', color: yellow}
+  - {a: 'device:s0_driver:C', b: 'device:s0_motor:C', color: green}
+  - {a: 'device:s0_driver:D', b: 'device:s0_motor:D', color: blue}
+- id: 5
+  label: индуктивный датчик (s_1)
+  wires:
+  - {a: 'module:s1:+Vin', b: 'device:s1_sens:+V', color: brown}
+  - {a: 'module:s1:in', b: 'device:s1_sens:sig', color: black}
+  - {a: 'module:s1:gnd', b: 'device:s1_sens:0V', color: blue}
+- id: 6
+  label: соленоид (s_2)
+  wires:
+  - {a: 'module:s2:ch_0', b: 'device:s2_sol:+', color: red}
+  - {a: 'module:s2:gnd', b: 'device:s2_sol:-', color: black}
+- id: 7
+  label: оптический датчик (s_3)
+  wires:
+  - {a: 'module:s3:+Vin', b: 'device:s3_sens:+V', color: brown}
+  - {a: 'module:s3:in', b: 'device:s3_sens:sig', color: black}
+  - {a: 'module:s3:gnd', b: 'device:s3_sens:0V', color: blue}

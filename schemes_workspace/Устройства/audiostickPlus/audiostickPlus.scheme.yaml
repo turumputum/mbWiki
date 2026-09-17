@@ -1,0 +1,106 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "<путь к этому файлу>" --pdf
+# Весь конвейер для папки контроллера (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "<папка с этим файлом>"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "<папка>/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: Аудиоэтикетка+ (200-002) — схема подключения
+controller:
+  name: audiostickPlus
+  serial: ''
+  board: плата v4
+  connectors: [USB]
+  modules:
+  - id: s0
+    name: soundMono
+    slot: s_0
+    pins: [spk+, spk-, gnd, gnd]
+    mode: mp3Player
+  - id: s1
+    name: SD_card
+    slot: s_1
+    pins: [microSD]
+  - id: s2
+    name: button_smartLed
+    slot: s_2
+    pins: [V+, sLed, Bt, gnd]
+  - id: s3
+    name: button_led
+    slot: s_3
+    pins: [led+, gnd, gnd, bt]
+  - id: s4
+    name: button_led
+    slot: s_4
+    pins: [led+, gnd, gnd, bt]
+  - id: s5
+    name: button_led
+    slot: s_5
+    pins: [led+, gnd, gnd, bt]
+  power_module:
+    name: Power
+    pins: [+, '-']
+  psu:
+    name: "Блок питания 12 В\nMW RS-25-12, 201-007"
+    pins: ['+12', gnd]
+devices:
+- id: s0_spk
+  name: "Динамик\n100-001"
+  pins: [+, '-']
+- id: s2_btn
+  name: "Магнитная база с герконом\n100-004"
+  pins: ['1', '2']
+- id: s3_lbtn
+  name: "Кнопка с подсветкой\n300-001"
+  pins: [led+, led-, bt, bt]
+- id: s4_lbtn
+  name: "Кнопка с подсветкой\n300-001"
+  pins: [led+, led-, bt, bt]
+- id: s5_lbtn
+  name: "Кнопка с подсветкой\n300-001"
+  pins: [led+, led-, bt, bt]
+harnesses:
+- id: 1
+  label: питание контроллера
+  wires:
+  - {a: 'psu:+12', b: 'power:+', color: red}
+  - {a: 'psu:gnd', b: 'power:-', color: black}
+- id: 2
+  label: динамик (s_0)
+  wires:
+  - {a: 'module:s0:spk+', b: 'device:s0_spk:+', color: red}
+  - {a: 'module:s0:spk-', b: 'device:s0_spk:-', color: blue}
+- id: 3
+  label: геркон базы (s_2)
+  wires:
+  - {a: 'module:s2:Bt', b: 'device:s2_btn:1', color: blue}
+  - {a: 'module:s2:gnd', b: 'device:s2_btn:2', color: black}
+- id: 4
+  label: кнопка с подсветкой (s_3)
+  wires:
+  - {a: 'module:s3:led+', b: 'device:s3_lbtn:led+', color: red}
+  - {a: 'module:s3:gnd', b: 'device:s3_lbtn:led-', color: black}
+  - {a: 'module:s3:bt', b: 'device:s3_lbtn:bt', color: blue}
+  - {a: 'module:s3:gnd.2', b: 'device:s3_lbtn:bt.2', color: black}
+- id: 5
+  label: кнопка с подсветкой (s_4)
+  wires:
+  - {a: 'module:s4:led+', b: 'device:s4_lbtn:led+', color: red}
+  - {a: 'module:s4:gnd', b: 'device:s4_lbtn:led-', color: black}
+  - {a: 'module:s4:bt', b: 'device:s4_lbtn:bt', color: blue}
+  - {a: 'module:s4:gnd.2', b: 'device:s4_lbtn:bt.2', color: black}
+- id: 6
+  label: кнопка с подсветкой (s_5)
+  wires:
+  - {a: 'module:s5:led+', b: 'device:s5_lbtn:led+', color: red}
+  - {a: 'module:s5:gnd', b: 'device:s5_lbtn:led-', color: black}
+  - {a: 'module:s5:bt', b: 'device:s5_lbtn:bt', color: blue}
+  - {a: 'module:s5:gnd.2', b: 'device:s5_lbtn:bt.2', color: black}

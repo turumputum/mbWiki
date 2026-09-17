@@ -1,0 +1,86 @@
+# Схема подключения модуля stepper.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов (endpoint):
+#   device:<id>:<pin>   - пин устройства слева
+#   module:<имя>:<pin>  - пин модуля контроллера
+#   power:<pin>         - пин модуля питания контроллера
+#   psu:<pin>           - пин блока питания под контроллером
+#
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: "stepper — пример подключения"
+
+controller:
+  name: ModuleBox
+  serial: ""              # пустой блок под серийный номер
+  server: false           # true -> блок «ПК / сервер» над контроллером
+  connectors: [Ethernet, USB]
+  modules:
+    - name: out_2ch
+      slot: s_0
+      pins: [Vbus, ch_1, ch_0, gnd]
+    - name: in_2ch
+      slot: s_1
+      pins: ["V+", ch_1, ch_0, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:                    # блок питания под контроллером (необязательно)
+    name: "Блок питания\nMW RS-25-12 201-007"
+    pins: ["+12", gnd]
+
+devices:
+  - id: psu48
+    name: "Блок питания 48В"
+    pins: ["+48", gnd]
+  - id: driver
+    name: "Драйвер шагового\nдвигателя"
+    pins: ["+48", gnd, "dir+", "dir-", "step+", "step-", A, B, C, D]
+  - id: motor
+    name: "Шаговый двигатель"
+    pins: [A, B, C, D]
+  - id: sens_up
+    name: "Датчик индуктивный\nВерхний"
+    pins: ["12V", sig, gnd]
+  - id: sens_dn
+    name: "Датчик индуктивный\nНижний"
+    pins: ["12V", sig, gnd]
+
+harnesses:
+  - id: 1
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}
+  - id: 2
+    label: "питание драйвера"
+    wires:
+      - {a: "device:psu48:+48", b: "device:driver:+48", color: red}
+      - {a: "device:psu48:gnd", b: "device:driver:gnd",  color: black}
+  - id: 3
+    label: "step / dir"
+    wires:
+      - {a: "module:out_2ch:gnd",   b: "device:driver:dir-",  color: black}
+      - {a: "module:out_2ch:gnd",   b: "device:driver:step-", color: black}
+      - {a: "module:out_2ch:ch_0", b: "device:driver:dir+",  color: yellow}
+      - {a: "module:out_2ch:ch_1", b: "device:driver:step+", color: green}
+  - id: 4
+    label: "обмотки двигателя"
+    wires:
+      - {a: "device:driver:A", b: "device:motor:A", color: red}
+      - {a: "device:driver:B", b: "device:motor:B", color: yellow}
+      - {a: "device:driver:C", b: "device:motor:C", color: green}
+      - {a: "device:driver:D", b: "device:motor:D", color: blue}
+  - id: 5
+    label: "верхний концевик"
+    wires:
+      - {a: "module:in_2ch:V+",   b: "device:sens_up:12V", color: red}
+      - {a: "module:in_2ch:ch_0", b: "device:sens_up:sig", color: green}
+      - {a: "module:in_2ch:gnd",  b: "device:sens_up:gnd", color: black}
+  - id: 6
+    label: "нижний концевик"
+    wires:
+      - {a: "module:in_2ch:V+",   b: "device:sens_dn:12V", color: red}
+      - {a: "module:in_2ch:ch_1", b: "device:sens_dn:sig", color: green}
+      - {a: "module:in_2ch:gnd",  b: "device:sens_dn:gnd", color: black}

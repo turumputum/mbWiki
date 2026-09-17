@@ -1,0 +1,53 @@
+# Схема подключения модуля in_2ch: оптический датчик на ch_0 (без перемычки),
+# сухой контакт на ch_1 (перемычка S1 в положении OC).
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Перемычка на канале нужна только датчикам без подтяжки и сухим контактам:
+# OC — NPN / сухой контакт, OE — PNP. S2 -> ch_0, S1 -> ch_1.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: in_2ch
+      slot: s_0
+      pins: ["V+", ch_1, ch_0, gnd]
+      pin_badges: {ch_1: [OC]}
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: s0
+    name: "Оптический датчик\nG18-3A30NA"
+    badges: [NPN]
+    pins: ["+V", sig, "0V"]
+  - id: sw
+    name: "Концевой выключатель\nсухой контакт"
+    pins: ["1", "2"]
+
+harnesses:
+  - id: 1
+    label: "датчик — канал 0"
+    wires:
+      - {a: "module:in_2ch:V+",   b: "device:s0:+V",  color: brown}
+      - {a: "module:in_2ch:ch_0", b: "device:s0:sig", color: black}
+      - {a: "module:in_2ch:gnd",  b: "device:s0:0V",  color: blue}
+  - id: 2
+    label: "сухой контакт — канал 1"
+    wires:
+      - {a: "module:in_2ch:ch_1", b: "device:sw:1", color: blue}
+      - {a: "module:in_2ch:gnd",  b: "device:sw:2", color: black}
+  - id: 3
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

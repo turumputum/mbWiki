@@ -1,0 +1,24 @@
+{
+  "deviceName": "mbd",
+  "ip": "10.10.3.214",
+  "firmware": null,
+  "timestamp": "2026-09-10T18:36:59.961501",
+  "status": "ok",
+  "files": [
+    {
+      "path": "config.ini",
+      "size": 1134,
+      "ok": true
+    },
+    {
+      "path": "System Volume Information/WPSettings.dat",
+      "size": 12,
+      "ok": true
+    },
+    {
+      "path": "feed.txt",
+      "size": 84,
+      "ok": true
+    }
+  ]
+}

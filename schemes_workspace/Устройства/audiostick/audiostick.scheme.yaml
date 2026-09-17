@@ -1,0 +1,57 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "<путь к этому файлу>" --pdf
+# Весь конвейер для папки контроллера (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "<папка с этим файлом>"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "<папка>/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: Аудиоэтикетка (200-001) — схема подключения
+controller:
+  name: audiostick
+  serial: ''
+  board: плата v4
+  notes: ["питание от USB", "адаптер 000-004"]
+  connectors: [USB]
+  modules:
+  - id: s0
+    name: soundMono
+    slot: s_0
+    pins: [spk+, spk-, gnd, gnd]
+    mode: mp3Player
+  - id: s1
+    name: SD_card
+    slot: s_1
+    pins: [microSD]
+  - id: s2
+    name: button_led
+    slot: s_2
+    pins: [led+, gnd, gnd, bt]
+  power_module:
+    name: Power
+    pins: [+, '-']
+devices:
+- id: s0_spk
+  name: "Динамик\n100-001"
+  pins: [+, '-']
+- id: s2_btn
+  name: "Магнитная база с герконом\n100-004"
+  pins: ['1', '2']
+harnesses:
+- id: 1
+  label: динамик (s_0)
+  wires:
+  - {a: 'module:s0:spk+', b: 'device:s0_spk:+', color: red}
+  - {a: 'module:s0:spk-', b: 'device:s0_spk:-', color: blue}
+- id: 2
+  label: геркон базы (s_2)
+  wires:
+  - {a: 'module:s2:bt', b: 'device:s2_btn:1', color: blue}
+  - {a: 'module:s2:gnd', b: 'device:s2_btn:2', color: black}

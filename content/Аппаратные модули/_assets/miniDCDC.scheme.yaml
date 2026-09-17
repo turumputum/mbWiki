@@ -1,0 +1,44 @@
+# Схема подключения аксессуара miniDC-DC (201-038): понижающий преобразователь
+# на слоте button_smartLed — Vbus 12 В, лента WS2812 на 5 В.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | attach:<модуль>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: button_smartLed
+      slot: s_0
+      pins: ["V+", sLed, Bt, gnd]
+      attachment:
+        name: "miniDC-DC\n12 В → 5 В"
+        pins: ["+5V", sLed, Bt, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: btn
+    name: "Кнопка с адресной подсветкой\n300-004"
+    pins: ["+V", DIN, Bt, gnd]
+
+harnesses:
+  - id: 1
+    label: "кнопка с подсветкой"
+    wires:
+      - {a: "attach:button_smartLed:+5V",  b: "device:btn:+V",  color: red}
+      - {a: "attach:button_smartLed:sLed", b: "device:btn:DIN", color: green}
+      - {a: "attach:button_smartLed:Bt",   b: "device:btn:Bt",  color: yellow}
+      - {a: "attach:button_smartLed:gnd",  b: "device:btn:gnd", color: black}
+  - id: 2
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

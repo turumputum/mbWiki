@@ -1,0 +1,30 @@
+# Схема подключения модуля soundMono.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: soundMono
+      slot: s_0
+      pins: ["spk+", "spk-", gnd, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: speaker
+    name: "Динамик\n100-001"
+    pins: ["+", "-"]
+
+harnesses:
+  - id: 1
+    label: "динамик"
+    wires:
+      - {a: "module:soundMono:spk+", b: "device:speaker:+", color: red}
+      - {a: "module:soundMono:spk-", b: "device:speaker:-", color: blue}

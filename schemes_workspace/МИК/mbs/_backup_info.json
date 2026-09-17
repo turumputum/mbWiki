@@ -1,0 +1,24 @@
+{
+  "deviceName": "mbs",
+  "ip": "10.10.3.213",
+  "firmware": null,
+  "timestamp": "2026-09-10T18:37:28.023842",
+  "status": "ok",
+  "files": [
+    {
+      "path": "System Volume Information/WPSettings.dat",
+      "size": 12,
+      "ok": true
+    },
+    {
+      "path": "config.ini",
+      "size": 1078,
+      "ok": true
+    },
+    {
+      "path": "feed.txt",
+      "size": 59,
+      "ok": true
+    }
+  ]
+}

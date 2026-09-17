@@ -1,0 +1,74 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "<путь к этому файлу>" --pdf
+# Весь конвейер для папки контроллера (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "<папка с этим файлом>"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "<папка>/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: Ретро телефон — схема подключения
+controller:
+  name: retroTelephone
+  serial: ''
+  board: плата v4
+  notes: ["питание от USB", "адаптер 000-004"]
+  connectors: [USB]
+  modules:
+  - id: s0
+    name: soundMono
+    slot: s_0
+    pins: [spk+, spk-, gnd, gnd]
+    mode: mp3Player
+  - id: s1
+    name: SD_card
+    slot: s_1
+    pins: [microSD]
+  - id: s2
+    name: button_led
+    slot: s_2
+    pins: [led+, gnd, gnd, bt]
+  - id: s3
+    name: in_2ch
+    slot: s_3
+    pins: [V+, ch_1, ch_0, gnd]
+    mode: dialer
+    pin_badges:
+      ch_0: [OC]
+      ch_1: [OC]
+  power_module:
+    name: Power
+    pins: [+, '-']
+devices:
+- id: s0_spk
+  name: "Динамик трубки"
+  pins: [+, '-']
+- id: s2_btn
+  name: "Рычаг трубки\nсухой контакт"
+  pins: ['1', '2']
+- id: s3_dial
+  name: "Дисковый номеронабиратель\nсухие контакты"
+  pins: [ena, pulse, gnd]
+harnesses:
+- id: 1
+  label: динамик (s_0)
+  wires:
+  - {a: 'module:s0:spk+', b: 'device:s0_spk:+', color: red}
+  - {a: 'module:s0:spk-', b: 'device:s0_spk:-', color: blue}
+- id: 2
+  label: рычаг трубки (s_2)
+  wires:
+  - {a: 'module:s2:bt', b: 'device:s2_btn:1', color: blue}
+  - {a: 'module:s2:gnd', b: 'device:s2_btn:2', color: black}
+- id: 3
+  label: номеронабиратель (s_3)
+  wires:
+  - {a: 'module:s3:ch_1', b: 'device:s3_dial:ena', color: green}
+  - {a: 'module:s3:ch_0', b: 'device:s3_dial:pulse', color: yellow}
+  - {a: 'module:s3:gnd', b: 'device:s3_dial:gnd', color: black}

@@ -1,0 +1,34 @@
+# Схема подключения модуля i2c: магнитный энкодер AS5600.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# V+ по умолчанию 5 В (перемычкой JP1 — Vbus). Одно устройство на модуль.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: i2c
+      slot: s_0
+      pins: ["V+", sda, scl, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: enc
+    name: "Магнитный энкодер\nAS5600"
+    pins: ["+V", sda, scl, gnd]
+
+harnesses:
+  - id: 1
+    label: "энкодер"
+    wires:
+      - {a: "module:i2c:V+",  b: "device:enc:+V",  color: red}
+      - {a: "module:i2c:sda", b: "device:enc:sda", color: blue}
+      - {a: "module:i2c:scl", b: "device:enc:scl", color: yellow}
+      - {a: "module:i2c:gnd", b: "device:enc:gnd", color: black}

@@ -1,0 +1,4928 @@
+{
+ "pwmLeds": {
+  "mode": "pwmLeds",
+  "slots": "0-5",
+  "trigger": "deviceName/pwmLeds_<n>",
+  "action": "deviceName/pwmLeds_<n>",
+  "description": "\n    Модуль 3-и ШИМ канала. Частота 5 kHz.\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Если флаг поднят - модуль стартует в выключенном состоянии, до прихода action/enable 1\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse",
+    "description": "Инверсия значений\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальная яркость\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальная яркость\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 40,
+    "valueMax": 100,
+    "valueMin": 1
+   },
+   {
+    "name": "fadeTime",
+    "description": "Время затухания свечения в миллисекундах\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 100,
+    "valueMax": 10000,
+    "valueMin": 10
+   },
+   {
+    "name": "RGBcolor",
+    "description": "Начальный цвет. Задаётся десятичными значениями R G B через пробел. 0 0 255 - синий по умолчанию.\n",
+    "valueType": "color",
+    "valueDefault": "0 0 255"
+   },
+   {
+    "name": "ledMode",
+    "description": "Задаёт режим анимации: default - постоянное свечение целевым цветом. flash   - мигание между min и max яркостью. rainbow - циклический перебор оттенков HSV\n",
+    "valueType": "enum",
+    "values": [
+     "default",
+     "flash",
+     "rainbow"
+    ]
+   }
+  ],
+  "reports": [
+   {
+    "description": "Состояние модуля - активен (1) или спит (0)",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить-выключить модуль. Значение 0-1. По умолчанию 1. Флаг disableOnStart выключает модуль при старте.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setRGB",
+    "description": "Установить новый целевой цвет. Цвет задаётся десятичными значениями R G B через пробел. Пример, 255 0 0 - красный.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int ",
+     "int ",
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMode",
+    "description": "Установить новый режим анимации цветов. default - постоянное свечение целевым цветом. flash   - мигание между min и max яркостью. rainbow - циклический перебор оттенков HSV \n",
+    "parametersType": "enum",
+    "parameters": [
+     "default",
+     "flash",
+     "rainbow"
+    ]
+   },
+   {
+    "command": "action/setIncrement",
+    "description": "Установить новое значение приращения. Влияет на скорость анимации и фэйдов. Значение 1-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMaxBright",
+    "description": "Установить максимальное значение яркости для всех каналов. Значение 1-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_0/setBright",
+    "description": "Установить значение яркости для ch_0. Значение 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_1/setBright",
+    "description": "Установить значение яркости для ch_1. Значение 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_2/setBright",
+    "description": "Установить значение яркости для ch_2. Значение 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMinBright",
+    "description": "Установить минимальное значение яркости. Значение 0-254.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setFadeTime",
+    "description": "Установить время затухания свечения. Значение 100-10000 мС.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_3n_MOSFET.h"
+ },
+ "adc1": {
+  "mode": "adc1",
+  "slots": "0-5",
+  "description": "\n    Модуль реализует поддержку первого ADC\n",
+  "options": [
+   {
+    "name": "floatOutput",
+    "description": "Флаг определяет формат воводящего значения, \n\t\tесли указан - будет выводиться значение с плавающей точкой,\n\t\tиначе - целочисленное\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "maxVal",
+    "description": "Определяет верхний порог значений",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 4095,
+    "valueMax": 4095,
+    "valueMin": 0
+   },
+   {
+    "name": "minVal",
+    "description": "Определяет нижний порог значений",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4095,
+    "valueMin": 0
+   },
+   {
+    "name": "inverse",
+    "description": "Флаг задаёт инвертирование значений",
+    "valueType": "flag"
+   },
+   {
+    "name": "filterK",
+    "description": "Коэфициент фильтрации",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "deadBand",
+    "description": "Фильтрация дребезга - определяет порог срабатывания",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4095,
+    "valueMin": 1
+   },
+   {
+    "name": "periodic",
+    "description": "Задаёт периодичночть отсчётов в миллисекундах",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4095,
+    "valueMin": 0
+   },
+   {
+    "name": "dividerMode",
+    "description": "Задаёт режим делителя",
+    "valueType": "enum",
+    "values": [
+     "5V",
+     "3V3",
+     "10V"
+    ]
+   },
+   {
+    "name": "threshold",
+    "description": "Задаёт пороговое значение - при превышении рапортует 1, иначе 0\n\t   Если задан - режим float игнорируется\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -1,
+    "valueMax": 4095,
+    "valueMin": -1
+   },
+   {
+    "name": "thresholdHysteresis",
+    "description": "Ширина зоны гистерезиса порога\n\t   Для перехода в 1 значение должно превысить threshold + hysteresis/2\n\t   Для перехода в 0 значение должно опуститься ниже threshold - hysteresis/2\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 2048,
+    "valueMin": 0
+   },
+   {
+    "name": "thresholdRiseLag",
+    "description": "Задержка подтверждения перехода в состояние 1 (мс)\n\t   Если за это время уровень не удержался - переход игнорируется\n\t",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "thresholdFallLag",
+    "description": "Задержка подтверждения перехода в состояние 0 (мс)\n\t   Если за это время уровень не удержался - переход игнорируется\n\t",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Возвращает текущее значение канала ввиде числа с плавающей точкой, выражающее отношение к заданной шкале\n\t",
+    "valueType": "ratio",
+    "unit": "unit",
+    "topic": "event/ratio"
+   },
+   {
+    "description": "Возвращает текущее сырое целочисленное значение канала\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/rawVal"
+   },
+   {
+    "description": "Рапортует 0/1 при пороговом режиме\n\t",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/threshold"
+   }
+  ],
+  "commands": [],
+  "_file": "gen_adc1.h"
+ },
+ "tenzoButton": {
+  "mode": "tenzoButton",
+  "slots": "0-5",
+  "trigger": "deviceName/tenzoButton_<n>",
+  "description": "\n    Тензо-кнопка - нажатие определяется по силе на тензодатчике через ADC\n    ",
+  "options": [
+   {
+    "name": "threshold",
+    "description": "Порог срабатывания нажатия, По умолчанию 100\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 100,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "inertia",
+    "description": "Инерция - больше значение, медленнее реакция, По умолчанию 50\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 50,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "oversample",
+    "description": "Усреднение выборок ADC, По умолчанию 8\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 8,
+    "valueMax": 64,
+    "valueMin": 1
+   },
+   {
+    "name": "boolean",
+    "description": "Флаг - слать 1-0 вместо величины силы\n",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Сила нажатия, 0 при отпускании\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   }
+  ],
+  "commands": [],
+  "_file": "gen_tenzo_button.h"
+ },
+ "audioLAN": {
+  "mode": "audioLAN",
+  "slots": "0-0",
+  "trigger": "deviceName/audioStream_<n>",
+  "action": "deviceName/audioStream_<n>",
+  "description": "Звук по сети - RTP поток без сжатия в I2S, unicast или multicast, задержка порядка 70 мс\n",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "volume",
+    "description": "Громкость 0-100, По умолчанию 100\n\t",
+    "valueType": "int",
+    "unit": "percent",
+    "valueDefault": 100,
+    "valueMax": 100,
+    "valueMin": 0
+   },
+   {
+    "name": "multicastAddress",
+    "description": "Multicast адрес IPv4 - если задан режим multicast иначе unicast, По умолчанию unicast\n\t",
+    "valueType": "string",
+    "valueDefault": "239.0.7.0"
+   },
+   {
+    "name": "port",
+    "description": "Порт приёма потока, По умолчанию 7777\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 7777,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "sampleRate",
+    "description": "Частота дискретизации Гц, По умолчанию 48000\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 48000,
+    "valueMax": 96000,
+    "valueMin": 8000
+   },
+   {
+    "name": "bitsPerSample",
+    "description": "Бит на отсчёт, По умолчанию 16\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 16,
+    "valueMax": 32,
+    "valueMin": 8
+   },
+   {
+    "name": "bufSize",
+    "description": "Размер jitter-буфера мс, По умолчанию 40\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 40,
+    "valueMax": 200,
+    "valueMin": 20
+   }
+  ],
+  "reports": [
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   },
+   {
+    "description": "Текущая громкость\n\t",
+    "valueType": "int",
+    "unit": "percent",
+    "topic": "event/volume"
+   },
+   {
+    "description": "Текущий адрес потока\n\t",
+    "valueType": "string",
+    "unit": "string",
+    "topic": "event/address"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/setVolume",
+    "description": "Установить громкость 0-100\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMulticastAddress",
+    "description": "Сменить multicast адрес на лету - IPv4 или 0 для unicast\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_audioLAN.h"
+ },
+ "mp3Player": {
+  "mode": "mp3Player",
+  "slots": "0-0",
+  "trigger": "deviceName/player_<n>",
+  "action": "deviceName/player_<n>",
+  "description": "mp3 проигрыватель\n   ",
+  "options": [
+   {
+    "name": "volume",
+    "description": "Громкость 0-100, По умолчанию 70\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 70,
+    "valueMax": 100,
+    "valueMin": 0
+   },
+   {
+    "name": "speed",
+    "description": "Скорость воспроизведения. Float 0.1-3.0, По умолчанию 1.09\n\t",
+    "valueType": "float",
+    "valueDefault": 1.09,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "tone",
+    "description": "Сдвиг тональности. Float 0.1-3.0, По умолчанию 1.0\n\t",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "eqLow",
+    "description": "Нижняя граница эквалайзера. Int -20..0, По умолчанию -13\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -13,
+    "valueMax": 0,
+    "valueMin": -20
+   },
+   {
+    "name": "eqMid",
+    "description": "Средняя граница эквалайзера. Int -20..0, По умолчанию -13\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -13,
+    "valueMax": 0,
+    "valueMin": -20
+   },
+   {
+    "name": "eqHigh",
+    "description": "Верхняя граница эквалайзера. Int -20..0, По умолчанию -13\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -13,
+    "valueMax": 0,
+    "valueMin": -20
+   },
+   {
+    "name": "attenuation",
+    "description": "Период затухания громкости в мс (0 - выключено)\n\t   Если во время затухания приходит play с текущим треком - продолжаем играть\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "playDelay",
+    "description": "Пауза перед проигрыванием в мс. Int 0..4096, По умолчанию 0\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "playToEnd",
+    "description": "Проигрывать до конца. Флаг.\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n\t",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Номер трека по завершении воспроизведения.\n\t",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/endOfTrack"
+   },
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/play",
+    "description": "Проиграть трек. Абсолютное значение или инкрементально(+-N). Без параметра - текущий трек.\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/stop",
+    "description": "Остановить воспроизведение. \n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/shift",
+    "description": "Переключить трек.  Абсолютное значение или инкрементально(+-N).\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/setVolume",
+    "description": "Установить громкость 0-100\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_audioPlayer.h"
+ },
+ "button_led": {
+  "mode": "button_led",
+  "slots": "0-5",
+  "trigger": "deviceName/button_<n>",
+  "action": "deviceName/led_<n>",
+  "description": "\n    Модуль кнопка с обычным светодиодом\n    ",
+  "options": [
+   {
+    "name": "buttonInverse",
+    "description": "Флаг определяет инверсию кнопки\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonDebounceGap",
+    "description": "Глубина фильтра от дребезга контактов в мс. По умолчанию 10, 1-4096\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "longPressTime",
+    "description": "Продолжительность длинного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "doubleClickTime",
+    "description": "Длительность промежутка между нажатиями для регистрации двойного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "eventFilter",
+    "description": "Подавляет короткое событие press, когда сработало длинное или двойное нажатие\n       Выключен (0, по умолчанию) - короткие события шлются всегда\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonRefreshRate",
+    "description": "Период обновления потока кнопки в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "hz",
+    "valueDefault": 40,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "ledInverse",
+    "description": "Флаг определяет инверсию светодиода\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальное свечение. По умолчанию 255. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "ledRefreshRate",
+    "description": "Период обновления состояния светодиода в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 40,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "fadeTime",
+    "description": "Время затухания свечения в мс, по умолчанию 100 мс\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 100,
+    "valueMax": 10000,
+    "valueMin": 10
+   },
+   {
+    "name": "ledMode",
+    "description": "Задаёт режим анимации. По умолчанию 'none' - нет анимации, 'flash' - моргание. \n",
+    "valueType": "enum",
+    "values": [
+     "none",
+     "flash"
+    ]
+   },
+   {
+    "name": "ledDefaultState",
+    "description": "Состояние при запуске. По умолчанию 0 (выключено). \n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при изменении состояния кнопки. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/press"
+   },
+   {
+    "description": "Рапортует при регистрации длинного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/longPress"
+   },
+   {
+    "description": "Рапортует при регистрации двойного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/doubleClick"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/toggleLedState",
+    "description": "Команда меняет текущее состояние светодиода на противоположное. Без параметров.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setMinBright",
+    "description": "Установить минимальное значение яркости. 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMaxBright",
+    "description": "Установить максимальное значение яркости. 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setFadeTime",
+    "description": "Установить время переходного процесса при изменении яркомсти в мс. 10-10000.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить или выключить модуль. 0-1.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_button_led.h"
+ },
+ "button_ledBar": {
+  "mode": "button_ledBar",
+  "slots": "0-5",
+  "trigger": "deviceName/button_<n>",
+  "action": "deviceName/led_<n>",
+  "description": "\n    Модуль кнопка со шкалой заполнения\n    ",
+  "options": [
+   {
+    "name": "buttonInverse",
+    "description": "Флаг определяет инверсию кнопки\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonDebounceGap",
+    "description": "Глубина фильтра от дребезга контактов в мс. По умолчанию 10, 1-4096\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "longPressTime",
+    "description": "Продолжительность длинного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "doubleClickTime",
+    "description": "Длительность промежутка между нажатиями для регистрации двойного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "eventFilter",
+    "description": "Подавляет короткое событие press, когда сработало длинное или двойное нажатие\n       Выключен (0, по умолчанию) - короткие события шлются всегда\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления потока кнопки в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 40,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfLed",
+    "description": "Количество светодиодов в ленте. По умолчанию 24. 1-1024.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 24,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "periodicUpdate",
+    "description": "Флаг принудительной отправки буфера каждый цикл\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "increment",
+    "description": "Величина приращения яркости за цикл. По умолчанию 255. 1-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальное свечение. По умолчанию 255. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 4095,
+    "valueMin": 0
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4095,
+    "valueMin": 0
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления состояния светодиода в мс, по умолчанию 30 Гц\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 1000,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfPos",
+    "description": "Количество позиций светового эффекта. По умолчанию равно числу светодиодов. 1-4096.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "ledDefaultState",
+    "description": "Состояние при запуске. По умолчанию 0 (выключено).\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "dirInverse",
+    "description": "Инверсия направления эффекта. Без флага заполнение идёт от 0 к numOfLed, с флагом - от конца к началу\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "offset",
+    "description": "Смещение светового эффекта. По умолчанию 0.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "RGBcolor",
+    "description": "Начальный цвет в формате R G B. По умолчанию 0 0 255 (синий).\n",
+    "valueType": "color",
+    "valueDefault": "0 0 255"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при изменении состояния кнопки. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/press"
+   },
+   {
+    "description": "Рапортует при регистрации длинного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/longPress"
+   },
+   {
+    "description": "Рапортует при регистрации двойного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/doubleClick"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/toggleLedState",
+    "description": "Команда меняет текущее состояние светодиода на противоположное. Без параметров.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setRGB",
+    "description": "Команда задаёт цвет подсветки. Три параметра R G B 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int ",
+     "int ",
+     "int "
+    ]
+   },
+   {
+    "command": "action/setPos",
+    "description": "Команда задаёт положение светового эффекта. Один параметр - номер позиции.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_button_ledBar.h"
+ },
+ "button_ledRing": {
+  "mode": "button_ledRing",
+  "slots": "0-5",
+  "trigger": "deviceName/button_<n>",
+  "action": "deviceName/led_<n>",
+  "description": "\n    Модуль кнопка со светодиодным кольцом\n    ",
+  "options": [
+   {
+    "name": "buttonInverse",
+    "description": "Флаг определяет инверсию кнопки\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonDebounceGap",
+    "description": "Глубина фильтра от дребезга контактов в мс. По умолчанию 10, 1-4096\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "longPressTime",
+    "description": "Продолжительность длинного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "doubleClickTime",
+    "description": "Длительность промежутка между нажатиями для регистрации двойного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "eventFilter",
+    "description": "Подавляет короткое событие press, когда сработало длинное или двойное нажатие\n       Выключен (0, по умолчанию) - короткие события шлются всегда\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления потока кнопки в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "hz",
+    "valueDefault": 40,
+    "valueMax": 100,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfLed",
+    "description": "Количество светодиодов в кольце. По умолчанию 24. 1-1024.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 24,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "periodicUpdate",
+    "description": "Флаг принудительной отправки буфера каждый цикл\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "increment",
+    "description": "Величина приращения яркости за цикл - скорость анимации. По умолчанию 255. 1-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальное свечение. По умолчанию 255. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "refreshRate",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 30,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfPos",
+    "description": "Количество положений светового эффекта. По умолчанию равно числу светодиодов. 1-4096.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "effectLen",
+    "description": "Длина светового эффекта. По умолчанию четверть кольца. 1-4096.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "dirInverse",
+    "description": "Инверсия направления эффекта\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "dirInverse",
+    "description": "Инверсия направления эффекта\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "ledDefaultState",
+    "description": "Состояние при запуске. По умолчанию 0 (выключено).\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "offset",
+    "description": "Смещение светового эффекта. По умолчанию 0.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "RGBcolor",
+    "description": "Начальный цвет в формате R G B. По умолчанию 0 0 255 (синий).\n",
+    "valueType": "color",
+    "valueDefault": "0 0 255"
+   },
+   {
+    "name": "ledMode",
+    "description": "Задаёт режим анимации \n",
+    "valueType": "enum",
+    "values": [
+     "default",
+     "run"
+    ]
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при изменении состояния кнопки. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/press"
+   },
+   {
+    "description": "Рапортует при регистрации длинного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/longPress"
+   },
+   {
+    "description": "Рапортует при регистрации двойного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/doubleClick"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/toggleLedState",
+    "description": "Команда меняет текущее состояние светодиода на противоположное. Без параметров.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setRGB",
+    "description": "Команда задаёт цвет подсветки. Три параметра RGB '0 0 255'.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int ",
+     "int ",
+     "int "
+    ]
+   },
+   {
+    "command": "action/setPos",
+    "description": "Команда задаёт положение светового эффекта - используется при подсветке спиннера. Один параметр - номер позиции.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMode",
+    "description": "Установить режим анимации цветов. default(по умолчанию), run.\n",
+    "parametersType": "enum",
+    "parameters": [
+     "default",
+     "run"
+    ]
+   }
+  ],
+  "_file": "gen_button_ledRing.h"
+ },
+ "button_runFire": {
+  "mode": "button_runFire",
+  "slots": "0-5",
+  "trigger": "deviceName/button_<n>",
+  "action": "deviceName/led_<n>",
+  "description": "\n    Модуль кнопка с бегущим световым эффектом\n    ",
+  "options": [
+   {
+    "name": "buttonInverse",
+    "description": "Флаг определяет инверсию кнопки\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonDebounceGap",
+    "description": "Глубина фильтра от дребезга контактов в мс. По умолчанию 10, 1-4096\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "longPressTime",
+    "description": "Продолжительность длинного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "doubleClickTime",
+    "description": "Длительность промежутка между нажатиями для регистрации двойного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "eventFilter",
+    "description": "Подавляет короткое событие press, когда сработало длинное или двойное нажатие\n       Выключен (0, по умолчанию) - короткие события шлются всегда\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления потока кнопки в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "hz",
+    "valueDefault": 40,
+    "valueMax": 100,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfLed",
+    "description": "Количество светодиодов в ленте. По умолчанию 24. 1-1024.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 24,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "periodicUpdate",
+    "description": "Флаг принудительной отправки буфера каждый цикл\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальное свечение. По умолчанию 255. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "increment",
+    "description": "Величина приращения яркости за цикл - скорость плавного затухания. По умолчанию 5. 1-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 5,
+    "valueMax": 255,
+    "valueMin": 1
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления состояния светодиода в мс, по умолчанию 30 Гц\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 30,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "ledDefaultState",
+    "description": "Состояние при запуске. По умолчанию 0 (выключено).\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "ledInverse",
+    "description": "Инверсия направления эффекта. Без флага движение идёт от 0 к numOfLed, с флагом - от конца к началу\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "ledsPerPixel",
+    "description": "Количество светодиодов в одном логическом пикселе - один расчёт цвета применяется к группе. По умолчанию 1. 1-256.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 1,
+    "valueMax": 256,
+    "valueMin": 1
+   },
+   {
+    "name": "effectLen",
+    "description": "Длина светового эффекта для sin, sinAbs - число пикселей в одном периоде синусоиды. По умолчанию четверть ленты. 1-4096.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "offset",
+    "description": "Смещение светового эффекта. По умолчанию 0.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "RGBcolor",
+    "description": "Начальный цвет в формате R G B. По умолчанию 0 0 255 (синий).\n",
+    "valueType": "color",
+    "valueDefault": "0 0 255"
+   },
+   {
+    "name": "animMode",
+    "description": "Задаёт режим анимации. По умолчанию 'rainbow'\n    - rainbow — бегущая радуга, каждый пиксель имеет свой оттенок HSV\n    - sin — синусоидальная яркость, отрицательная часть = minBright\n    - sinAbs — синусоидальная яркость с отражением отрицательной части\n",
+    "valueType": "enum",
+    "values": [
+     "rainbow",
+     "sin",
+     "sinAbs"
+    ]
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при изменении состояния кнопки. 0-1.\n",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/press"
+   },
+   {
+    "description": "Рапортует при регистрации длинного нажатия. 0-1.\n",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/longPress"
+   },
+   {
+    "description": "Рапортует при регистрации двойного нажатия. 0-1.\n",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/doubleClick"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/toggleLedState",
+    "description": "Команда меняет текущее состояние светодиода на противоположное. Без параметров.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setRGB",
+    "description": "Команда задаёт цвет подсветки. Три параметра R G B 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int ",
+     "int ",
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_button_runFire.h"
+ },
+ "button_smartLed": {
+  "mode": "button_smartLed",
+  "slots": "0-5",
+  "trigger": "deviceName/button_<n>",
+  "action": "deviceName/led_<n>",
+  "description": "\n    Модуль кнопка со смарт-светодиодами\n    ",
+  "options": [
+   {
+    "name": "buttonInverse",
+    "description": "Флаг определяет инверсию кнопки\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonDebounceGap",
+    "description": "Глубина фильтра от дребезга контактов в мс. По умолчанию 10, 1-4096\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "longPressTime",
+    "description": "Продолжительность длинного нажатия. По умолчанию 0. 1-65535 мс.\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "doubleClickTime",
+    "description": "Длительность промежутка между нажатиями для регистрации двойного нажатия. По умолчанию 0. 1-65535 мс.\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "eventFilter",
+    "description": "Подавляет короткое событие press, когда сработало длинное или двойное нажатие\n       Выключен (0, по умолчанию) - короткие события шлются всегда\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления потока кнопки в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 40,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfLed",
+    "description": "Количество светодиодов в ленте. По умолчанию 24. 1-1024.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 24,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "periodicUpdate",
+    "description": "Флаг принудительной отправки буфера каждый цикл\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "ledInverse",
+    "description": "Флаг определяет инверсию светодиода\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "ledEnableOnStart",
+    "description": "Состояние при запуске. По умолчанию 0 (выключено).\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальное свечение. По умолчанию 255. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления состояния светодиода в мс, по умолчанию 30 Гц\n",
+    "valueType": "int",
+    "unit": "hz",
+    "valueDefault": 1000,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "fadeTime",
+    "description": "Время затухания свечения в мс, по умолчанию 1000 мс\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 1000,
+    "valueMax": 10000,
+    "valueMin": 10
+   },
+   {
+    "name": "RGBcolor",
+    "description": "Начальный цвет в формате RGB. По умолчанию '0 0 255' (синий).\n",
+    "valueType": "color",
+    "valueDefault": "0 0 255"
+   },
+   {
+    "name": "ledMode",
+    "description": "Задаёт режим анимации. По умолчанию 'default'. Значения - default, flash, rainbow.\n",
+    "valueType": "enum",
+    "values": [
+     "default",
+     "flash",
+     "rainbow"
+    ]
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при изменении состояния кнопки. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/press"
+   },
+   {
+    "description": "Рапортует при регистрации длинного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/longPress"
+   },
+   {
+    "description": "Рапортует при регистрации двойного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/doubleClick"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/toggleLedState",
+    "description": "Команда меняет текущее состояние светодиода на противоположное. Без параметров.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setRGB",
+    "description": "Команда задаёт цвет подсветки. Три параметра RGB '0 0 255'.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int ",
+     "int ",
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMode",
+    "description": "Установить режим анимации цветов. Значения - default, flash, rainbow.\n",
+    "parametersType": "enum",
+    "parameters": [
+     "default",
+     "flash",
+     "rainbow"
+    ]
+   },
+   {
+    "command": "action/setFadeTime",
+    "description": "Установить время переходного процесса при изменении яркомсти в мс. 10-10000.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_button_smartLed.h"
+ },
+ "button_swiperLed": {
+  "mode": "button_swiperLed",
+  "slots": "0-5",
+  "trigger": "deviceName/button_<n>",
+  "action": "deviceName/led_<n>",
+  "description": "\n    Модуль кнопка со свайп-подсветкой\n    ",
+  "options": [
+   {
+    "name": "buttonInverse",
+    "description": "Флаг определяет инверсию кнопки\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "buttonDebounceGap",
+    "description": "Глубина фильтра от дребезга контактов в мс. По умолчанию 10, 1-4096\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "longPressTime",
+    "description": "Продолжительность длинного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "doubleClickTime",
+    "description": "Длительность промежутка между нажатиями для регистрации двойного нажатия. По умолчанию 0, функция не активна\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 65535,
+    "valueMin": 0
+   },
+   {
+    "name": "eventFilter",
+    "description": "Подавляет короткое событие press, когда сработало длинное или двойное нажатие\n       Выключен (0, по умолчанию) - короткие события шлются всегда\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления потока кнопки в мс, по умолчанию 25 (40 Гц)\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 40,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "numOfLed",
+    "description": "Количество светодиодов в кольце. По умолчанию 16. 1-1024.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 16,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "maxBright",
+    "description": "Максимальное свечение. По умолчанию 255. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "minBright",
+    "description": "Минимальное свечение. По умолчанию 0. 0-255.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 255,
+    "valueMin": 0
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период обновления состояния светодиода в мс, по умолчанию 25 Гц\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 25,
+    "valueMax": 1024,
+    "valueMin": 1
+   },
+   {
+    "name": "RGBcolor",
+    "description": "Начальный цвет в формате R G B. По умолчанию 0 0 255 (синий).\n",
+    "valueType": "color",
+    "valueDefault": "0 0 255"
+   },
+   {
+    "name": "ledDefaultState",
+    "description": "Состояние при запуске. По умолчанию 0 (выключено).\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "offset",
+    "description": "Смещение светового эффекта. По умолчанию 0.\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при изменении состояния кнопки. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/press"
+   },
+   {
+    "description": "Рапортует при регистрации длинного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/longPress"
+   },
+   {
+    "description": "Рапортует при регистрации двойного нажатия. 0-1.\n\t",
+    "valueType": "int",
+    "unit": "unit",
+    "topic": "event/doubleClick"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/toggleLedState",
+    "description": "Команда меняет текущее состояние светодиода на противоположное. Без параметров.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setRGB",
+    "description": "Команда задаёт цвет подсветки. Три параметра R G B 0-255.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int ",
+     "int ",
+     "int "
+    ]
+   },
+   {
+    "command": "action/swipe",
+    "description": "Команда запускает световой эффект свайпа. Значения - up, down, left, right.\n",
+    "parametersType": "enum",
+    "parameters": [
+     "up",
+     "down",
+     "left",
+     "right"
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль.",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_button_swiperLed.h"
+ },
+ "buttonMatrix": {
+  "mode": "buttonMatrix",
+  "slots": "0-5",
+  "trigger": "deviceName/buttonMatrix_<n>",
+  "description": "Матрица кнопок - сканирует сетку выходов outSlots на входы inSlots\n   и репортит символ нажатой клетки из таблицы mapping\n",
+  "options": [
+   {
+    "name": "outSlots",
+    "description": "Слоты-выходы матрицы через пробел, По умолчанию текущий слот\n",
+    "valueType": "string",
+    "valueDefault": "0"
+   },
+   {
+    "name": "inSlots",
+    "description": "Слоты-входы матрицы через пробел, По умолчанию следующий слот\n",
+    "valueType": "string",
+    "valueDefault": "1"
+   },
+   {
+    "name": "mapping",
+    "description": "Символы клеток строкой без пробелов '123456789', длина outSlots*inSlots*9\n        По умолчанию клетки нумеруются a-z затем A-Z\n",
+    "valueType": "string",
+    "valueDefault": "123456789"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Символ нажатой клетки матрицы из таблицы mapping\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/key"
+   }
+  ],
+  "commands": [],
+  "_file": "gen_buttonMatrix.h"
+ },
+ "benewakeTOF": {
+  "mode": "benewakeTOF",
+  "slots": "0-5",
+  "trigger": "deviceName/distanceSens_<n>",
+  "action": "deviceName/distanceSens_<n>",
+  "description": "\n    Модуль датчика расстояния Benewake TOF через UART\n    Поддерживает измерение расстояния до 12м\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Стартовать в выключенном состоянии до action/enable 1",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadBand",
+    "description": "Мертвая зона - минимальное изменение значения для рапорта 1-4096, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение диапазона измерений 1-65536, По умолчанию 65536",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 65536,
+    "valueMax": 65536,
+    "valueMin": 1
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение диапазона измерений 0-65536, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 65536,
+    "valueMin": 0
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг порога в мс - новое состояние держится это время до рапорта, По умолчанию 10",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "threshold",
+    "description": "Порог бинарного выхода вкл/выкл, при 0 - аналоговый датчик 0-4096, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "cooldownTime",
+    "description": "Время cooldown после срабатывания порога мс 0-60000, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 60000,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент фильтра сглаживания 0-1, при 1 фильтр отключен, По умолчанию 1",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Текущее расстояние в мм",
+    "valueType": "int",
+    "unit": "mm",
+    "topic": "event/distance"
+   },
+   {
+    "description": "Текущее расстояние в формате float (от 0.0 до 1.0)",
+    "valueType": "ratio",
+    "unit": "ratio",
+    "topic": "event/ratio"
+   },
+   {
+    "description": "Состояние порогового датчика 0/1",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/threshold"
+   },
+   {
+    "description": "Состояние модуля - активен (1) или спит (0)",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_distanceSens_benewake.h"
+ },
+ "hlk2410": {
+  "mode": "hlk2410",
+  "slots": "0-5",
+  "trigger": "deviceName/distanceSens_<n>",
+  "action": "deviceName/distanceSens_<n>",
+  "description": "\n    Модуль радарного датчика HLK-LD2410 через UART\n    Поддерживает измерение расстояния до 800см\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Флаг - стартовать в выключенном состоянии до прихода action/enable 1",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadBand",
+    "description": "Мертвая зона - минимальное изменение значения для отправки рапорта, По умолчанию 10",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение диапазона измерений в см, По умолчанию 800",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 800,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение диапазона измерений в см, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг порога в мс - новое состояние держится это время до рапорта, По умолчанию 10",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "threshold",
+    "description": "Порог для бинарного выхода - при 0 работает как аналоговый датчик, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "cooldownTime",
+    "description": "Время cooldown после срабатывания порога в мс, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 60000,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент фильтра сглаживания от 0 до 1 - при 1 фильтр отключен, По умолчанию 1",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует текущее значение расстояния в см",
+    "valueType": "int",
+    "unit": "cm",
+    "topic": "event/distance"
+   },
+   {
+    "description": "Рапортует текущее значение расстояния в формате float от 0 до 1",
+    "valueType": "ratio",
+    "unit": "ratio",
+    "topic": "event/ratio"
+   },
+   {
+    "description": "Рапортует состояние порогового датчика 0/1",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/threshold"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_distanceSens_hlk2410.h"
+ },
+ "sr04m": {
+  "mode": "sr04m",
+  "slots": "0-5",
+  "trigger": "deviceName/distanceSens_<n>",
+  "action": "deviceName/distanceSens_<n>",
+  "description": "\n    Модуль ультразвукового датчика расстояния SR04M (UART режим)\n    Протокол: отправка 0x55 → ответ 4 байта [0xFF, DATA_H, DATA_L, SUM]\n    Расстояние в мм = (DATA_H << 8) | DATA_L\n    Контрольная сумма: (0xFF + DATA_H + DATA_L) & 0xFF\n    Скорость UART: 9600 бод\n    Поддерживает измерение расстояния до 4500мм (450см)\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Флаг - стартовать в выключенном состоянии до прихода action/enable 1",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadBand",
+    "description": "Мертвая зона - минимальное изменение значения для отправки рапорта, По умолчанию 10",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение диапазона измерений в мм, По умолчанию 4500",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 4500,
+    "valueMax": 4500,
+    "valueMin": 1
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение диапазона измерений в мм, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4500,
+    "valueMin": 0
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг порога в мс - новое состояние держится это время до рапорта, По умолчанию 10",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "threshold",
+    "description": "Порог для бинарного выхода - при значении 0 датчик аналоговый, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4500,
+    "valueMin": 0
+   },
+   {
+    "name": "cooldownTime",
+    "description": "Время cooldown после срабатывания порога в мс, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 60000,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент фильтра сглаживания от 0 до 1 - при значении 1 фильтр отключен, По умолчанию 1",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Текущее значение расстояния в мм",
+    "valueType": "int",
+    "unit": "mm",
+    "topic": "event/distance"
+   },
+   {
+    "description": "Текущее значение расстояния в формате float от 0 до 1",
+    "valueType": "ratio",
+    "unit": "ratio",
+    "topic": "event/ratio"
+   },
+   {
+    "description": "Состояние порогового датчика 0/1",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/threshold"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_distanceSens_sr04m.h"
+ },
+ "TOFxxxF": {
+  "mode": "TOFxxxF",
+  "slots": "0-5",
+  "trigger": "deviceName/distanceSens_<n>",
+  "action": "deviceName/distanceSens_<n>",
+  "description": "Модуль датчика расстояния TOFxxxF через UART\n    Модель TOF050F измеряет расстояния в миллиметрах до 500мм\n    Модель TOF200F измеряет расстояния в миллиметрах до 2000мм\n    Модель TOF400F измеряет расстояния в миллиметрах до 4000мм\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Флаг - стартовать выключенным до прихода action/enable 1",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadBand",
+    "description": "Мертвая зона - минимальное изменение значения для рапорта 1-4096, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение диапазона измерений 1-4096, По умолчанию 4096",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 4096,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение диапазона измерений 0-4095, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4095,
+    "valueMin": 0
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг порога в мс - новое состояние держится это время до рапорта, По умолчанию 10",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "threshold",
+    "description": "Порог бинарного выхода (0 - аналоговый режим) 0-65536, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 65536,
+    "valueMin": 0
+   },
+   {
+    "name": "cooldownTime",
+    "description": "Время cooldown после срабатывания порога 0-60000мс, По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 60000,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент фильтра сглаживания 0-1 (1 - фильтр выключен), По умолчанию 1",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Текущее расстояние в мм",
+    "valueType": "int",
+    "unit": "mm",
+    "topic": "event/distance"
+   },
+   {
+    "description": "Текущее расстояние в формате float (от 0 до 1)",
+    "valueType": "ratio",
+    "unit": "ratio",
+    "topic": "event/ratio"
+   },
+   {
+    "description": "Состояние порогового датчика 0/1",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/threshold"
+   },
+   {
+    "description": "Состояние модуля - активен (1) или спит (0)",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_distanceSens_tofxxxf_uart.h"
+ },
+ "dwin": {
+  "mode": "dwin",
+  "slots": "0-5",
+  "trigger": "deviceName/dwin_<n>",
+  "action": "deviceName/dwin_<n>",
+  "description": "Дисплей DWIN по UART - читает изменения регистров VP и шлёт их событиями event/VP_xxxx, принимает смену страницы\n",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/setPage",
+    "description": "Перейти на страницу экрана по номеру\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_dwin.h"
+ },
+ "encoderAS5600": {
+  "mode": "encoderAS5600",
+  "slots": "0-5",
+  "trigger": "deviceName/encoder_<n>",
+  "action": "deviceName/encoder_<n>",
+  "description": "\n    Абсолютный магнитный энкодер AS5600 по I2C - 12 бит, 4096 позиций на окружности\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Флаг - стартовать в выключенном состоянии до прихода action/enable 1",
+    "valueType": "flag"
+   },
+   {
+    "name": "absolute",
+    "description": "Флаг - абсолютный режим - По умолчанию инкрементальный",
+    "valueType": "flag"
+   },
+   {
+    "name": "floatOutput",
+    "description": "Флаг - вывод в формате float от 0 до 1 - По умолчанию целое",
+    "valueType": "flag"
+   },
+   {
+    "name": "dirInverse",
+    "description": "Флаг - инверсия направления счета",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadZone",
+    "description": "Зона нечувствительности в единицах сырого угла - По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "zeroShift",
+    "description": "Смещение нуля в единицах сырого угла - По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент фильтра скользящее среднее от 0 до 1 - 1 без фильтрации - По умолчанию 1",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "numOfPos",
+    "description": "Количество сегментов на окружности - По умолчанию 24",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 24,
+    "valueMax": 4095,
+    "valueMin": 2
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период опроса значений в Гц - По умолчанию 20, максимум 100",
+    "valueType": "int",
+    "unit": "fps",
+    "valueDefault": 20,
+    "valueMax": 100,
+    "valueMin": 1
+   }
+  ],
+  "reports": [
+   {
+    "description": "Текущее значение - абс позиция, инкр приращение или float по настройкам",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_encoder_as5600.h"
+ },
+ "encoderInc": {
+  "mode": "encoderInc",
+  "slots": "0-3",
+  "trigger": "deviceName/encoder_<n>",
+  "action": "deviceName/encoder_<n>",
+  "description": "\n    Инкрементальный энкодер (обычно оптический) на периферии PCNT\n    ESP32-S3 имеет всего 4 PCNT unit на encoderInc + tachometer + stepper\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Флаг - стартовать в выключенном состоянии до прихода action/enable 1",
+    "valueType": "flag"
+   },
+   {
+    "name": "absolute",
+    "description": "Флаг - абсолютный режим - По умолчанию инкрементальный",
+    "valueType": "flag"
+   },
+   {
+    "name": "dirInverse",
+    "description": "Флаг - инверсия направления счета",
+    "valueType": "flag"
+   },
+   {
+    "name": "linearCounter",
+    "description": "Флаг - линейный счетчик (стоп на краях) вместо зацикленного - По умолчанию циклический",
+    "valueType": "flag"
+   },
+   {
+    "name": "glitchFilter",
+    "description": "Аппаратный фильтр дребезга в наносекундах - По умолчанию 800",
+    "valueType": "int",
+    "unit": "ns",
+    "valueDefault": 800,
+    "valueMax": 4095,
+    "valueMin": 1
+   },
+   {
+    "name": "divider",
+    "description": "Делитель импульсов на один шаг позиции - По умолчанию 1",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 1
+   },
+   {
+    "name": "zeroShift",
+    "description": "Смещение нуля после делителя - По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение позиции - По умолчанию 0",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение позиции - По умолчанию 4096",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 4096,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "refreshRate",
+    "description": "Период опроса значений в Гц - По умолчанию 20, максимум 100",
+    "valueType": "int",
+    "unit": "fps",
+    "valueDefault": 20,
+    "valueMax": 100,
+    "valueMin": 1
+   }
+  ],
+  "reports": [
+   {
+    "description": "Текущее значение позиции (абс) или приращение (инкр)",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/reset",
+    "description": "Обнулить счетчик",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_encoder_inc.h"
+ },
+ "in_out": {
+  "mode": "in_out",
+  "slots": "0-5",
+  "trigger": "deviceName/in_<n>",
+  "action": "deviceName/out_<n>",
+  "description": "\n    Слот конфигурируется как цифровой вход/выход\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inInverse",
+    "description": "Инверсия входа\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inDebounceGap",
+    "description": "Антидребезг входа в мс, По умолчанию 10\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "outInverse",
+    "description": "Инверсия выхода\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "outDefaultState",
+    "description": "Состояние выхода при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Состояние входа 0-1\n\t",
+    "valueType": "int",
+    "unit": "state",
+    "topic": "event/val"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/setVal",
+    "description": "Установить выход 0-1\n\t",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/toggle",
+    "description": "Переключить выход\n\t",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/impulse",
+    "description": "Импульс на выходе - длительность в мс\n\t",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_in_out.h"
+ },
+ "in_2ch": {
+  "mode": "in_2ch",
+  "slots": "0-5",
+  "trigger": "deviceName/in_<n>",
+  "description": "\n    Модуль двухканальный вход с поддержкой логических операций\n    ",
+  "options": [
+   {
+    "name": "inverse_0",
+    "description": "Инверсия сигнала на канале 0\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse_1",
+    "description": "Инверсия сигнала на канале 1\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inDebounceGap",
+    "description": "Антидребезг в мс, По умолчанию 10\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "logic",
+    "description": "Логика каналов - independent or and\n",
+    "valueType": "enum",
+    "values": [
+     "independent",
+     "or",
+     "and"
+    ]
+   },
+   {
+    "name": "refreshPeriod",
+    "description": "Период опроса в мс, По умолчанию 100\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 100,
+    "valueMax": 60000,
+    "valueMin": 10
+   }
+  ],
+  "reports": [
+   {
+    "description": "Состояние канала 0, 0-1\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_0"
+   },
+   {
+    "description": "Состояние канала 1, 0-1\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_1"
+   },
+   {
+    "description": "Комбинированное состояние каналов OR-AND\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   }
+  ],
+  "commands": [],
+  "_file": "gen_inputs.h"
+ },
+ "in_3ch": {
+  "mode": "in_3ch",
+  "slots": "0-5",
+  "trigger": "deviceName/in_<n>",
+  "action": "deviceName/in_<n>",
+  "description": "\n    Модуль трехканальный вход с поддержкой логических операций\n    ",
+  "options": [
+   {
+    "name": "inverse_0",
+    "description": "Инверсия сигнала на канале 0\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse_1",
+    "description": "Инверсия сигнала на канале 1\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse_2",
+    "description": "Инверсия сигнала на канале 2\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inDebounceGap",
+    "description": "Антидребезг в мс, По умолчанию 10\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "logic",
+    "description": "Логика каналов - independent or and\n",
+    "valueType": "enum",
+    "values": [
+     "independent",
+     "or",
+     "and"
+    ]
+   },
+   {
+    "name": "refreshPeriod",
+    "description": "Период опроса в мс, По умолчанию 100\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 100,
+    "valueMax": 60000,
+    "valueMin": 10
+   }
+  ],
+  "reports": [
+   {
+    "description": "Состояние канала 0, 0-1\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_0"
+   },
+   {
+    "description": "Состояние канала 1, 0-1\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_1"
+   },
+   {
+    "description": "Состояние канала 2, 0-1\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_2"
+   },
+   {
+    "description": "Комбинированное состояние каналов OR-AND\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   }
+  ],
+  "commands": [],
+  "_file": "gen_inputs.h"
+ },
+ "out_2ch": {
+  "mode": "out_2ch",
+  "slots": "0-5",
+  "action": "deviceName/out_<n>",
+  "description": "\n    Слот конфигурируется как два цифровых выхода\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse_0",
+    "description": "Инверсия выхода канала 0, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "inverse_1",
+    "description": "Инверсия выхода канала 1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "defState_0",
+    "description": "Состояние канала 0 при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "defState_1",
+    "description": "Состояние канала 1 при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/ch_0",
+    "description": "Установить выход канала 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_1",
+    "description": "Установить выход канала 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_0/toggle",
+    "description": "Переключить выход канала\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/ch_1/toggle",
+    "description": "Переключить выход канала\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/ch_0/impulse",
+    "description": "Импульс на выходе канала - длительность в мс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_1/impulse",
+    "description": "Импульс на выходе канала - длительность в мс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_outputs.h"
+ },
+ "out_3ch": {
+  "mode": "out_3ch",
+  "slots": "0-5",
+  "action": "deviceName/out_<n>",
+  "description": "\n    Слот конфигурируется как три цифровых выхода\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse_0",
+    "description": "Инверсия выхода канала 0, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "inverse_1",
+    "description": "Инверсия выхода, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "inverse_2",
+    "description": "Инверсия выхода, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "defState_0",
+    "description": "Состояние при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "defState_1",
+    "description": "Состояние при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "defState_2",
+    "description": "Состояние при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_0",
+    "description": "Установить выход канала 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_1",
+    "description": "Установить выход канала 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_2",
+    "description": "Установить выход канала 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_0/toggle",
+    "description": "Переключить выход канала\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/ch_1/toggle",
+    "description": "Переключить выход канала\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/ch_2/toggle",
+    "description": "Переключить выход канала\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/ch_0/impulse",
+    "description": "Импульс на выходе канала - длительность в мс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_1/impulse",
+    "description": "Импульс на выходе канала - длительность в мс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/ch_2/impulse",
+    "description": "Импульс на выходе канала - длительность в мс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_outputs.h"
+ },
+ "relay": {
+  "mode": "relay",
+  "slots": "0-5",
+  "action": "deviceName/relay_<n>",
+  "description": "\n    Слот конфигурируется как одно реле на пине SLOTS_PIN_MAP[slot_num][1]\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "inverse",
+    "description": "Инверсия выхода, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "defState",
+    "description": "Состояние при старте 0-1, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "bool",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setVal",
+    "description": "Установить реле 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/toggle",
+    "description": "Переключить реле\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/impulse",
+    "description": "Импульс реле - длительность в мс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_outputs.h"
+ },
+ "tachometer": {
+  "mode": "tachometer",
+  "slots": "0-5",
+  "trigger": "deviceName/tachometer_<n>",
+  "action": "deviceName/tachometer_<n>",
+  "description": "\n    Тахометр - измеритель частоты входного сигнала через PCNT. По умолчанию Гц.\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Если флаг поднят - модуль стартует в выключенном состоянии,\n       до прихода action/enable 1 (Конституция §6)\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "front",
+    "description": "Активный фронт сигнала: rise (восходящий), fall (нисходящий), any (оба)\n",
+    "valueType": "enum",
+    "values": [
+     "rise",
+     "fall",
+     "any"
+    ]
+   },
+   {
+    "name": "divider",
+    "description": "Делитель - сколько импульсов приходится на один оборот, целое 1-65535\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 1,
+    "valueMax": 65535,
+    "valueMin": 1
+   },
+   {
+    "name": "timeQuant",
+    "description": "Квант времени: sec (частота в герцах) или min (обороты в минуту)\n",
+    "valueType": "enum",
+    "values": [
+     "sec",
+     "min"
+    ]
+   },
+   {
+    "name": "refreshRate",
+    "description": "Частота обновления в герцах - сколько раз в секунду пересчитываем частоту\n       и рапортуем при изменении. Окно подсчёта импульсов равно периоду 1/refreshRate\n",
+    "valueType": "int",
+    "unit": "Hz",
+    "valueDefault": 10,
+    "valueMax": 100,
+    "valueMin": 1
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг в миллисекундах - по умолчанию 0 (выключен)\n       Реализован аппаратным glitch-фильтром PCNT и зажимается к ~10 мкс\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "deadBand",
+    "description": "Минимальное изменение частоты для отправки рапорта - подавляет дрожание\n       По умолчанию 0 - рапортуем при любом изменении\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1000000,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент сглаживания от 0 до 1 - чем меньше тем сильнее сглаживание\n       При значении 1 фильтр выключен\n",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "threshold",
+    "description": "Пороговое значение частоты - если задано (больше 0), модуль дополнительно\n       рапортует threshold 1 когда частота выше порога и 0 когда ниже\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1000000,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует текущую частоту - целое значение 0-uint32\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Рапортует состояние порога 0/1 при заданной опции threshold\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/threshold"
+   },
+   {
+    "description": "Состояние модуля - активен (1) или спит (0). Retained",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6)",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_tachometer.h"
+ },
+ "rplidarS1": {
+  "mode": "rplidarS1",
+  "slots": "0-5",
+  "trigger": "deviceName/lidar_<n>",
+  "action": "deviceName/lidar_<n>",
+  "description": "\n    Лидар RPLIDAR S1 по UART - дистанция до ближайшего объекта в секторе углов\n    Дальность до 40 м, разрешение 360 градусов\n    pin[0]=TX pin[1]=RX pin[2]=LED\n    ",
+  "options": [
+   {
+    "name": "distMinVal",
+    "description": "Минимальная дистанция в мм - меньшее игнорируется, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "mm",
+    "valueDefault": 0,
+    "valueMax": 40000,
+    "valueMin": 0
+   },
+   {
+    "name": "distMaxVal",
+    "description": "Максимальная дистанция в мм - большее игнорируется, По умолчанию 40000\n",
+    "valueType": "int",
+    "unit": "mm",
+    "valueDefault": 40000,
+    "valueMax": 40000,
+    "valueMin": 0
+   },
+   {
+    "name": "angleMinVal",
+    "description": "Минимальный угол сектора в градусах, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "deg",
+    "valueDefault": 0,
+    "valueMax": 360,
+    "valueMin": 0
+   },
+   {
+    "name": "angleMaxVal",
+    "description": "Максимальный угол сектора в градусах, По умолчанию 360\n",
+    "valueType": "int",
+    "unit": "deg",
+    "valueDefault": 360,
+    "valueMax": 360,
+    "valueMin": 0
+   },
+   {
+    "name": "angleOffset",
+    "description": "Смещение нулевого угла в градусах, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "deg",
+    "valueDefault": 0,
+    "valueMax": 360,
+    "valueMin": 0
+   },
+   {
+    "name": "distThreshold",
+    "description": "Порог дистанции в мм для бинарного режима, больше 0 включает режим, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "mm",
+    "valueDefault": 0,
+    "valueMax": 40000,
+    "valueMin": 0
+   },
+   {
+    "name": "thresholdInverse",
+    "description": "Инверсия порогового выхода\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "thresholdHysteresis",
+    "description": "Гистерезис порога в мм - против дребезга у порога, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "mm",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "filterK",
+    "description": "Коэффициент сглаживания 0-1, при 1 фильтр выключен, По умолчанию 1\n",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "distanceReport",
+    "description": "Флаг - рапортовать только дистанцию без угла\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadBand",
+    "description": "Мертвая зона - мин изменение дистанции в мм для рапорта, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "mm",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг рапортов в мс, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 60000,
+    "valueMin": 0
+   },
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Расстояние до ближайшего объекта в мм\n",
+    "valueType": "int",
+    "unit": "mm",
+    "topic": "event/distance"
+   },
+   {
+    "description": "Угол ближайшего объекта в градусах\n",
+    "valueType": "int",
+    "unit": "deg",
+    "topic": "event/angle"
+   },
+   {
+    "description": "Состояние порога 0-1\n",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/threshold"
+   },
+   {
+    "description": "Текст ошибки подключения к лидару\n",
+    "valueType": "string",
+    "unit": "string",
+    "topic": "event/error"
+   },
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_lidars_rplidarS1.h"
+ },
+ "opusLAN": {
+  "mode": "opusLAN",
+  "slots": "0-0",
+  "trigger": "deviceName/audioStream_<n>",
+  "action": "deviceName/audioStream_<n>",
+  "description": "Звук по сети с кодеком Opus - RTP поток в I2S, unicast или multicast. Задержка порядка 100мс.\n",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "volume",
+    "description": "Громкость 0-100, По умолчанию 100\n\t",
+    "valueType": "int",
+    "unit": "percent",
+    "valueDefault": 100,
+    "valueMax": 100,
+    "valueMin": 0
+   },
+   {
+    "name": "multicastAddress",
+    "description": "Multicast адрес IPv4 - если задан режим multicast иначе unicast, По умолчанию unicast\n\t",
+    "valueType": "string",
+    "valueDefault": "239.0.7.0"
+   },
+   {
+    "name": "port",
+    "description": "Порт приёма потока, По умолчанию 7777\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 7777,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "sampleRate",
+    "description": "Частота дискретизации Гц, По умолчанию 48000\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 48000,
+    "valueMax": 96000,
+    "valueMin": 8000
+   },
+   {
+    "name": "bufSize",
+    "description": "Размер jitter-буфера мс, По умолчанию 50\n\t",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 50,
+    "valueMax": 5000,
+    "valueMin": 50
+   },
+   {
+    "name": "latencyMs",
+    "description": "Целевая задержка синхронизации мс - одинаковая на всех приёмниках, По умолчанию 50\n",
+    "valueType": "int",
+    "unit": "num",
+    "valueDefault": 50,
+    "valueMax": 500,
+    "valueMin": 40
+   }
+  ],
+  "reports": [
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   },
+   {
+    "description": "Текущая громкость\n\t",
+    "valueType": "int",
+    "unit": "percent",
+    "topic": "event/volume"
+   },
+   {
+    "description": "Текущий адрес потока\n",
+    "valueType": "string",
+    "unit": "string",
+    "topic": "event/address"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/setVolume",
+    "description": "Установить громкость 0-100\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMulticastAddress",
+    "description": "Сменить multicast адрес на лету - IPv4 или 0 для unicast\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_opusLAN.h"
+ },
+ "dialer": {
+  "mode": "dialer",
+  "slots": "0-5",
+  "trigger": "deviceName/dialer_<n>",
+  "action": "deviceName/dialer_<n>",
+  "description": "\n    Модуль дискового телефонного номеронабирателя\n    Считывает импульсы с дискового набирателя и собирает номер\n    ",
+  "options": [
+   {
+    "name": "waitingTime",
+    "description": "Время ожидания конца набора в мс, По умолчанию 3000\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 3000,
+    "valueMax": 60000,
+    "valueMin": 1
+   },
+   {
+    "name": "numberMaxLenght",
+    "description": "Максимальная длина номера, По умолчанию 7\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 7,
+    "valueMax": 32,
+    "valueMin": 1
+   },
+   {
+    "name": "enaInverse",
+    "description": "Инверсия сигнала разрешения набора\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "pulseInverse",
+    "description": "Инверсия импульсного сигнала\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "debounceGap",
+    "description": "Антидребезг импульса в мс, По умолчанию 20\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 20,
+    "valueMax": 1000,
+    "valueMin": 1
+   },
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию включен\n",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Набранный номер, в формате строки.\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/reset",
+    "description": "Сброс текущего набора.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_dialer.h"
+ },
+ "testsd": {
+  "mode": "testsd",
+  "slots": "0-5",
+  "trigger": "deviceName/testsd_<n>",
+  "action": "deviceName/testsd_<n>",
+  "description": "\n    Модуль тестирования SD-карт\n",
+  "options": [
+   {
+    "name": "testType",
+    "description": "Задаёт тип теста\n\t   read - только чтение\n\t   readwrite - чтение и запись обратно\n\t   readback - чтение, запись и проверка вторичным чтением\n\t",
+    "valueType": "enum",
+    "values": [
+     "readwrite",
+     "read",
+     "readback"
+    ]
+   },
+   {
+    "name": "maxErrors",
+    "description": "Определяет порог ошибок для останова тестирования\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 1,
+    "valueMax": 4096,
+    "valueMin": 1
+   },
+   {
+    "name": "runDelay",
+    "description": "Задаёт период ожидания в тиках между чтением блоков\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует о текущем статусе (фазе) тестирования, а также детекции карты\n       Возможные значения: 'stopped', 'initializing', 'running', 'formatting', 'done', 'inserted', 'ejected'\n\t",
+    "valueType": "string",
+    "unit": "string",
+    "topic": "event/state"
+   },
+   {
+    "description": "Рапортует результат завершенного тестирования\n       Возможные значения: 'none', 'success', 'error', 'formatError'\n\t",
+    "valueType": "string",
+    "unit": "string",
+    "topic": "event/result"
+   },
+   {
+    "description": "Рапортует прогресс тестирования в целых процентах\n\t   Возможные значения: 0 - 100\n\t",
+    "valueType": "int",
+    "unit": "percent",
+    "topic": "event/progress"
+   },
+   {
+    "description": "Состояние модуля - активен (1) или спит (0)",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/start",
+    "description": "Команда запускает тестирование\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/stop",
+    "description": "Команда останавливает тестирование\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6)",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_testsd.h"
+ },
+ "stepper": {
+  "mode": "stepper",
+  "slots": "0-5",
+  "trigger": "deviceName/stepper_<n>",
+  "action": "deviceName/stepper_<n>",
+  "description": "\n    Управление шаговым двигателем сигналами step-dir через PCNT\n    PCNT периферии всего 4 на encoderInc + tachometer + stepper\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Если флаг поднят - модуль стартует в выключенном состоянии,\n       до прихода action/enable 1 (Конституция §6).\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "dirInverse",
+    "description": "Инверсия направления вращения. up-down. По умолчанию up\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "posReport",
+    "description": "Включить рапорты положения. Флаг.\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "circularCounter",
+    "description": "Режим кругового счётчика. Флаг. \n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "goHomeOnStart",
+    "description": "Базировать сразу при старте - иначе ждать команду goHome. Флаг.\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "speedReport",
+    "description": "Включить рапорты скорости. Флаг.\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "stateReport",
+    "description": "Включить рапорты состояния - run или stop. Флаг.\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "homingDir",
+    "description": "Направление базирования up-down - по умолчанию поиск дома выключен.\n",
+    "valueType": "enum",
+    "values": [
+     "",
+     "up",
+     "down"
+    ]
+   },
+   {
+    "name": "accel",
+    "description": "Ускорение и замедление в шаг-сек2. Int 1..2147483647, По умолчанию 100\n\t",
+    "valueType": "int",
+    "unit": "step/sek^2",
+    "valueDefault": 100,
+    "valueMax": 0,
+    "valueMin": 1
+   },
+   {
+    "name": "maxSpeed",
+    "description": "Максимальная скорость в шаг-сек. Int 1..2147483647, По умолчанию 100\n\t",
+    "valueType": "int",
+    "unit": "step/sek",
+    "valueDefault": 100,
+    "valueMax": 0,
+    "valueMin": 1
+   },
+   {
+    "name": "refreshRate",
+    "description": "Частота обновления в Гц, По умолчанию 20, максимум 100\n\t",
+    "valueType": "int",
+    "unit": "fps",
+    "valueDefault": 20,
+    "valueMax": 100,
+    "valueMin": 1
+   },
+   {
+    "name": "homingSpeed",
+    "description": "Скорость базирования в шаг-сек. Int 1..2147483647, По умолчанию maxSpeed-4. \n\t",
+    "valueType": "int",
+    "unit": "step/sek",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 1
+   },
+   {
+    "name": "homingTimeout",
+    "description": "Таймаут базирования в секундах - 0 выключает, По умолчанию 30\n\t",
+    "valueType": "int",
+    "unit": "sek",
+    "valueDefault": 30,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное положение в шагах. Int32 -2147483648..2147483647, По умолчанию INT32_MAX\n\t",
+    "valueType": "int",
+    "unit": "step",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное положение в шагах. Int32 -2147483648..2147483647, По умолчанию INT32_MIN\n\t",
+    "valueType": "int",
+    "unit": "step",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Текущее положение в шагах. Int32 -2147483648..2147483647\n\t",
+    "valueType": "string",
+    "unit": "step",
+    "topic": "event/pos"
+   },
+   {
+    "description": "Текущая скорость в шаг-сек. Int32 -2147483648..2147483647\n\t",
+    "valueType": "string",
+    "unit": "step/sek",
+    "topic": "event/speed"
+   },
+   {
+    "description": "Состояние мотора - run, stop, maxVal, minVal, upLimit или downLimit\n\t",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/state"
+   },
+   {
+    "description": "Состояние базирования - disable, waitingCommand, homing, done или homingTimeout\n\t",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/homingState"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/goHome",
+    "description": "Запустить базирование. Без параметров. \n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/moveToAbs",
+    "description": "Перейти в абсолютную позицию. Int32 -2147483648..2147483647.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/moveToInc",
+    "description": "Сместиться на приращение. Int32 -2147483648..2147483647.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/runSpeed",
+    "description": "Вращать с заданной скоростью. Int32 -2147483648..2147483647.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setMaxSpeed",
+    "description": "Установить максимальную скорость. Int32 0..2147483647.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setAccel",
+    "description": "Установить ускорение. Int32 0..2147483647.\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/stop",
+    "description": "Экстренная остановка.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/break",
+    "description": "Остановка с торможением.\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/setHomingSensor",
+    "description": "Состояние датчика нуля 0-1\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setUpLimit",
+    "description": "Аппаратный лимит хода вверх (up/плюс) 0-1 - 1 запрещает движение в плюс\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/setDownLimit",
+    "description": "Аппаратный лимит хода вниз (down/минус) 0-1 - 1 запрещает движение в минус\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_stepper.h"
+ },
+ "swiper": {
+  "mode": "swiper",
+  "slots": "0-5",
+  "trigger": "deviceName/swiper_<n>",
+  "action": "deviceName/swiper_<n>",
+  "description": "\n    Жестовый датчик APDS9960 по I2C - свайпы up down left right\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "upDownDisable",
+    "description": "Отключить вертикальные жесты up-down\n",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Жест свайпа - up down left right\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/swipe"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_swiper.h"
+ },
+ "collector": {
+  "mode": "collector",
+  "slots": "0-9",
+  "trigger": "deviceName/collector_<n>",
+  "action": "deviceName/collector_<n>",
+  "description": "\n    Виртуальный модуль collector\n    Собирает строку из поступающих сообщений\n    ",
+  "options": [
+   {
+    "name": "stringMaxLenght",
+    "description": "Максимальная длина строки\n       По умолчанию 7 символов\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 7,
+    "valueMax": 256,
+    "valueMin": 1
+   },
+   {
+    "name": "waitingTime",
+    "description": "Время ожидания в миллисекундах\n       По умолчанию 3000 мс\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 3000,
+    "valueMax": 60000,
+    "valueMin": 1
+   }
+  ],
+  "reports": [
+   {
+    "description": "Отчёт собранной строки\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/add",
+    "description": "Добавить данные в строку коллектора\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/clear",
+    "description": "Очистить строку коллектора\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6).",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_collector.h"
+ },
+ "conductor": {
+  "mode": "conductor",
+  "slots": "0-9",
+  "trigger": "deviceName/conductor_<n>",
+  "action": "deviceName/conductor_<n>",
+  "description": "\n    Виртуальный модуль stepper_conductor\n    Управляет шаговым двигателем с позиционированием\n    ",
+  "options": [
+   {
+    "name": "minVal",
+    "description": "Минимальное значение позиции\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение позиции\n       По умолчанию 32767\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 32767,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "multiTurn",
+    "description": "Многооборотная кинематика\n       0-1 по умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 1,
+    "valueMin": 0
+   },
+   {
+    "name": "timeout",
+    "description": "Таймаут в миллисекундах (0 = без таймаута)\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Отчёт остановки двигателя\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/stop"
+   },
+   {
+    "description": "Отчёт движения вверх\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/runUp"
+   },
+   {
+    "description": "Отчёт движения вниз\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/runDown"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/currentPos",
+    "description": "Обновление текущей позиции от энкодера\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/targetPos",
+    "description": "Задать целевую позицию\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/stop",
+    "description": "Остановить двигатель\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6).",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_conductor.h"
+ },
+ "counter": {
+  "mode": "counter",
+  "slots": "0-9",
+  "trigger": "deviceName/counter_<n>",
+  "action": "deviceName/counter_<n>",
+  "description": "\n    Виртуальный модуль счетчик\n    ",
+  "options": [
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение счетчика\n       По умолчанию INT32_MAX\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение счетчика\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "threshold",
+    "description": "Пороговое значение счетчика\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "circularCounter",
+    "description": "Сброс к противоположному значению при переполнении счетчика\n       0-1 по умолчанию 0\n",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   },
+   {
+    "description": "Отчёт значения счетчика\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/set",
+    "description": "Установка значений счетчика\n       Параметр может быть задан инкрементально или абсолютно\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   }
+  ],
+  "_file": "gen_counter.h"
+ },
+ "flywheel": {
+  "mode": "flywheel",
+  "slots": "0-9",
+  "trigger": "deviceName/flywheel_<n>",
+  "action": "deviceName/flywheel_<n>",
+  "description": "\n    Виртуальный модуль flywheel\n    Счетчик с постепенным уменьшением значения\n    ",
+  "options": [
+   {
+    "name": "decrement",
+    "description": "Значение декремента за один период\n       По умолчанию 0,1\n",
+    "valueType": "float",
+    "valueDefault": 0.1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "period",
+    "description": "Период обновления в миллисекундах\n       По умолчанию 100 мс\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 100,
+    "valueMax": 10000,
+    "valueMin": 1
+   },
+   {
+    "name": "threshold",
+    "description": "Пороговое значение\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение\n       По умолчанию 20\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 20,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Отчёт состояния в пороговом режиме (0/1)\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Отчёт значения счетчика\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/count"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/setCount",
+    "description": "Установка значения счетчика\n       Параметр может быть задан инкрементально (+/-) или абсолютно\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_flywheel.h"
+ },
+ "masquerade": {
+  "mode": "masquerade",
+  "slots": "0-9",
+  "trigger": "deviceName/masq_<n>",
+  "action": "deviceName/masquerade_<n>",
+  "description": "\n    Виртуальный модуль masquerade\n    Перенаправляет входящие значения в замаскированный выходной топик.\n    ",
+  "options": [
+   {
+    "name": "mask",
+    "description": "Выходной замаскированный топик (база-маска).\n       По умолчанию deviceName/masq_x\n",
+    "valueType": "string",
+    "valueDefault": "/masq_0"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Отчёт значения в выходной топик\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/push",
+    "description": "Передать значение в замаскированный топик\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6).",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_masquerade.h"
+ },
+ "random": {
+  "mode": "random",
+  "slots": "0-9",
+  "trigger": "deviceName/random_<n>",
+  "action": "deviceName/random_<n>",
+  "description": "\n    Модуль для генерации случайных чисел\n    ",
+  "options": [
+   {
+    "name": "maxVal",
+    "description": "Максимальное значение\n       По умолчанию INT32_MAX\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "minVal",
+    "description": "Минимальное значение\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Возвращает сгенерированное значение\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/val"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/generate",
+    "description": "Сгенерировать число. Без параметра - в диапазоне minVal-maxVal из опций;\n       одно число N - в диапазоне 0-N; два числа через пробел - в этом диапазоне\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6).",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_random.h"
+ },
+ "scaler": {
+  "mode": "scaler",
+  "slots": "0-9",
+  "trigger": "deviceName/scaler_<n>",
+  "action": "deviceName/scaler_<n>",
+  "description": "\n    Виртуальный модуль scaler\n    Масштабирует входные значения в заданный диапазон\n    ",
+  "options": [
+   {
+    "name": "zeroDeadZone",
+    "description": "Мертвая зона вокруг нуля\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "inputMinVal",
+    "description": "Минимальное входное значение\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "inputMaxVal",
+    "description": "Максимальное входное значение\n       По умолчанию 255\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "outputMinVal",
+    "description": "Минимальное выходное значение\n       По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "outputMaxVal",
+    "description": "Максимальное выходное значение\n       По умолчанию 255\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Отчёт масштабированного значения\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/result"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/pushVal",
+    "description": "Установить входное значение для масштабирования\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_scaler.h"
+ },
+ "startup": {
+  "mode": "startup",
+  "slots": "0-9",
+  "trigger": "deviceName/startup_<n>",
+  "action": "deviceName/startup_<n>",
+  "description": "\n    Модуль отправки сообщения при запуске\n    ",
+  "options": [
+   {
+    "name": "delay",
+    "description": "Параметр задержки перед отправкой сообщения о запуске (мс)\n       Числовое значение 0-4096, по умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 0,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Рапортует при старте\n    Используется для инициализации начального состояния\n",
+    "valueType": "int",
+    "unit": "bool",
+    "topic": "event/started"
+   }
+  ],
+  "commands": [],
+  "_file": "gen_startup.h"
+ },
+ "tankControl": {
+  "mode": "tankControl",
+  "slots": "6-9",
+  "trigger": "deviceName/tankControl_<n>",
+  "action": "deviceName/tankControl_<n>",
+  "description": "\n    Виртуальный tankControl - микширует газ и руль в две гусеницы\n    Команды accel и steering на входе, скорости ch_0 (лево) и ch_1 (право) на выходе\n    ",
+  "options": [
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n",
+    "valueType": "flag"
+   },
+   {
+    "name": "deadBand",
+    "description": "Мертвая зона газа, По умолчанию 10\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 10,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "inputMinVal",
+    "description": "Минимальное входное значение, По умолчанию 0\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "inputMaxVal",
+    "description": "Максимальное входное значение, По умолчанию 255\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "outputMaxVal",
+    "description": "Максимальное выходное значение, По умолчанию 255\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 255,
+    "valueMax": 4096,
+    "valueMin": 0
+   }
+  ],
+  "reports": [
+   {
+    "description": "Скорость левой гусеницы\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_0"
+   },
+   {
+    "description": "Скорость правой гусеницы\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/ch_1"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/accel",
+    "description": "Газ - входное значение\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/steering",
+    "description": "Руль - входное значение\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_tankControl.h"
+ },
+ "timer": {
+  "mode": "timer",
+  "slots": "0-9",
+  "trigger": "deviceName/timer_<n>",
+  "action": "deviceName/timer_<n>",
+  "description": "\n    Виртуальный модуль таймер. В миллисекундах. Максимальное время таймера INT32_MAX(2147483647)\n    ",
+  "options": [
+   {
+    "name": "time",
+    "description": "Время через которое сработает таймер, единицы измерения мс\n       По умолчанию 1000 мс\n",
+    "valueType": "int",
+    "unit": "ms",
+    "valueDefault": 1000,
+    "valueMax": 0,
+    "valueMin": 1
+   }
+  ],
+  "reports": [
+   {
+    "description": "Отчёт о срабатывании таймера\n",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/timerEnd"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/start",
+    "description": "Запустить таймер\n       Опционально - время таймера, если параметр не задан или равен 0 будет использован параметр заданный в опциях\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/stop",
+    "description": "Остановить таймер\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_timer.h"
+ },
+ "watchdog": {
+  "mode": "watchdog",
+  "slots": "0-9",
+  "trigger": "deviceName/watchdog_<n>",
+  "action": "deviceName/watchdog_<n>",
+  "description": "\n    Виртуальный watchdog - перезагружает устройство если его не сбрасывать\n    Команда reset перезапускает отсчёт, иначе по истечении time будет перезагрузка\n    ",
+  "options": [
+   {
+    "name": "time",
+    "description": "Время до перезагрузки в секундах, По умолчанию 3600\n",
+    "valueType": "int",
+    "unit": "s",
+    "valueDefault": 3600,
+    "valueMax": 0,
+    "valueMin": 1
+   }
+  ],
+  "reports": [],
+  "commands": [
+   {
+    "command": "action/reset",
+    "description": "Сбросить отсчёт - перезапускает таймер до перезагрузки\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   }
+  ],
+  "_file": "gen_watchdog.h"
+ },
+ "whitelist": {
+  "mode": "whitelist",
+  "slots": "0-9",
+  "trigger": "deviceName/whitelist_<n>",
+  "action": "deviceName/whitelist_<n>",
+  "description": "\n    Программный модуль для размещения связей во внешнем файле\n    Виртуальный слот, не взаимодействует с аппаратной частью\n    ",
+  "options": [
+   {
+    "name": "filename",
+    "description": "Имя файла со списком, по умолчанию whitelist,txt\n",
+    "valueType": "string",
+    "valueDefault": ""
+   }
+  ],
+  "reports": [
+   {
+    "description": "Возвращает если совпадений не найдено\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/noMatches"
+   },
+   {
+    "description": "Состояние модуля - активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/check",
+    "description": "Запуск проверки\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/setFile",
+    "description": "Сменить файл списка на лету - имя файла в корне SD\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить (1) или выключить (0) модуль (Конституция §6).",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_whitelist.h"
+ },
+ "wavPlayer": {
+  "mode": "wavPlayer",
+  "slots": "0-0",
+  "trigger": "deviceName/player_<n>",
+  "action": "deviceName/player_<n>",
+  "description": "wav проигрыватель\n   ",
+  "options": [
+   {
+    "name": "volume",
+    "description": "Громкость 0-100, По умолчанию 70\n",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 70,
+    "valueMax": 100,
+    "valueMin": 0
+   },
+   {
+    "name": "speed",
+    "description": "Скорость воспроизведения. Float 0.1-3.0, По умолчанию 1.09\n\t",
+    "valueType": "float",
+    "valueDefault": 1.09,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "tone",
+    "description": "Сдвиг тональности. Float 0.1-3.0, По умолчанию 1.0\n\n\t",
+    "valueType": "float",
+    "valueDefault": 1,
+    "valueMax": 0,
+    "valueMin": 0
+   },
+   {
+    "name": "eqLow",
+    "description": "Нижняя граница эквалайзера. Int -20..0, По умолчанию -13\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -13,
+    "valueMax": 0,
+    "valueMin": -20
+   },
+   {
+    "name": "eqMid",
+    "description": "Средняя граница эквалайзера. Int -20..0, По умолчанию -13\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -13,
+    "valueMax": 0,
+    "valueMin": -20
+   },
+   {
+    "name": "eqHigh",
+    "description": "Верхняя граница эквалайзера. Int -20..0, По умолчанию -13\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": -13,
+    "valueMax": 0,
+    "valueMin": -20
+   },
+   {
+    "name": "attenuation",
+    "description": "Период затухания громкости в мс (0 - выключено)\n\t   Если во время затухания приходит play с текущим треком - продолжаем играть\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 10000,
+    "valueMin": 0
+   },
+   {
+    "name": "playDelay",
+    "description": "Пауза перед проигрыванием в мс. Int 0..4096, По умолчанию 0\n\t",
+    "valueType": "int",
+    "unit": "",
+    "valueDefault": 0,
+    "valueMax": 4096,
+    "valueMin": 0
+   },
+   {
+    "name": "playToEnd",
+    "description": "Проигрывать до конца. Флаг.\n\t",
+    "valueType": "flag"
+   },
+   {
+    "name": "disableOnStart",
+    "description": "Старт в выключенном состоянии до action/enable 1, По умолчанию активен\n\t",
+    "valueType": "flag"
+   }
+  ],
+  "reports": [
+   {
+    "description": "Номер трека по завершении воспроизведения\n\t",
+    "valueType": "string",
+    "unit": "",
+    "topic": "event/endOfTrack"
+   },
+   {
+    "description": "Активен 1 или спит 0\n",
+    "valueType": "int",
+    "unit": "",
+    "topic": "event/enable"
+   }
+  ],
+  "commands": [
+   {
+    "command": "action/play",
+    "description": "Проиграть трек - опционально номер трека\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/stop",
+    "description": "Остановить воспроизведение\n",
+    "parametersType": "types",
+    "parameters": [
+     " "
+    ]
+   },
+   {
+    "command": "action/shift",
+    "description": "Переключить трек\n",
+    "parametersType": "types",
+    "parameters": [
+     "string "
+    ]
+   },
+   {
+    "command": "action/setVolume",
+    "description": "Установить громкость 0-100\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   },
+   {
+    "command": "action/enable",
+    "description": "Включить 1 или выключить 0 модуль\n",
+    "parametersType": "types",
+    "parameters": [
+     "int "
+    ]
+   }
+  ],
+  "_file": "gen_wavPlayer.h"
+ }
+}

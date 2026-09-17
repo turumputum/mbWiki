@@ -1,0 +1,49 @@
+# Схема подключения модуля out_2ch: две независимые нагрузки на два push-pull выхода.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Выход push-pull: нагрузка между ch_N (+) и gnd (−). Можно и между Vbus и ch_N —
+# тогда канал работает инверсно (опция inverse_N).
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: out_2ch
+      slot: s_0
+      pins: [Vbus, ch_1, ch_0, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: sol
+    name: "Соленоид\n12 В"
+    pins: ["+", "-"]
+  - id: led
+    name: "Светодиодная лента\n12 В"
+    pins: ["+", "-"]
+
+harnesses:
+  - id: 1
+    label: "канал 0 — соленоид"
+    wires:
+      - {a: "module:out_2ch:ch_0", b: "device:sol:+", color: red}
+      - {a: "module:out_2ch:gnd",  b: "device:sol:-", color: black}
+  - id: 2
+    label: "канал 1 — лента"
+    wires:
+      - {a: "module:out_2ch:ch_1", b: "device:led:+", color: red}
+      - {a: "module:out_2ch:gnd",  b: "device:led:-", color: black}
+  - id: 3
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

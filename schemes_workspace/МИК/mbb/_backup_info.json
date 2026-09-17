@@ -1,0 +1,19 @@
+{
+  "deviceName": "mbb",
+  "ip": "10.10.3.212",
+  "firmware": null,
+  "timestamp": "2026-09-10T18:36:46.845487",
+  "status": "ok",
+  "files": [
+    {
+      "path": "config.ini",
+      "size": 734,
+      "ok": true
+    },
+    {
+      "path": "System Volume Information/WPSettings.dat",
+      "size": 12,
+      "ok": true
+    }
+  ]
+}

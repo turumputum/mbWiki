@@ -9,3 +9,10 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
+
+# scratch
+tmp/
+*.log
+hlam$f.png
+tmp$f.png
+__pycache__/

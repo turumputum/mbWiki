@@ -1,0 +1,43 @@
+# Схема подключения модуля 3n_mosfet: RGB-лента 12 В на три канала, общий плюс.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# Каналы открытого стока (open drain): нагрузка включается между V+ и ch_N.
+# Для pwmLeds: ch_0 = R, ch_1 = G, ch_2 = B.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: 3n_mosfet
+      slot: s_0
+      pins: ["V+", ch_2, ch_1, ch_0]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: rgb
+    name: "Лента RGB\n12 В"
+    pins: ["+V", R, G, B]
+
+harnesses:
+  - id: 1
+    label: "лента RGB"
+    wires:
+      - {a: "module:3n_mosfet:V+",   b: "device:rgb:+V", color: black}
+      - {a: "module:3n_mosfet:ch_0", b: "device:rgb:R",  color: red}
+      - {a: "module:3n_mosfet:ch_1", b: "device:rgb:G",  color: green}
+      - {a: "module:3n_mosfet:ch_2", b: "device:rgb:B",  color: blue}
+  - id: 2
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}

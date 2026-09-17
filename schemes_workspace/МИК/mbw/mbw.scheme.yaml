@@ -1,0 +1,161 @@
+# Схема подключения контроллера — сгенерировано из config.ini
+#
+# Пересобрать SVG и PDF после правки этого файла (из корня репозитория):
+#   python tools/scheme_gen/generate.py "schemes_workspace/МИК/mbw/mbw.scheme.yaml" --pdf
+# Весь конвейер (config.ini -> YAML -> SVG -> PDF):
+#   python tools/scheme_gen/build.py "schemes_workspace/МИК/mbw"
+# Пересоздать сам YAML из config.ini (ЗАТРЁТ ручные правки ниже):
+#   python tools/scheme_gen/from_config.py "schemes_workspace/МИК/mbw/config.ini" --force
+#
+# Правки руками (цвета проводов, артикулы БП, подписи) делаются здесь;
+# повторная генерация из config.ini НЕ перезаписывает файл без --force.
+#
+# Адреса пинов: device:<id>:<pin> | module:<id>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+title: mbw — схема подключения
+controller:
+  name: mbw
+  serial: ''
+  board: плата v4
+  connectors:
+  - {name: Ethernet, label: 10.10.3.211/24, extra: [MQTT · брокер 192.168.1.92]}
+  - USB
+  notes: [монтажная плита]
+  modules:
+  - id: s0
+    name: fastOut_2ch
+    slot: s_0
+    pins: [Vbus, ch_1, ch_0, gnd]
+    mode: stepper
+  - id: s1
+    name: in_2ch
+    slot: s_1
+    pins: [V+, ch_1, ch_0, gnd]
+    pin_badges:
+      ch_0: [OC]
+      ch_1: [OC]
+  - id: s2
+    name: fastOut_2ch
+    slot: s_2
+    pins: [Vbus, ch_1, ch_0, gnd]
+    mode: stepper
+  - id: s3
+    name: in_out
+    slot: s_3
+    pins: [+Vin, out, in, gnd]
+  - id: s4
+    name: out_2ch
+    slot: s_4
+    pins: [Vbus, ch_1, ch_0, gnd]
+  - id: s5
+    name: relay
+    slot: s_5
+    pins: ['NO', COM, COM, NC]
+  power_module:
+    name: Power
+    pins: [+, '-']
+  psu:
+    name: Блок питания 12V 100W
+    pins: ['+12', gnd]
+devices:
+- id: s0_psu
+  name: "Блок питания 48V\nобщий для двух драйверов"
+  pins: [+V, gnd]
+- id: s0_driver
+  name: Драйвер IHSV57
+  pins: [+V, gnd, dir+, dir-, step+, step-, A, B, C, D]
+  notes: [привод большого колеса]
+- id: s0_motor
+  name: "Сервопривод IHSV57\nуправление step/dir"
+  pins: [A, B, C, D]
+- id: s1_sens_1
+  name: "Оптический датчик\nBS5-T2M"
+  pins: [+V, sig, 0V]
+  notes: [датчик нуля stepper_0]
+- id: s1_sens_2
+  name: "Оптический датчик\nBS5-T2M"
+  pins: [+V, sig, 0V]
+  notes: [датчик нуля stepper_2]
+- id: s2_driver
+  name: Драйвер IHSV57
+  pins: [+V, gnd, dir+, dir-, step+, step-, A, B, C, D]
+  notes: [привод малого колеса]
+- id: s2_motor
+  name: "Сервопривод IHSV57\nуправление step/dir"
+  pins: [A, B, C, D]
+- id: s3_sens
+  name: "Оптический датчик\nG18-3A30NC"
+  pins: [+V, sig, 0V]
+  notes: [датчик выхода шара из колеса]
+- id: s4_sol
+  name: Соленоид
+  pins: [+, '-']
+  notes: [верхний соленоид, запускает шар в колесо]
+harnesses:
+- id: 1
+  label: питание контроллера
+  wires:
+  - {a: 'psu:+12', b: 'power:+', color: red}
+  - {a: 'psu:gnd', b: 'power:-', color: black}
+- id: 2
+  label: питание драйвера (s_0)
+  wires:
+  - {a: 'device:s0_psu:+V', b: 'device:s0_driver:+V', color: red}
+  - {a: 'device:s0_psu:gnd', b: 'device:s0_driver:gnd', color: black}
+- id: 3
+  label: step / dir (s_0)
+  wires:
+  - {a: 'module:s0:gnd', b: 'device:s0_driver:dir-', color: black}
+  - {a: 'module:s0:gnd', b: 'device:s0_driver:step-', color: black}
+  - {a: 'module:s0:ch_0', b: 'device:s0_driver:dir+', color: yellow}
+  - {a: 'module:s0:ch_1', b: 'device:s0_driver:step+', color: green}
+- id: 4
+  label: обмотки двигателя (s_0)
+  wires:
+  - {a: 'device:s0_driver:A', b: 'device:s0_motor:A', color: red}
+  - {a: 'device:s0_driver:B', b: 'device:s0_motor:B', color: yellow}
+  - {a: 'device:s0_driver:C', b: 'device:s0_motor:C', color: green}
+  - {a: 'device:s0_driver:D', b: 'device:s0_motor:D', color: blue}
+- id: 5
+  label: оптический датчик (s_1)
+  wires:
+  - {a: 'module:s1:V+', b: 'device:s1_sens_1:+V', color: brown}
+  - {a: 'module:s1:ch_0', b: 'device:s1_sens_1:sig', color: black}
+  - {a: 'module:s1:gnd', b: 'device:s1_sens_1:0V', color: blue}
+- id: 6
+  label: оптический датчик (s_1)
+  wires:
+  - {a: 'module:s1:V+', b: 'device:s1_sens_2:+V', color: brown}
+  - {a: 'module:s1:ch_1', b: 'device:s1_sens_2:sig', color: black}
+  - {a: 'module:s1:gnd', b: 'device:s1_sens_2:0V', color: blue}
+- id: 7
+  label: питание драйвера (s_2)
+  wires:
+  - {a: 'device:s0_psu:+V', b: 'device:s2_driver:+V', color: red}
+  - {a: 'device:s0_psu:gnd', b: 'device:s2_driver:gnd', color: black}
+- id: 8
+  label: step / dir (s_2)
+  wires:
+  - {a: 'module:s2:gnd', b: 'device:s2_driver:dir-', color: black}
+  - {a: 'module:s2:gnd', b: 'device:s2_driver:step-', color: black}
+  - {a: 'module:s2:ch_0', b: 'device:s2_driver:dir+', color: yellow}
+  - {a: 'module:s2:ch_1', b: 'device:s2_driver:step+', color: green}
+- id: 9
+  label: обмотки двигателя (s_2)
+  wires:
+  - {a: 'device:s2_driver:A', b: 'device:s2_motor:A', color: red}
+  - {a: 'device:s2_driver:B', b: 'device:s2_motor:B', color: yellow}
+  - {a: 'device:s2_driver:C', b: 'device:s2_motor:C', color: green}
+  - {a: 'device:s2_driver:D', b: 'device:s2_motor:D', color: blue}
+- id: 10
+  label: оптический датчик (s_3)
+  wires:
+  - {a: 'module:s3:+Vin', b: 'device:s3_sens:+V', color: brown}
+  - {a: 'module:s3:in', b: 'device:s3_sens:sig', color: black}
+  - {a: 'module:s3:gnd', b: 'device:s3_sens:0V', color: blue}
+- id: 11
+  label: соленоид (s_4)
+  wires:
+  - {a: 'module:s4:ch_0', b: 'device:s4_sol:+', color: red}
+  - {a: 'module:s4:gnd', b: 'device:s4_sol:-', color: black}

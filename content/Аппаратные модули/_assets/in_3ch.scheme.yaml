@@ -1,0 +1,46 @@
+# Схема подключения модуля in_3ch: три кнопки без подсветки на три канала.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: in_3ch
+      slot: s_0
+      pins: [ch_2, ch_1, ch_0, gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+
+devices:
+  - id: btn0
+    name: "Кнопка\nбез подсветки"
+    pins: ["1", "2"]
+  - id: btn1
+    name: "Кнопка\nбез подсветки"
+    pins: ["1", "2"]
+  - id: btn2
+    name: "Кнопка\nбез подсветки"
+    pins: ["1", "2"]
+
+harnesses:
+  - id: 1
+    label: "канал 0"
+    wires:
+      - {a: "module:in_3ch:ch_0", b: "device:btn0:1", color: blue}
+      - {a: "module:in_3ch:gnd", b: "device:btn0:2", color: black}
+  - id: 2
+    label: "канал 1"
+    wires:
+      - {a: "module:in_3ch:ch_1", b: "device:btn1:1", color: blue}
+      - {a: "module:in_3ch:gnd", b: "device:btn1:2", color: black}
+  - id: 3
+    label: "канал 2"
+    wires:
+      - {a: "module:in_3ch:ch_2", b: "device:btn2:1", color: blue}
+      - {a: "module:in_3ch:gnd", b: "device:btn2:2", color: black}

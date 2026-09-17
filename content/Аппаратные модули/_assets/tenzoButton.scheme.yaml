@@ -1,0 +1,43 @@
+# Схема подключения модуля tenzoButton: тензодатчик (мост), контроллер от 12 В.
+# Генерация:  python tools/scheme_gen/generate.py "<этот файл>"
+#
+# Адреса пинов: device:<id>:<pin> | module:<имя>:<pin> | power:<pin> | psu:<pin>
+# Цвет провода задаётся ОДИН раз -> совпадает с обоих концов жгута.
+#
+# V+ = 5 В (стабилизатор на модуле), Vbus должен быть не ниже 9 В.
+# Стандартные цвета кабеля тензодатчика: red E+, black E-, green S+, white S-.
+
+controller:
+  name: ModuleBox
+  serial: ""
+  server: false
+  connectors: [Ethernet, USB]
+  modules:
+    - name: tenzoButton
+      slot: s_0
+      pins: ["V+", "In+", "In-", gnd]
+  power_module:
+    name: Power
+    pins: ["+", "-"]
+  psu:
+    name: "Блок питания\n12 В"
+    pins: ["+12", gnd]
+
+devices:
+  - id: lc
+    name: "Тензодатчик\nмостовой"
+    pins: ["E+", "S+", "S-", "E-"]
+
+harnesses:
+  - id: 1
+    label: "тензодатчик"
+    wires:
+      - {a: "module:tenzoButton:V+",  b: "device:lc:E+", color: red}
+      - {a: "module:tenzoButton:In+", b: "device:lc:S+", color: green}
+      - {a: "module:tenzoButton:In-", b: "device:lc:S-", color: white}
+      - {a: "module:tenzoButton:gnd", b: "device:lc:E-", color: black}
+  - id: 2
+    label: "питание контроллера"
+    wires:
+      - {a: "psu:+12", b: "power:+", color: red}
+      - {a: "psu:gnd", b: "power:-", color: black}
