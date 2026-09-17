@@ -1,3 +1,36 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// Таблицы событий/команд: топики в моноширинном шрифте не рвать посреди
+// слова (base.scss ставит на td `overflow-wrap: anywhere` + `hyphens: auto`).
+// Широкая таблица прокручивается по горизонтали внутри .table-container.
+.table-container {
+  & > table {
+    margin: 1rem 0;
+    padding: 0;
+    width: 100%;
+
+    & > * {
+      line-height: 1.5rem;
+    }
+  }
+
+  td,
+  th {
+    overflow-wrap: normal;
+    hyphens: manual;
+    vertical-align: top;
+  }
+
+  code,
+  .katex {
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+
+  // описание может переноситься, но не по одной букве
+  td:last-child {
+    overflow-wrap: break-word;
+  }
+}
