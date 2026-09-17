@@ -44,6 +44,7 @@ for page in pages:
             if target.startswith('..'): target = target.lstrip('./')
         target = unquote(target)
         if target in ('', '.'): target = 'index'
+        checked.add(target)
         if not exists(target):
             missing.setdefault(target, []).append(os.path.relpath(page, ROOT).replace('\\', '/'))
 
@@ -66,19 +67,21 @@ for t, ps in sorted(broken_wiki.items()):
     print(f'  {t}   <- {ps[0]}' + (f' (+{len(ps)-1})' if len(ps) > 1 else ''))
 
 if live:
-    import urllib.request
-    print(f'\n--- live check {live}')
+    import urllib.request, urllib.parse
+    targets = sorted(t for t in checked if not t.startswith('static/') and exists(t))
+    print(f'\n--- live check {live}: {len(targets)} targets')
     bad = 0
-    for page in sorted(pages):
-        rel = os.path.relpath(page, ROOT).replace('\\', '/')
-        if rel.startswith(('tags/', 'static/')): continue
-        url = live + '/' + rel[:-5] if rel != 'index.html' else live + '/'
-        if url.endswith('/index'): url = url[:-5]
-        try:
-            req = urllib.request.Request(urllib.parse.quote(url, safe=':/'), method='HEAD')
-            code = urllib.request.urlopen(req, timeout=15).status
-        except Exception as e:
-            code = getattr(e, 'code', str(e))
+    for target in targets:
+        url = live + '/' + urllib.parse.quote(target, safe='/')
+        code = None
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(url, method='HEAD')
+                code = urllib.request.urlopen(req, timeout=30).status
+                break
+            except Exception as e:
+                code = getattr(e, 'code', None) or str(e)
+                if isinstance(code, int): break
         if code != 200:
-            bad += 1; print(f'  {code}  {url}')
-    print(f'  live pages not 200: {bad}')
+            bad += 1; print(f'  {code}  {target}')
+    print(f'  not 200: {bad}')
